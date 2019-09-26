@@ -6,9 +6,39 @@
 void main(int argc, char const *argv[])
 {
 
+	//Definir estrutura da pessoa
+	typedef struct tipoPessoa
+	{
+		int codigo; //Valores de 1 a 50
+		char nome[30];
+		int idade;
+		float altura;
+		struct tipoPessoa *anterior;
+		struct tipoPessoa *proxima;
+	}tipoPessoa;
+
+	//Definir estrutura da lista
+	typedef struct tipoLista
+	{
+		tipoPessoa *inicioDaLista;
+		tipoPessoa *finalDaLista;
+		int tamanhoDaLista;
+	}tipoLista;
+
+	//Alocar uma lista
+	tipoLista *lista;
+	//lista = (lista *) malloc(sizeof(lista));
+	lista = NULL;
+	if (lista != NULL) menu();
+	else {
+		printf("Não foi possível alocar memória para a lista. Por favor tente novamente.\n");
+		getchar();
+		exit();
+	}
+
+	inicializarLista();
 	
-	
-	pessoa *gabriel = (pessoa *) malloc(sizeof(pessoa));
+	tipoPessoa *gabriel = (tipoPessoa *) malloc(sizeof(tipoPessoa));
 
 	gabriel->codigo = 1;
 
@@ -19,28 +49,10 @@ void main(int argc, char const *argv[])
 
 int inicializarLista(){
 
-	//Definir estrutura da pessoa
-	typedef struct pessoa
-	{
-		int codigo; //Valores de 1 a 50
-		char nome[30];
-		int idade;
-		float altura;
-		struct pessoa *anterior;
-		struct pessoa *proxima;
 
-	}pessoa;
-
-	//Definir estrutura da lista
-	typedef struct lista
-	{
-		pessoa *inicioDaLista;
-		pessoa *finalDaLista;
-		int tamanhoDaLista;
-	}lista;
-
-	//Alocar uma lista
-	lista = (lista *) malloc(sizeof(lista));
-	
 	return 1;
+}
+
+int menu (){
+	return 0;
 }
