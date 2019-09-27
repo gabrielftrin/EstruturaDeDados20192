@@ -1,7 +1,7 @@
 #include "estruturas.h"
 #include "validacoes.h"
 #include <stdbool.h>
-//teste
+
 void imprimirOpcoesDoMenu(){
 
 	//Cabeçalho da impressão do menu
@@ -21,41 +21,87 @@ void imprimirOpcoesDoMenu(){
 	printf("5) Encerrar o programa\n\n");
 }
 
-//===Funções do Menu===//
-
+//Zerar uma lista com ponteiro já alocado
 int criarListaDePessoas(tipoLista *lista){	
 
 	lista->inicioDaLista = NULL;
 	lista->finalDaLista = NULL;
 	lista->tamanhoDaLista = 0;
+	lista->listaZerada = true;
+	printf("Lista criada com sucesso.\n");
 
 	return 1;
+
 }
 
-int cadastrarUmaPessoa (tipoLista *lista){
+bool cadastrarUmaPessoa (tipoLista *lista){
 
-	if (lista->inicio == NULL){
+	//Validar alocacao de memoria lista
+	if (!validarAlocacaoLista(lista)) return false;
+
+	//Verificar se a funcao criarListaDePessoas já foi chamada
+	if (!validacaoListaCriada(lista)) return false;
+
+	//Alocar memória para a pessoa
+	tipoPessoa* pessoa;
+	pessoa = malloc(sizeof(tipoPessoa));
+
+	//Validar alocação de memória da pessoa
+	if (!validarAlocacaoPessoa(pessoa)) return false;
+
+	//Ler dados da pessoa
+
+	//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	/*
+	int codigo; //Valores de 1 a 50
+	char nome[30];
+	int idade;
+	float altura;
+	*/
+	scanf("numero: %d\n", &pessoa->codigo);
 	
+	
+	//Se a lista estiver vazia
+	if (listaVazia(lista)) {
+
+		//lista
+		lista->inicioDaLista = pessoa;		
+		bool* listaZerada = false;
+
+		//ponteiros da pessoa
+		pessoa->anterior = NULL;
+		pessoa->proximo = NULL;
+	
+	//Se a lista não for vazia
+	} else {		
+
+		//Ajustar ponteiros da pessoa
+		pessoa->anterior = lista->finalDaLista;
+
 	}
+	
+	//Configurar estrutura da lista	
+	lista->finalDaLista = pessoa;
+	lista->tamanhoDaLista++;
 
-	tipoPessoa pessoa;
-	pessoa = malloc (sizeof(tipoPessoa));
+	//Configurar estrutura da pessoa
+	pessoa->proximo = NULL;
 
-
+	return true;
 }
 
-int executarFuncaoDoMenu(int opcao, tipoLista *lista){
+bool executarFuncaoDoMenu(int opcao, tipoLista *lista){
 
 	switch (opcao){
 	
 		case 1:
-			if (!criarListaDePessoas(lista)) return 0;
-			break;
-		case 2:
-			
-			if (!cadastrarUmaPessoa(lista)) return 0;
-			break;
+			if (criarListaDePessoas(lista)) { break; }
+			return false;
+		case 2:			
+			if (cadastrarUmaPessoa(lista)) { break; }
+			return false;
 		case 3:
+			printf("codigo: %d\n", lista->inicioDaLista->codigo);
 			//consultarUmaPessoa();
 			break;
 		case 4:
@@ -70,15 +116,14 @@ int executarFuncaoDoMenu(int opcao, tipoLista *lista){
 			
 	}
 
-	return 1;
+	return true;
 }
 
-int menu (tipoLista *lista){
+int menu (tipoLista *lista){	
 	
-	bool *listaCriada = false;	
-	int opcao;
-	
-	do {
+	int opcao;	
+
+	do {	
 
 		//Mostrar o menu na tela
 		imprimirOpcoesDoMenu();
@@ -86,34 +131,42 @@ int menu (tipoLista *lista){
         //Ler o conteúdo digitado
 		scanf("%d", &opcao);	
 		
+		//VALIDAR OPÇÃO DIGITADA====================
 		//Se o conteúdo retornado for zero, fecha o programa
         //if (opcao == 0) return 0;
 			
 		//Verificar se a lista já foi criada
 		//if (!validacaoListaCriada(opcao,listaCriada)) menu(lista);
+		//===========================================
 
 		//Executar função do menu
 		if (!executarFuncaoDoMenu(opcao,lista)) opcao=5;
 		
-		
+		//pausa();
+		//limparTela();		
 
 	} while(opcao != 5);
 	
 	return 0;
 } 
 
-int inicializarPrograma(){
+bool inicializarPrograma(){
 
 	//Declarar lista
 	tipoLista *lista = NULL;
 	//Alocar memória
 	lista = malloc(sizeof(tipoLista));
 	//Validar alocação
-	if (!validarAlocacaoLista(lista)) return 0;
+	if (!validarAlocacaoLista(lista)) return false;
 
+	//Pré configurar lista
+	lista->listaZerada = false;
+	lista->tamanhoDaLista = -1;
+	
+	//Exucutar menu
 	menu(lista);
 
-	return 1;
+	return true;
 }
 
 /* tipoPessoa *gabriel = (tipoPessoa *) malloc(sizeof(tipoPessoa));

@@ -1,4 +1,6 @@
-//Definir estrutura da pessoa
+#include <stdbool.h>
+
+	//Definir estrutura da pessoa
 	typedef struct tipoPessoa
 	{
 		int codigo; //Valores de 1 a 50
@@ -6,7 +8,8 @@
 		int idade;
 		float altura;
 		struct tipoPessoa *anterior;
-		struct tipoPessoa *proxima;
+		struct tipoPessoa *proximo;
+
 	}tipoPessoa;
 
 	//Definir estrutura da lista
@@ -15,4 +18,6 @@
 		tipoPessoa *inicioDaLista;
 		tipoPessoa *finalDaLista;
 		int tamanhoDaLista;
+		bool listaZerada;
+
 	}tipoLista;

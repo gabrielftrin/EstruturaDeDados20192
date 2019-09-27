@@ -1,10 +1,24 @@
 #include <stdbool.h>
 #include <stdlib.h>
-//#include <conio.h>
+
+bool listaVazia(tipoLista* lista) {
+
+	if (
+		lista->inicioDaLista == NULL &&
+		lista->finalDaLista == NULL &&
+		lista->tamanhoDaLista == 0 &&
+		lista->listaZerada == true
+		)
+		return true;
+
+	return false;
+
+}
 
 void pausa(){
 	system("pause");
 }
+
 void limparTela(){
 	
 	//printf("\e[H\e[2J");
@@ -12,35 +26,32 @@ void limparTela(){
 
 }
 
-int validarAlocacaoLista(tipoLista *lista){
+bool validarAlocacaoLista(tipoLista *lista){
 	
 	if (lista == NULL) {
 		limparTela();
-		printf("Não foi possível alocar memória. Por favor tente novamente.\n");		
-		return 0;
+		printf("Não foi possível alocar memória para lista. Por favor tente novamente.\n");		
+		return false;
 	}
 
-	return 1;
+	return true;
 	
 }
 
-bool validacaoListaCriada(int opcao, bool *listaCriada){
-	
-	if (
-		listaCriada == false &&
-		opcao != 1 &&
-		opcao != 5
-		)
-	{
+//Retorna false se a lista NÃO for válida
+bool validacaoListaCriada(tipoLista *lista){
+			 
+	if (lista->tamanhoDaLista == -1){
 		limparTela();
 		printf("Por favor, crie a lista primeiro.\n");
 		pausa();
-		return 0;
+		return false;
 	}
 
-	return 1;
+	return true;
 	
 }
+
 /*
 int lerInteiroValido(){
 
@@ -71,3 +82,14 @@ int lerOpcaoValida(){
 }
 */
 
+bool validarAlocacaoPessoa(tipoPessoa* pessoa) {
+
+	if (pessoa == NULL) {
+		limparTela();
+		printf("Não foi possível alocar memória para a pessoa. Por favor tente novamente.\n");
+		return false;
+	}
+
+	return true;
+
+}
