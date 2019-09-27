@@ -2,10 +2,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "funcoes.h"
 
-void main(int argc, char const *argv[])
+int main(int argc, char const *argv[])
 {
-
+/*
 	//Definir estrutura da pessoa
 	typedef struct tipoPessoa
 	{
@@ -24,35 +25,16 @@ void main(int argc, char const *argv[])
 		tipoPessoa *finalDaLista;
 		int tamanhoDaLista;
 	}tipoLista;
-
+*/
 	//Alocar uma lista
-	tipoLista *lista;
-	//lista = (lista *) malloc(sizeof(lista));
-	lista = NULL;
+	tipoLista *lista = malloc(sizeof(lista));	
 	if (lista != NULL) menu();
 	else {
-		printf("Não foi possível alocar memória para a lista. Por favor tente novamente.\n");
+		mensagemErroAlocacaoMemoria();
 		getchar();
-		exit();
+		return 0;
 	}
 
-	inicializarLista();
-	
-	tipoPessoa *gabriel = (tipoPessoa *) malloc(sizeof(tipoPessoa));
-
-	gabriel->codigo = 1;
-
-	printf("codigo: %d\n", gabriel->codigo);
-
-
-}
-
-int inicializarLista(){
-
-
-	return 1;
-}
-
-int menu (){
 	return 0;
 }
+
