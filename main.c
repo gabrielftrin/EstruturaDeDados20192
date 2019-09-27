@@ -6,8 +6,11 @@
 
 int main(int argc, char const *argv[])
 {
-	
+	printf("teste\n");
+
 	inicializarPrograma();
+
+	//teste
 
 	return 0;
 
