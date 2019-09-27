@@ -18,6 +18,6 @@
 		tipoPessoa *inicioDaLista;
 		tipoPessoa *finalDaLista;
 		int tamanhoDaLista;
-		bool listaZerada;
+		bool *listaZerada;
 
 	}tipoLista;

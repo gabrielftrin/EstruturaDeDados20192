@@ -1,8 +1,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-bool listaVazia(tipoLista* lista) {
-
+bool listaVazia(tipoLista* lista) {	
+	
 	if (
 		lista->inicioDaLista == NULL &&
 		lista->finalDaLista == NULL &&
@@ -82,6 +82,7 @@ int lerOpcaoValida(){
 }
 */
 
+//Se não conseguir alocar memória, retorna falso e mostra erro na tela
 bool validarAlocacaoPessoa(tipoPessoa* pessoa) {
 
 	if (pessoa == NULL) {

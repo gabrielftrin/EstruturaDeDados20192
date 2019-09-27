@@ -22,7 +22,7 @@ void imprimirOpcoesDoMenu(){
 }
 
 //Zerar uma lista com ponteiro já alocado
-int criarListaDePessoas(tipoLista *lista){	
+bool criarListaDePessoas(tipoLista *lista){	
 
 	lista->inicioDaLista = NULL;
 	lista->finalDaLista = NULL;
@@ -30,43 +30,55 @@ int criarListaDePessoas(tipoLista *lista){
 	lista->listaZerada = true;
 	printf("Lista criada com sucesso.\n");
 
-	return 1;
+	return true;
 
 }
 
-bool cadastrarUmaPessoa (tipoLista *lista){
+tipoPessoa* alocarPessoa(tipoPessoa* pessoa) {
 
+	pessoa = NULL;
+
+	//Alocar memória para a pessoa
+	pessoa = malloc(sizeof(tipoPessoa));
+
+	//Validar alocação de memória da pessoa
+	if (!validarAlocacaoPessoa(pessoa)) pessoa = NULL;
+	
+	return pessoa;
+}
+
+tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
+
+	printf("Digite os dados da pessoa, código, nome, idade e altura, repectivamente:\n");
+	scanf("%d", &pessoa->codigo);
+	fflush(stdin);
+	gets(pessoa->nome);
+	scanf("%d", &pessoa->idade);
+	scanf("%f", &pessoa->altura);
+	return pessoa;
+}
+
+bool cadastrarUmaPessoa (tipoLista *lista){
+			
 	//Validar alocacao de memoria lista
 	if (!validarAlocacaoLista(lista)) return false;
 
 	//Verificar se a funcao criarListaDePessoas já foi chamada
 	if (!validacaoListaCriada(lista)) return false;
 
-	//Alocar memória para a pessoa
-	tipoPessoa* pessoa;
-	pessoa = malloc(sizeof(tipoPessoa));
-
-	//Validar alocação de memória da pessoa
-	if (!validarAlocacaoPessoa(pessoa)) return false;
+	//Alocar pessoa
+	tipoPessoa *pessoa; pessoa = alocarPessoa(pessoa);
+	if (pessoa == NULL) return false;
 
 	//Ler dados da pessoa
-
-	//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-	/*
-	int codigo; //Valores de 1 a 50
-	char nome[30];
-	int idade;
-	float altura;
-	*/
-	scanf("numero: %d\n", &pessoa->codigo);
-	
-	
+	lerDadosPessoa(pessoa);
+		
 	//Se a lista estiver vazia
 	if (listaVazia(lista)) {
 
 		//lista
 		lista->inicioDaLista = pessoa;		
-		bool* listaZerada = false;
+		lista->listaZerada = false;
 
 		//ponteiros da pessoa
 		pessoa->anterior = NULL;
@@ -78,32 +90,40 @@ bool cadastrarUmaPessoa (tipoLista *lista){
 		//Ajustar ponteiros da pessoa
 		pessoa->anterior = lista->finalDaLista;
 
-	}
+	}		
 	
 	//Configurar estrutura da lista	
 	lista->finalDaLista = pessoa;
 	lista->tamanhoDaLista++;
 
 	//Configurar estrutura da pessoa
-	pessoa->proximo = NULL;
-
+	pessoa->proximo = NULL;	
+	
 	return true;
 }
 
-bool executarFuncaoDoMenu(int opcao, tipoLista *lista){
+bool consultarUmaPessoa(tipoLista *lista) {
 
+	int codigo;
+
+
+	printf("codigo: %d\n", lista->inicioDaLista->codigo);
+
+	return true;
+}
+bool executarFuncaoDoMenu(int opcao, tipoLista *lista){
+	
 	switch (opcao){
 	
 		case 1:
 			if (criarListaDePessoas(lista)) { break; }
 			return false;
-		case 2:			
-			if (cadastrarUmaPessoa(lista)) { break; }
+		case 2:	
+			if (cadastrarUmaPessoa(lista)) { break;	}
 			return false;
 		case 3:
-			printf("codigo: %d\n", lista->inicioDaLista->codigo);
-			//consultarUmaPessoa();
-			break;
+			if (consultarUmaPessoa(lista)) { break; }
+			return false;
 		case 4:
 			//removerUmaPessoa();
 			break;
@@ -119,7 +139,7 @@ bool executarFuncaoDoMenu(int opcao, tipoLista *lista){
 	return true;
 }
 
-int menu (tipoLista *lista){	
+bool menu (tipoLista *lista){	
 	
 	int opcao;	
 
@@ -131,13 +151,7 @@ int menu (tipoLista *lista){
         //Ler o conteúdo digitado
 		scanf("%d", &opcao);	
 		
-		//VALIDAR OPÇÃO DIGITADA====================
-		//Se o conteúdo retornado for zero, fecha o programa
-        //if (opcao == 0) return 0;
-			
-		//Verificar se a lista já foi criada
-		//if (!validacaoListaCriada(opcao,listaCriada)) menu(lista);
-		//===========================================
+		//Validar opcao digitada
 
 		//Executar função do menu
 		if (!executarFuncaoDoMenu(opcao,lista)) opcao=5;
@@ -147,7 +161,7 @@ int menu (tipoLista *lista){
 
 	} while(opcao != 5);
 	
-	return 0;
+	return true;
 } 
 
 bool inicializarPrograma(){
@@ -168,11 +182,3 @@ bool inicializarPrograma(){
 
 	return true;
 }
-
-/* tipoPessoa *gabriel = (tipoPessoa *) malloc(sizeof(tipoPessoa));
-
-	gabriel->codigo = 1;
-
-	printf("codigo: %d\n", gabriel->codigo);
-
-	*/
