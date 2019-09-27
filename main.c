@@ -6,7 +6,11 @@
 
 int main(int argc, char const *argv[])
 {
-	menu();
+	
+	inicializarPrograma();
+
 	return 0;
+
 }
+
 
