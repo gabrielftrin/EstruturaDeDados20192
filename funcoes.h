@@ -111,6 +111,7 @@ bool consultarUmaPessoa(tipoLista *lista) {
 
 	return true;
 }
+
 bool executarFuncaoDoMenu(int opcao, tipoLista *lista){
 	
 	switch (opcao){
