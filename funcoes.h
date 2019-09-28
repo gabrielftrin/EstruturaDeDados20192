@@ -2,10 +2,14 @@
 #include "validacoes.h"
 #include <stdbool.h>
 
+void mensagemSucesso(){
+	printf("Operacao realizada com sucesso.\n");
+}
+
 void imprimirOpcoesDoMenu(){
 
 	//Cabeçalho da impressão do menu
-	printf("\n===== Trabalho prático 1 - Lista de pessoas =====\n");
+	printf("\n===== Trabalho pratico 1 - Lista de pessoas =====\n");
 	printf("Aluno: Gabriel Fernandes Trindade, RM 201511287\n\n");
 
 	//1. criar a lista de pessoas;
@@ -14,7 +18,7 @@ void imprimirOpcoesDoMenu(){
 	printf("2) Cadastrar uma nova pessoa no final da lista\n");
 	//3. consultar se uma pessoa está cadastrada, através do seu código. 
 	//Se estiver, o programa deve  imprimir  os  dados  desta  pessoa; 
-	printf("3) Consultar uma pessoa pelo código\n");
+	printf("3) Consultar uma pessoa pelo codigo\n");
 	// 4.  remover  uma  pessoa;
 	printf("4) Remover uma pessoa\n");
 	//5. encerrar  o  programa,  destruindo  a  lista  de  pessoas.
@@ -27,11 +31,12 @@ bool criarListaDePessoas(tipoLista *lista){
 	lista->inicioDaLista = NULL;
 	lista->finalDaLista = NULL;
 	lista->tamanhoDaLista = 0;
-	lista->listaZerada = true;
-	printf("Lista criada com sucesso.\n");
+	lista->listaZerada = (bool *) true;	
+
+	//Mensagem de sucesso ao usuário
+	mensagemSucesso();
 
 	return true;
-
 }
 
 tipoPessoa* alocarPessoa(tipoPessoa* pessoa) {
@@ -49,7 +54,7 @@ tipoPessoa* alocarPessoa(tipoPessoa* pessoa) {
 
 tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
 
-	printf("Digite os dados da pessoa, código, nome, idade e altura, repectivamente:\n");
+	printf("Digite os dados da pessoa, codigo, nome, idade e altura, repectivamente:\n(O codigo da pessoa nao pode ser zero)\n");
 	scanf("%d", &pessoa->codigo);
 	fflush(stdin);
 	gets(pessoa->nome);
@@ -58,16 +63,25 @@ tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
 	return pessoa;
 }
 
-bool cadastrarUmaPessoa (tipoLista *lista){
-			
+//A lista é inválida se não conseguiu alocar memoria ou ainda não foi criada
+bool validarLista(tipoLista *lista){
+
 	//Validar alocacao de memoria lista
 	if (!validarAlocacaoLista(lista)) return false;
 
 	//Verificar se a funcao criarListaDePessoas já foi chamada
 	if (!validacaoListaCriada(lista)) return false;
 
+	return true;
+}
+
+bool cadastrarUmaPessoa (tipoLista *lista){
+			
+	//Validar lista
+	if (!validarLista(lista)) return false;
+
 	//Alocar pessoa
-	tipoPessoa *pessoa; pessoa = alocarPessoa(pessoa);
+	tipoPessoa *pessoa = alocarPessoa(pessoa);
 	if (pessoa == NULL) return false;
 
 	//Ler dados da pessoa
@@ -81,8 +95,7 @@ bool cadastrarUmaPessoa (tipoLista *lista){
 		lista->listaZerada = false;
 
 		//ponteiros da pessoa
-		pessoa->anterior = NULL;
-		pessoa->proximo = NULL;
+		pessoa->anterior = NULL;		
 	
 	//Se a lista não for vazia
 	} else {		
@@ -99,15 +112,94 @@ bool cadastrarUmaPessoa (tipoLista *lista){
 	//Configurar estrutura da pessoa
 	pessoa->proximo = NULL;	
 	
+	//Mensagem de sucesso ao usuário
+	mensagemSucesso();
+
 	return true;
 }
 
+bool lerCodigoPessoa (){
+
+	printf("Informe o codigo da pessoa:");
+	int codigo = lerNaturalValido();
+	if (codigo == 0) return false;
+
+	return true;
+}
+
+bool numeroNaturalPositivo (int numero){
+
+	if (numero > 0) return true;
+
+	return false;
+}
+
+//Retorna nulo quando a lista é invalida ou vazia
+tipoPessoa* buscarCodigoNaLista(tipoLista *lista, int codigo){
+
+	//Validar lista
+	if (!validarLista(lista)) return NULL;
+
+	//Validar codigo
+	if(!numeroNaturalPositivo(codigo)) return NULL;
+
+	//Verificar se a lista é vazia
+	if (listaVazia(lista)) return NULL;
+
+	//Cria ua variavel auxiliar para procurar a pessoa
+	tipoPessoa *pessoaAtual = lista->inicioDaLista;
+
+	//Busca simples, do inicio ao final percorrendo toda a lista
+	do {
+
+		//Verifica se o código foi encontrado e retorna o ponteiro da pessoa
+		if(pessoaAtual->codigo == codigo){			
+			return pessoaAtual;
+		}
+
+		//Vai para  a proxima pessoa
+		pessoaAtual = pessoaAtual->proximo;
+	
+	//Verifica todas as pessoas da lista o final dela
+	}while(aux->proximo != NULL);
+
+	return pessoaAtual = NULL);
+}
+
+void imprimirDadosDaPessoa(tipoPessoa *pessoa){
+
+
+
+}
+
+//Consultar os dados de uma pessoa pelo código
 bool consultarUmaPessoa(tipoLista *lista) {
 
-	int codigo;
+	//Validar lista
+	if (!validarLista(lista)) return false;
 
+	//Ler codigo da pessoa
+	int codigo = lerCodigoPessoa();
+	if (codigo == 0) return false;
 
-	printf("codigo: %d\n", lista->inicioDaLista->codigo);
+	//Declara pessoa
+	tipoPessoa *pessoa = NULL;
+
+	//Buscar código na Lista
+	pessoa = buscarCodigoNaLista(lista,codigo);
+
+	//Retorna, caso não encotre o código
+	if (pessoa == NULL){
+		//limpa memoria
+		free(pessoa);
+		return true;
+	}
+
+	//Imprime os dados da pessoa
+	imprimirDadosDaPessoa(pessoa);
+
+	//limpa memoria
+	free(pessoa);
 
 	return true;
 }
@@ -150,15 +242,16 @@ bool menu (tipoLista *lista){
 		imprimirOpcoesDoMenu();
 
         //Ler o conteúdo digitado
-		scanf("%d", &opcao);	
-		
-		//Validar opcao digitada
+		opcao = lerNaturalValido();		
 
 		//Executar função do menu
 		if (!executarFuncaoDoMenu(opcao,lista)) opcao=5;
 		
-		//pausa();
-		//limparTela();		
+		//Pausa antes de escolher uma nova opcao
+		pausa();
+
+		//Limpar a tela para o menu aparecer sempre em cima
+		limparTela();		
 
 	} while(opcao != 5);
 	

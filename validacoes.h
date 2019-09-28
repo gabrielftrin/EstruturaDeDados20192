@@ -7,23 +7,21 @@ bool listaVazia(tipoLista* lista) {
 		lista->inicioDaLista == NULL &&
 		lista->finalDaLista == NULL &&
 		lista->tamanhoDaLista == 0 &&
-		lista->listaZerada == true
-		)
-		return true;
-
+		lista->listaZerada == (bool *) true
+	){
+		printf("A lista esta vazia.\n");
+		return true;		
+	}
+	
 	return false;
-
 }
 
 void pausa(){
 	system("pause");
 }
 
-void limparTela(){
-	
-	//printf("\e[H\e[2J");
+void limparTela(){		
 	system("cls");
-
 }
 
 bool validarAlocacaoLista(tipoLista *lista){
@@ -35,7 +33,6 @@ bool validarAlocacaoLista(tipoLista *lista){
 	}
 
 	return true;
-	
 }
 
 //Retorna false se a lista NÃO for válida
@@ -49,26 +46,23 @@ bool validacaoListaCriada(tipoLista *lista){
 	}
 
 	return true;
-	
 }
 
-/*
-int lerInteiroValido(){
+// Se NÃO for natural, retorna zero
+int lerNaturalValido(){
 
-	char caractere;
-	int tipo;
+	int numero;	
 	
-	scanf("%c", &caractere);
-	
-	if (caractere < '1' || caractere > '5'){
-		limparTela();
-		printf("Por favor, informe um número natural entre 1 e 5.\n");
-		return 0;
+	if(scanf("%d", &numero)){
+		if(numero >= 0)
+			return numero;
 	}
-	
-	return caractere;
+		
+	limparTela();
+	printf("Por favor, informe um número inteiro.\n");	
+	return 0;
 }
-*/
+
 
 /*
 int lerOpcaoValida(){
@@ -92,5 +86,4 @@ bool validarAlocacaoPessoa(tipoPessoa* pessoa) {
 	}
 
 	return true;
-
 }

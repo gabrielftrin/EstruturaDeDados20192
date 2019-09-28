@@ -15,17 +15,16 @@ O programa deve implementar um menu que permita ao usuário:
 
 int main(int argc, char const *argv[])
 {
-	//limparTela();
+	limparTela();
 
 	inicializarPrograma();
-		
-	printf("\nsaiu do programa\n\n");
+
+	printf("\nfinal do prog. numero: \n\n");
 	return 0;
 
-	//Compilar na trends no caminho "C:\Users\gtrindade> "
+	//Compilar na trends no caminho "C:\Users\gtrindade>"
 	//gcc.lnk -o objeto.exe "C:\Users\gtrindade\OneDrive - TecnoTRENDS\GitHub\main.c" && obj.lnk
 
-	//Compilar em casa no caminho ""
-	//	
-
+	//Compilar em casa no caminho "C:\Users\Gabriel\Desktop"
+	//gcc.lnk -o objeto.exe O:\OneDrive\GitHub\EstruturaDeDados20192\main.c && obj.lnk
 }
