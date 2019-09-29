@@ -256,11 +256,13 @@ bool removerUmaPessoa (tipoLista *lista){
 	if(!numeroNatural(codigo)) return false;
 			
 	//Buscar código na Lista
-	tipoPessoa pessoa = buscarCodigoNaLista(lista,codigo);
+	tipoPessoa* pessoa = buscarCodigoNaLista(lista,codigo);
 
-	//Retorna, caso não encotre o código
+	//Caso não encotre o código
 	if (pessoa == NULL){
 		
+		//Mensagem ao usuário
+		if(!validarImpressao(printf("Codigo nao encontrado.")) return false;
 		//limpa memoria
 		free(pessoa);
 		
@@ -280,7 +282,10 @@ bool removerUmaPessoa (tipoLista *lista){
 		
 		//Limpar memória
 		free(pessoa);
+		
 	}
+	
+	
 	
 	
 	return true;
