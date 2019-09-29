@@ -28,16 +28,29 @@ void imprimirOpcoesDoMenu(){
 //Zerar uma lista com ponteiro já alocado
 bool criarListaDePessoas(tipoLista *lista){	
 
-	lista->inicioDaLista = NULL;
-	lista->finalDaLista = NULL;
-	lista->tamanhoDaLista = 0;
-	lista->listaZerada = (bool *) true;	
+	//Zerar a lista
+	if (!zerarLista(lista)) return false;
 
 	//Mensagem de sucesso ao usuário
 	mensagemSucesso();
 
 	return true;
 }
+
+//Retorna true se conseguiu zerar a lista
+bool zerarLista (tipoLista *lista) {
+
+	//Validar lista
+	if (!validarLista(lista)) return false;
+	
+	//Zerar lista
+	lista->inicioDaLista = NULL;
+	lista->finalDaLista = NULL;
+	lista->tamanhoDaLista = 0;
+	lista->listaZerada = (bool *) true;	
+	
+	return true;
+}	
 
 tipoPessoa* alocarPessoa(tipoPessoa* pessoa) {
 
@@ -118,14 +131,19 @@ bool cadastrarUmaPessoa (tipoLista *lista){
 	return true;
 }
 
-//Retorna zero se NÃO conseguiu ler o codigo com sucesso
+//Retorna -1 se não conseguiu ler o codigo
 int lerCodigoPessoa (){
 
-	printf("Informe o codigo da pessoa:");
+	//Imprimir solicitação do código
+	if(!validarImpressao(printf("Informe o codigo da pessoa:")) return false;
+	
+	//Ler o código
 	int codigo = lerNaturalValido();
-	if (!numeroNatural(codigo) return codigo;
+	
+	//Validar código	
+	if (!numeroNatural(codigo) return (-1);
 
-	return true;
+	return codigo;
 }
 
 bool numeroNaturalPositivo (int numero){
@@ -142,14 +160,14 @@ bool numeroNatural (int numero){
 	return false;
 }
 
-//Retorna nulo quando a lista é invalida ou vazia
+//Retorna nulo quando o código não foi encontrado.
 tipoPessoa* buscarCodigoNaLista(tipoLista *lista, int codigo){
 
 	//Validar lista
 	if (!validarLista(lista)) return NULL;
 
 	//Validar codigo
-	if(!numeroNaturalPositivo(codigo)) return NULL;
+	if(!numeroNatural(codigo)) return NULL;
 
 	//Verificar se a lista é vazia
 	if (listaVazia(lista)) return NULL;
@@ -232,16 +250,17 @@ bool removerUmaPessoa (tipoLista *lista){
 	if(validarLista(lista)) return false;
 	
 	//Ler código da pessoa
-	if(!lerCodigoPessoa()) return false;
-	/*
-	//Validar código
-	if (!numeroNaturalPositivo(codigo)) return false;
+	int codigo = lerCodigoPessoa();
 
+	//Validar codigo
+	if(!numeroNatural(codigo)) return false;
+			
 	//Buscar código na Lista
 	tipoPessoa pessoa = buscarCodigoNaLista(lista,codigo);
 
 	//Retorna, caso não encotre o código
 	if (pessoa == NULL){
+		
 		//limpa memoria
 		free(pessoa);
 		
@@ -249,7 +268,21 @@ bool removerUmaPessoa (tipoLista *lista){
 	}
 	
 	//Remover a pessoa da lista
-	*/
+	
+	
+	//Atualizar configuração da lista
+	
+	//Se a lista tiver apenas um elemento
+	if (pessoa->anterior == NULL && lista->inicioDaLista=pessoa {
+		
+		//Zerar lista
+		if (!zerarLista(lista)) return false;
+		
+		//Limpar memória
+		free(pessoa);
+	}
+	
+	
 	return true;
 }
 

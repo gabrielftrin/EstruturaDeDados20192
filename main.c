@@ -17,11 +17,17 @@ void main(int argc, char const *argv[])
 {
 	limparTela();
 
-	//inicializarPrograma();
+	inicializarPrograma();
 
-	int retorno = printf("\n");
+	int x;
+	int retorno;
+	
+	retorno = 1;
+	retorno = (x = 10);
+	
+	
 
-	printf("\nretorno: %d\n",retorno);
+	printf("\nretorno: %d\n",x);
 	//return 0;
 
 	//Compilar na trends no caminho "C:\Users\gtrindade>"
