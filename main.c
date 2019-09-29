@@ -11,22 +11,16 @@ O programa deve implementar um menu que permita ao usuário:
 */
 #include <stdio.h>
 #include <stdlib.h>
-//#include "funcoes.h"
+#include "funcoes.h"
 
 void main(int argc, char const *argv[])
 {
-	//limparTela();
+	limparTela();
 
-	//inicializarPrograma();
+	inicializarPrograma();
 
-	int *x;
-	int retorno;
+	int retorno = 10;
 	
-	
-	retorno = free(x)
-	
-	
-
 	printf("\nretorno: %d\n",retorno);
 	//return 0;
 
