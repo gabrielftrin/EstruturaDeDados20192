@@ -13,15 +13,16 @@ O programa deve implementar um menu que permita ao usuário:
 #include <stdlib.h>
 #include "funcoes.h"
 
-int main(int argc, char const *argv[])
+void main(int argc, char const *argv[])
 {
 	limparTela();
 
-	inicializarPrograma();
+	//inicializarPrograma();
 
-	printf("\nfinal do programa \n\n");
+	int retorno = printf("\n");
 
-	return 0;
+	printf("\nretorno: %d\n",retorno);
+	//return 0;
 
 	//Compilar na trends no caminho "C:\Users\gtrindade>"
 	//gcc.lnk -o objeto.exe "C:\Users\gtrindade\OneDrive - TecnoTRENDS\GitHub\main.c" && obj.lnk

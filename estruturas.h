@@ -1,5 +1,8 @@
 #include <stdbool.h>
 
+//Definir tipo string
+typedef char* string;
+
 //Definir estrutura da pessoa
 typedef struct tipoPessoa
 {

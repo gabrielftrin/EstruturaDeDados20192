@@ -1,6 +1,14 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+//Retorna true se a quantidade de caracteres impressos for maior que 0
+bool validarImpressao(int numero){
+	if(numero>0)
+		return true;
+
+	return false;
+}
+
 bool listaVazia(tipoLista* lista) {	
 	
 	if (
@@ -48,7 +56,7 @@ bool validacaoListaCriada(tipoLista *lista){
 	return true;
 }
 
-// Se NÃO for natural, retorna zero
+// Se NÃO for natural, retorna -1
 int lerNaturalValido(){
 
 	int numero;	
@@ -59,8 +67,8 @@ int lerNaturalValido(){
 	}
 		
 	limparTela();
-	printf("Por favor, informe um número inteiro.\n");	
-	return 0;
+	printf("Por favor, informe um número natural.\n");	
+	return(-1);
 }
 
 
