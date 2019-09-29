@@ -161,12 +161,20 @@ tipoPessoa* buscarCodigoNaLista(tipoLista *lista, int codigo){
 		pessoaAtual = pessoaAtual->proximo;
 	
 	//Verifica todas as pessoas da lista o final dela
-	}while(aux->proximo != NULL);
+	}while(pessoaAtual->proximo != NULL);
 
-	return pessoaAtual = NULL);
+	pessoaAtual = NULL;
+
+	return pessoaAtual; 
 }
 
 void imprimirDadosDaPessoa(tipoPessoa *pessoa){
+
+	printf("Seguem os dados da pessoa:\n\n");
+	printf("1 - Codigo: %d\n", pessoa->codigo);
+	printf("2 - Nome: %s\n");
+	printf("3 - Idade:\n");
+	printf("4 - Altura:\n");
 
 
 

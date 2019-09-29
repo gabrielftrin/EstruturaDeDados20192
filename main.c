@@ -19,7 +19,8 @@ int main(int argc, char const *argv[])
 
 	inicializarPrograma();
 
-	printf("\nfinal do prog. numero: \n\n");
+	printf("\nfinal do programa \n\n");
+
 	return 0;
 
 	//Compilar na trends no caminho "C:\Users\gtrindade>"
