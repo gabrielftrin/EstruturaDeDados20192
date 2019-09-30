@@ -198,7 +198,7 @@ tipoPessoa* buscarCodigoNaLista(tipoLista *lista, int codigo){
 	return pessoaAtual; 
 }
 
-// OK Imprimir dados de uma pessoa
+//Imprimir dados de uma pessoa
 bool imprimirDadosDaPessoa(tipoPessoa *pessoa){
 
 	//Validar pessoa
@@ -257,11 +257,11 @@ bool removerUmaPessoa (tipoLista *lista){
 
 	//Validar codigo
 	if(!numeroNatural(codigo)) return false;
-			
+	
 	//Buscar código na Lista
 	tipoPessoa* pessoa = buscarCodigoNaLista(lista,codigo);
 
-	//Caso não encotre o código (ou lista vazia)
+	//Caso 1 - Código não encontrado (ou lista vazia)
 	if (pessoa == NULL){
 		
 		//Mensagem ao usuário
@@ -272,50 +272,43 @@ bool removerUmaPessoa (tipoLista *lista){
 		return true;
 	}
 	
-	//Remover a pessoa de acordo com cada caso======
-	do {
+	//Caso 2 - A lista possui apenas um elemento
+	if (
+		pessoa->anterior == NULL &&
+		pessoa->proximo == NULL &&
+		lista->inicioDaLista == pessoa &&
+		lista->finalDaLista == pessoa
+		) {
+		//Zerar lista
+		if (!zerarLista(lista)) return false;
 		
-		//Caso a lista tenha apenas um elemento
-		case (pessoa->anterior == NULL && lista->inicioDaLista == pessoa) {
-			//Zerar lista
-			if (!zerarLista(lista)) return false;
-		
-			//Limpar memória
-			free(pessoa);
-		
-		}
-		
-	
-		
-		
-		
-	}
+		//Decrementar o tamanho da lista
+		lista->tamanho--;
 
-	//Decrementar o tamanho da lista
-	lista->tamanho--;
-		
-			
-		//Criar pessoa auxiliar
-		tipoPessoa* pessoaAuxiliar = NULL;			
-				
-		//Ajustar pessoa anterior da lista
-		pessoaAuxiliar = pessoa->anterior;
-		
-		//Verificar se é o primeiro da lista e remove-o
-		if (pessoa->auxiliar == NULL ) {
-			lista->inicio = pessoa->proximo;
-			pessoaAuxiliar = pessoa->proximo;
-			pessoaAuxiliar->anterior = NULL;
-			
-			
-		}
-		pessoaAuxiliar->proximo = pessoa->proximo;
-		if (c)
-			
+		//Limpar memória
+		free(pessoa);
+	}
 	
-			
+	//Caso 3 - A lista possui mais de um elemento e o elemento a ser removido é o PRIMEIRO
+	if (){
 	
-			
+		//Decrementar o tamanho da lista
+		lista->tamanho--;	
+	}
+	
+	//Caso 4 - A lista possui mais de um elemento e o elemento a ser removido é o ÚLTIMO
+	if () {
+	
+		//Decrementar o tamanho da lista
+		lista->tamanho--;
+	}
+		
+	//Caso 5 - A lista possui mais de um elemento e o elemento a ser removido está no MEIO da lista
+	if (){
+	
+		//Decrementar o tamanho da lista
+		lista->tamanho--;
+	}
 	
 	//Mensagem ao usuario
 	if (!mensagemSucesso()) return false;

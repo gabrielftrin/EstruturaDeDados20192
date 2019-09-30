@@ -24,9 +24,9 @@ void main(int argc, char const *argv[])
 	printf("\nteste fim do programa: %d\n",teste);
 	//return 0;
 
-	//Compilar na trends no caminho "C:\Users\gtrindade>"
+	//Comando para compilar no trabalho no caminho "C:\Users\gtrindade>"
 	//gcc.lnk -o objeto.exe "C:\Users\gtrindade\OneDrive - TecnoTRENDS\GitHub\main.c" && obj.lnk
 
-	//Compilar em casa no caminho "C:\Users\Gabriel\Desktop"
+	//Comando para compilar em casa no caminho "C:\Users\Gabriel\Desktop"
 	//gcc.lnk -o objeto.exe O:\OneDrive\GitHub\EstruturaDeDados20192\main.c && obj.lnk
 }
