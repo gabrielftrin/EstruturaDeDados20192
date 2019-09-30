@@ -271,24 +271,53 @@ bool removerUmaPessoa (tipoLista *lista){
 		
 		return true;
 	}
+	
+	//Remover a pessoa de acordo com cada caso======
+	do {
 		
-	//Se a lista tiver apenas um elemento
-	if (pessoa->anterior == NULL && lista->inicioDaLista == pessoa) {
+		//Caso a lista tenha apenas um elemento
+		case (pessoa->anterior == NULL && lista->inicioDaLista == pessoa) {
+			//Zerar lista
+			if (!zerarLista(lista)) return false;
 		
-		//Zerar lista
-		if (!zerarLista(lista)) return false;
+			//Limpar memória
+			free(pessoa);
 		
-		//Limpar memória
-		free(pessoa);
+		}
+		
+	
+		
+		
 		
 	}
+
+	//Decrementar o tamanho da lista
+	lista->tamanho--;
+		
+			
+		//Criar pessoa auxiliar
+		tipoPessoa* pessoaAuxiliar = NULL;			
+				
+		//Ajustar pessoa anterior da lista
+		pessoaAuxiliar = pessoa->anterior;
+		
+		//Verificar se é o primeiro da lista e remove-o
+		if (pessoa->auxiliar == NULL ) {
+			lista->inicio = pessoa->proximo;
+			pessoaAuxiliar = pessoa->proximo;
+			pessoaAuxiliar->anterior = NULL;
+			
+			
+		}
+		pessoaAuxiliar->proximo = pessoa->proximo;
+		if (c)
+			
 	
+			
 	
-	//Remover a pessoa da lista
-	//Atualizar configuração da lista
+			
 	
-	
-	//MEensagem ao usuario
+	//Mensagem ao usuario
 	if (!mensagemSucesso()) return false;
 	
 	return true;

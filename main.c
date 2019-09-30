@@ -19,9 +19,9 @@ void main(int argc, char const *argv[])
 
 	inicializarPrograma();
 
-	int retorno = 10;
+	int teste = 10;
 	
-	printf("\nretorno: %d\n",retorno);
+	printf("\nteste fim do programa: %d\n",teste);
 	//return 0;
 
 	//Compilar na trends no caminho "C:\Users\gtrindade>"
