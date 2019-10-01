@@ -84,12 +84,12 @@ int lerOpcaoValida(){
 }
 */
 
-//Se não conseguir alocar memória, retorna falso e mostra erro na tela
+//Se a pessoa pontar pra nulo, retorna falso e mostra erro na tela
 bool validarAlocacaoPessoa(tipoPessoa* pessoa) {
 
 	if (pessoa == NULL) {
 		limparTela();
-		printf("Não foi possível alocar memória para a pessoa. Por favor tente novamente.\n");
+		printf("A pessoa está apontando para nulo.\n");
 		return false;
 	}
 

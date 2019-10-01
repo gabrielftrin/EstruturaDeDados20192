@@ -246,24 +246,16 @@ bool consultarUmaPessoa(tipoLista *lista) {
 	return true;
 }
 
+//Destroi uma pessoa da lista, a pessoa não pode ser nula
 bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 
 	//Validar lista
-	if (validarLista(lista)) return false;
+	if (!validarLista(lista)) return false;
 
-	//Validar pessoa
+	//Validar pessoa, a pessoa não pode ser nulo
 	if (!validarAlocacaoPessoa(pessoa)) return false;
-
-	//Caso 1 - Código não encontrado (ou lista vazia)
-	if (pessoa == NULL) {
-
-		//Mensagem ao usuário
-		if (!validarImpressao(printf("Codigo nao encontrado."))) return false;
-
-		return true;
-	}
-
-	//Caso 2 - A lista possui apenas um elemento
+	
+	//Caso 1 - A lista possui apenas um elemento
 	if (
 		pessoa->anterior == NULL &&
 		pessoa->proximo == NULL &&
@@ -275,7 +267,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 		if (!zerarLista(lista)) return false;
 	}
 
-	//Caso 3 - A lista possui mais de um elemento e o elemento a ser removido é o PRIMEIRO
+	//Caso 2 - A lista possui mais de um elemento e o elemento a ser removido é o PRIMEIRO
 	if (
 		pessoa->anterior == NULL &&
 		pessoa->proximo != NULL &&
@@ -293,7 +285,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 		lista->tamanho--;
 	}
 
-	//Caso 4 - A lista possui mais de um elemento e o elemento a ser removido é o ÚLTIMO
+	//Caso 3 - A lista possui mais de um elemento e o elemento a ser removido é o ÚLTIMO
 	if (
 		pessoa->anterior != NULL &&
 		pessoa->proximo == NULL &&
@@ -311,7 +303,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 		lista->tamanho--;
 	}
 
-	//Caso 5 - A lista possui mais de um elemento e o elemento a ser removido está no MEIO da lista
+	//Caso 4 - A lista possui mais de um elemento e o elemento a ser removido está no MEIO da lista
 	if (
 		pessoa->anterior != NULL &&
 		pessoa->proximo != NULL &&
@@ -331,12 +323,11 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 		lista->tamanho--;
 	}
 
-	//Limpa memoria (apagar de fato a pessoa, seja ela nula ou não)
+	//Limpa memoria (apagar de fato a pessoa
 	free(pessoa);
 
 	//Mensagem ao usuario
 	if (!mensagemSucesso()) return false;
-
 }
 
 
@@ -355,11 +346,29 @@ bool removerUmaPessoaPeloCodigo (tipoLista *lista){
 	//Buscar código na Lista
 	tipoPessoa* pessoa = buscarCodigoNaLista(lista,codigo);
 
+	//Se a busca bão retornar nenhuma pessoa, exibe mensagem de erro e retorna true
+	if (pessoa == NULL){
+		
+		//Mensagem ao usuario
+		if (!validarImpressao(printf("Nenhuma pessoa foi removida da lista."))) return false;
+		
+		return true;	
+	}
+		
 	//Destruir a pessoa
 	if (!destruirPessoa(pessoa)) return false;
 
 	return true;
 }
+
+//Fecha o programa
+bool sairDoPrograma() {
+	
+	
+	
+	return true;
+}
+
 
 //Apaga todos os itens da lista e destroi a lista
 bool destruirLista(tipoLista* lista) {
@@ -368,7 +377,7 @@ bool destruirLista(tipoLista* lista) {
 	if (!validarLista(lista)) return false;
 
 	//Se a lista NÃO for vazia
-	if (!listaVazia(lista) {
+	if (!listaVazia(lista)) {
 
 		tipoPessoa* pessoaAuxiliar = NULL;
 
@@ -376,9 +385,9 @@ bool destruirLista(tipoLista* lista) {
 		while (!listaVazia(lista)) {
 
 			//Pegar o primeiro elemento da lista
-			pessoaAuxiliar = lista->inicioDaLista
+			pessoaAuxiliar = lista->inicioDaLista;
 
-			removerUmaPessoa
+			//removerUmaPessoa
 
 			//Apagar o primeiro
 
@@ -387,7 +396,15 @@ bool destruirLista(tipoLista* lista) {
 	}
 
 	//Destruir a lista
-
+	free(lista);
+	
+	//Mensagem ao usuario
+	if (!mensagemSucesso()) return false;
+	
+	//Sair do programa
+	if(!sairDoPrograma()) return false;	
+	
+	return true;
 }
 
 //Executar uma funcao do menu de acordo com a opcao, retorna falso se alguma funcao qualquer der erro
@@ -414,9 +431,8 @@ bool executarFuncaoDoMenu(int opcao, tipoLista *lista){
 			if (destruirLista(lista)) { break; };
 			return false;
 		default:
-			//sairDoPrograma();
-			break;
-			
+			if (sairDoPrograma()) { break; }
+			return false;			
 	}
 
 	return true;
