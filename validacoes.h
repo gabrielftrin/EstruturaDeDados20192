@@ -28,10 +28,7 @@ bool numeroNatural(int numero) {
 bool validarAlocacaoLista(tipoLista* lista) {
 
 	if (lista == NULL) {
-
-		//Limpa a tela
-		limparTela();
-
+		
 		//Exibe mensagem de erro
 		printf("\nNao foi possível alocar memoria para lista.\n");
 
@@ -71,8 +68,7 @@ bool listaVazia(tipoLista* lista) {
 //Retorna false se a lista NÃO for válida
 bool validacaoListaCriada(tipoLista *lista){
 			 
-	if (lista->tamanhoDaLista == -1){
-		limparTela();
+	if (lista->tamanhoDaLista == -1){		
 		printf("Por favor, crie a lista primeiro.\n");
 		pausa();
 		return false;
@@ -87,8 +83,10 @@ int lerNaturalValido(){
 	int numero;	
 	
 	if(scanf("%d", &numero)){
-		if(numeroNatural(numero))
+		if (numeroNatural(numero)) {
+			
 			return numero;
+		}
 	}
 		
 	limparTela();
@@ -141,7 +139,7 @@ tipoPessoa* alocarPessoa(tipoPessoa* pessoa) {
 	pessoa = NULL;
 
 	//Alocar memória para a pessoa
-	pessoa = malloc(sizeof(tipoPessoa));
+	pessoa = (tipoPessoa *) malloc(sizeof(tipoPessoa));
 
 	//Validar alocação de memória da pessoa
 	if (!validarAlocacaoPessoa(pessoa)) pessoa = NULL;
@@ -189,39 +187,59 @@ int lerCodigoPessoa() {
 
 	//Ler o código
 	int codigo = lerNaturalValido();
-
+	
 	//Validar código	
 	if (!numeroNatural(codigo)) return (-1);
 
 	return codigo;
 }
 
+bool imprimirDadosDaLista(tipoLista *lista);
+
 //Retorna nulo quando o código não foi encontrado.
 tipoPessoa* buscarCodigoNaLista(tipoLista* lista, int codigo) {
-
-	//Validar lista
+	
+	printf("Validar lista\n");
 	if (!validarLista(lista)) return NULL;
 
-	//Validar codigo
+	printf("Validar codigo\n");
 	if (!numeroNatural(codigo)) return NULL;
 
-	//Verificar se a lista é vazia
+	printf("Verificar se a lista e vazia\n");
 	if (listaVazia(lista)) return NULL;
+	
+	printf("Cria uma variavel auxiliar para procurar a pessoa\n");
+	tipoPessoa* pessoaAtual = NULL;
+	pessoaAtual = lista->inicioDaLista;
+	
+	printf("Procurar a pessoa na lista\n");
+	if (pessoaAtual != NULL) {
 
-	//Cria uma variavel auxiliar para procurar a pessoa
-	tipoPessoa* pessoaAtual = lista->inicioDaLista;
+		printf("A pessoa nao e nula. entrando no while...\n");
+		while (pessoaAtual != NULL) {
+			
+			printf("Verifica se o código foi encontrado e retorna o ponteiro da pessoa\n");
+			
+			if (pessoaAtual->codigo == codigo) {
+				
+				printf("encontrou o codigo. retortando ao menu...\n");
+				return pessoaAtual;
+			}
+			
+			printf("Vai para a proxima pessoa\n");
+			if (pessoaAtual != NULL) {
+				printf("a pessoa nao e nula. tentando apontar para o proximo...\n");
+				pessoaAtual = pessoaAtual->proximo;
+				printf("apontou para o proximo com sucesso\n");
+			}
+			
+			if (pessoaAtual == NULL){
+				printf("o break sera acionado pois a pessoa e nulo.\n");
+				break;
+			}
 
-	while (pessoaAtual != NULL) {
-
-		//Verifica se o código foi encontrado e retorna o ponteiro da pessoa
-		if (pessoaAtual->codigo == codigo) {
-			return pessoaAtual;
 		}
-		
-		//Vai para a proxima pessoa
-		if (pessoaAtual != NULL)
-			pessoaAtual = pessoaAtual->proximo;
-		
+
 	}
 
 	printf("\nO codigo informado nao esta na lista.\n\n");
@@ -241,13 +259,13 @@ bool mensagemSucesso() {
 //Destroi uma pessoa da lista, a pessoa não pode ser nula
 bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 
-	//Validar lista
+	printf("Validar lista\n");
 	if (!validarLista(lista)) return false;
 
-	//Validar pessoa, a pessoa não pode ser nulo
+	printf("Validar pessoa, a pessoa não pode ser nulo\n");
 	if (!validarAlocacaoPessoa(pessoa)) return false;
 
-	//Caso 1 - A lista possui apenas um elemento
+	printf("Caso 1 - A lista possui apenas um elemento\n");
 	if (
 		pessoa->anterior == NULL &&
 		pessoa->proximo == NULL &&
@@ -259,7 +277,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 		if (!zerarLista(lista)) return false;
 	}
 
-	//Caso 2 - A lista possui mais de um elemento e o elemento a ser removido é o PRIMEIRO
+	printf("Caso 2 - A lista possui mais de um elemento e o elemento a ser removido é o PRIMEIRO\n");
 	if (
 		pessoa->anterior == NULL &&
 		pessoa->proximo != NULL &&
@@ -277,7 +295,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 		lista->tamanhoDaLista--;
 	}
 
-	//Caso 3 - A lista possui mais de um elemento e o elemento a ser removido é o ÚLTIMO
+	printf("Caso 3 - A lista possui mais de um elemento e o elemento a ser removido é o ÚLTIMO\n");
 	if (
 		pessoa->anterior != NULL &&
 		pessoa->proximo == NULL &&
@@ -295,7 +313,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 		lista->tamanhoDaLista--;
 	}
 
-	//Caso 4 - A lista possui mais de um elemento e o elemento a ser removido está no MEIO da lista
+	printf("Caso 4 - A lista possui mais de um elemento e o elemento a ser removido está no MEIO da lista\n");
 	if (
 		pessoa->anterior != NULL &&
 		pessoa->proximo != NULL &&
@@ -315,9 +333,11 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 		lista->tamanhoDaLista--;
 	}
 
-	//Limpa memoria (apagar de fato a pessoa
+	printf("Limpa memoria (apagar de fato a pessoa)\n");
 	free(pessoa);
 
-	//Mensagem ao usuario
+	printf("Mensagem ao usuario\n");
 	if (!mensagemSucesso()) return false;
+
+	return true;
 }
