@@ -32,11 +32,11 @@ tipoPessoa* alocarPessoa(tipoPessoa* pessoa) {
 //Ler dados de uma pesoa
 tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
 
-	printf("Digite os dados da pessoa, codigo, nome, idade e altura, repectivamente:\n(O codigo da pessoa nao pode ser zero)\n");
+	printf("Digite os dados da pessoa, codigo, nome, idade e altura, respectivamente:\n(O codigo da pessoa nao pode ser zero)\n");
 	scanf("%d", &pessoa->codigo);
 	fflush(stdin);
-	gets(pessoa->nome);
-	fflush(stdin);
+	scanf("%s", pessoa->nome);//gets(pessoa->nome);
+	getchar();//fflush(stdin);
 	scanf("%d", &pessoa->idade);
 	fflush(stdin);
 	scanf("%f", &pessoa->altura);

@@ -59,7 +59,7 @@ bool imprimirOpcoesDoMenu() {
 
 //Executar o menu
 bool menu(tipoLista* lista) {
-
+	
 	//Validar alocação da lista
 	if (!validarAlocacaoLista(lista)) return false;
 
@@ -70,7 +70,8 @@ bool menu(tipoLista* lista) {
 	do {
 
 		//Mostrar as opções do menu na tela
-		if (!imprimirOpcoesDoMenu()) return false;
+		if (!imprimirOpcoesDoMenu()) return false; 
+		fflush(stdin);
 
 		//Ler o conteúdo digitado
 		opcao = lerNaturalValido();
@@ -82,7 +83,7 @@ bool menu(tipoLista* lista) {
 		if (!executarFuncaoDoMenu(opcao, lista)) opcao = 5;
 
 		//Pausa antes de escolher uma nova opcao
-		pausa();
+		//pausa();
 
 		//Limpar a tela para o menu aparecer sempre em cima
 		limparTela();

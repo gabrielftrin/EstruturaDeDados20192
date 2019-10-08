@@ -47,7 +47,7 @@ bool validacaoListaCriada(tipoLista *lista){
 			 
 	if (lista->tamanhoDaLista == -1){		
 		printf("Por favor, crie a lista primeiro.\n");
-		pausa();
+		//pausa();
 		return false;
 	}
 
