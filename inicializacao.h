@@ -39,7 +39,7 @@ bool imprimirOpcoesDoMenu() {
 		(
 			printf(
 				"\n===== Trabalho pratico 1 - Lista de pessoas =====\n"
-				"Aluno: Gabriel Fernandes Trindade, RM 201511287\n\n"
+				"Alunos: Denise Alpim e Gabriel Trindade\n\n"
 
 				"\n1) Criar a lista de pessoas"
 				"\n2) Cadastrar uma nova pessoa no final da lista"
