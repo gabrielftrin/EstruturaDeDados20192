@@ -1,4 +1,6 @@
+#include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 //Definir tipo string
 typedef char* string;
