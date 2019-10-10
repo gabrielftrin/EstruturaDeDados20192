@@ -32,13 +32,21 @@ tipoPessoa* alocarPessoa(tipoPessoa* pessoa) {
 //Ler dados de uma pesoa
 tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
 
-	printf("Digite os dados da pessoa, codigo, nome, idade e altura, repectivamente:\n(O codigo da pessoa nao pode ser zero)\n");
+	printf("\nDigite os dados da pessoa, codigo, nome, idade e altura, repectivamente:\n\n");
+
+	printf("Codigo: ");
 	scanf("%d", &pessoa->codigo);
 	fflush(stdin);
+
+	printf("Nome: ");
 	gets(pessoa->nome);
 	fflush(stdin);
+
+	printf("Idade: ");
 	scanf("%d", &pessoa->idade);
 	fflush(stdin);
+
+	printf("Altura: ");
 	scanf("%f", &pessoa->altura);
 	fflush(stdin);
 
@@ -52,11 +60,11 @@ bool imprimirDadosDaPessoa(tipoPessoa* pessoa) {
 	if (!validarAlocacaoPessoa(pessoa)) return false;
 
 	//Imprimir dados da pessoa
-	if (!validarImpressao(printf("\nSeguem os dados da pessoa:\n\n"))) return false;
-	if (!validarImpressao(printf("1 - Codigo: %d\n", pessoa->codigo))) return false;
-	if (!validarImpressao(printf("2 - Nome: %s\n", pessoa->nome))) return false;
-	if (!validarImpressao(printf("3 - Idade: %d\n", pessoa->idade))) return false;
-	if (!validarImpressao(printf("4 - Altura: %f\n\n", pessoa->altura))) return false;
+	//if (!validarImpressao(printf("\nSeguem os dados da pessoa:\n\n"))) return false;
+	if (!validarImpressao(printf("\n Codigo: %d\n", pessoa->codigo))) return false;
+	if (!validarImpressao(printf(" Nome: %s\n", pessoa->nome))) return false;
+	if (!validarImpressao(printf(" Idade: %d\n", pessoa->idade))) return false;
+	if (!validarImpressao(printf(" Altura: %f\n\n", pessoa->altura))) return false;
 	
 	return true;
 }
@@ -148,7 +156,7 @@ tipoPessoa* buscarCodigoNaLista(tipoLista* lista, int codigo) {
 //Imprime uma mensagem de sucesso na tela
 bool mensagemSucesso() {
 
-	if (!validarImpressao(printf("\nOperacao realizada com sucesso.\n\n"))) return false;
+	if (!validarImpressao(printf("\nOperacao realizada com sucesso.\n"))) return false;
 
 	return true;
 }
@@ -234,7 +242,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 	free(pessoa);
 
 	//printf("Mensagem ao usuario\n");
-	if (!mensagemSucesso()) return false;
+	//if (!mensagemSucesso()) return false;
 
 	return true;
 }

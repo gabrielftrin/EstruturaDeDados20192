@@ -115,6 +115,9 @@ bool removerUmaPessoaPeloCodigo (tipoLista *lista){
 	//printf("Destruir a pessoa\n");
 	if (!destruirPessoa(lista, pessoa)) return false;
 
+	//mensagem de sucesso
+	if (!mensagemSucesso()) return false;
+	
 	return true;
 }
 

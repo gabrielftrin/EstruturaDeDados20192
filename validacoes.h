@@ -9,7 +9,7 @@ bool listaVazia(tipoLista* lista) {
 		lista->tamanhoDaLista == 0 &&
 		lista->listaZerada == (bool*)true
 		) {
-		printf("\nA lista esta vazia.\n");
+		//printf("\nA lista esta vazia.\n");
 		return true;
 	}
 
