@@ -1,5 +1,6 @@
 #include "estruturas.h"
 
+/*
 //Exibe uma pausa na tela para que o usuário possa ler e tomar decisões
 void pausa() {
 	system("pause");
@@ -10,6 +11,7 @@ void limparTela() {
 	system("cls");
 }
 
+*/
 //Fecha o programa
 void sairDoPrograma() {
 	exit(0);
@@ -19,6 +21,14 @@ void sairDoPrograma() {
 bool numeroNatural(int numero) {
 
 	if (numero >= 0) return true;
+
+	return false;
+}
+
+//Retorna true se for um numero natural POSITIVO
+bool numeroNaturalPositivo(int numero) {
+
+	if (numero > 0) return true;
 
 	return false;
 }

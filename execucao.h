@@ -39,7 +39,8 @@ tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
 	fflush(stdin);
 
 	printf("Nome: ");
-	gets(pessoa->nome);
+	fgets(pessoa->nome, 31, stdin); 
+	//gets(pessoa->nome);
 	fflush(stdin);
 
 	printf("Idade: ");
@@ -50,6 +51,7 @@ tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
 	scanf("%f", &pessoa->altura);
 	fflush(stdin);
 
+	printf("\n\nnome: %s teste %c\n\n", pessoa->nome, pessoa->nome);
 	return pessoa;
 }
 
@@ -81,7 +83,7 @@ int lerNaturalValido() {
 		}
 	}
 
-	limparTela();
+	//limparTela();
 	printf("Por favor, informe um numero natural.\n");
 	return(-1);
 }

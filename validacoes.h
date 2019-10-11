@@ -20,7 +20,7 @@ bool listaVazia(tipoLista* lista) {
 bool validarAlocacaoPessoa(tipoPessoa* pessoa) {
 
 	if (pessoa == NULL) {
-		limparTela();
+		//limparTela();
 		printf("A pessoa esta apontando para nulo.\n");
 		return false;
 	}
@@ -47,7 +47,7 @@ bool validacaoListaCriada(tipoLista *lista){
 			 
 	if (lista->tamanhoDaLista == -1){		
 		printf("Por favor, crie a lista primeiro.\n");
-		pausa();
+		//pausa();
 		return false;
 	}
 

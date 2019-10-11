@@ -2,7 +2,7 @@
 
 void main(int argc, char const *argv[])
 {
-	limparTela();
+	//limparTela();
 
 	inicializarPrograma();
 }

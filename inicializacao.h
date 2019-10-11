@@ -82,10 +82,10 @@ bool menu(tipoLista* lista) {
 		if (!executarFuncaoDoMenu(opcao, lista)) opcao = 5;
 
 		//Pausa antes de escolher uma nova opcao
-		pausa();
+		//pausa();
 
 		//Limpar a tela para o menu aparecer sempre em cima
-		limparTela();
+		//limparTela();
 
 	} while (opcao != 5);
 
