@@ -25,31 +25,8 @@ bool cadastrarUmaPessoa (tipoLista *lista){
 	//printf("\nLer dados da pessoa");
 	lerDadosPessoa(pessoa);
 	
-	//printf("\nSe a lista estiver vazia");
-	if (listaVazia(lista)) {
-		
-		//lista
-		lista->inicioDaLista = pessoa;		
-		lista->listaZerada = false;
-		
-		//ponteiros da pessoa
-		pessoa->anterior = NULL;		
-	
-	//Se a lista não for vazia
-	} else {
-
-		//Ajustar ponteiros da pessoa
-		pessoa->anterior = lista->finalDaLista;
-		lista->finalDaLista->proximo = pessoa;
-	
-	}
-	
-	//printf("\nConfigurar estrutura da lista");
-	lista->finalDaLista = pessoa;
-	lista->tamanhoDaLista++;
-
-	//printf("\nConfigurar estrutura da pessoa");
-	pessoa->proximo = NULL;
+	//Inserir pessoa na lista
+	if (!inserirItemNaLista(lista, pessoa)) return false;
 	
 	//printf("\nMensagem de sucesso ao usuario");
 	mensagemSucesso();

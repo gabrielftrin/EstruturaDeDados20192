@@ -248,3 +248,33 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 
 	return true;
 }
+
+bool inserirItemNaLista(tipoLista* lista, tipoPessoa* item) {
+
+	//printf("\nSe a lista estiver vazia");
+	if (listaVazia(lista)) {
+
+		//lista
+		lista->inicioDaLista = item;
+		lista->listaZerada = false;
+
+		//ponteiros da pessoa
+		item->anterior = NULL;
+
+		//Se a lista não for vazia
+	}
+	else {
+
+		//Ajustar ponteiros da pessoa
+		item->anterior = lista->finalDaLista;
+		lista->finalDaLista->proximo = item;
+
+	}
+
+	//printf("\nConfigurar estrutura da lista");
+	lista->finalDaLista = item;
+	lista->tamanhoDaLista++;
+
+	//printf("\nConfigurar estrutura da pessoa");
+	item->proximo = NULL;
+}
