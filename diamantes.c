@@ -11,29 +11,28 @@ int main() {
 	
 	for (int i = 0; i < quantidadeTeste; i++)
 	{
+		string linhaAtual = (string)malloc(sizeof(string));
+		if (!validarAlocacaoPessoa(linhaAtual)) return 0;
 
+		scanf("%s", linhaAtual->string);
+
+		inserirItemNaLista(lista, linhaAtual);
 
 	}
+
+	string aux = lista->inicioDaLista;
+	for (int i = 0; i < quantidadeTestes; i++)
+	{		
+		printf("\n%s", aux);
+		aux = aux->proximo;
+	}
+
+	
 
 
 	   	  
 
 	//string mina[quantidadeTestes];
-	
-	string leituraDaLinha;
-
-	leituraDaLinha = "teste"; //scanf("%s", leituraDaLinha);
-
-	int tamanho = strlen(leituraDaLinha);
-
-	char linhaAtual[tamanho];
-
-	linhaAtual[0] = &&leituraDaLinha;
-
-	
-	printf("\ntam %s\n", linhaAtual);
-
-	//for (int i = 0; i < quantidadeTestes; i++){ }
 
 
 

@@ -6,22 +6,23 @@
 //Definir tipo string
 typedef char* string;
 
-//Definir estrutura da pessoa
-typedef struct tipoPessoa
+//Definir estrutura do item da lista
+typedef struct tipoitem
 {
-	int codigo; //Valores de 1 a 50
+	int codigo; 
 	char nome[30];
 	int idade;
 	float altura;
-	struct tipoPessoa *anterior;
-	struct tipoPessoa *proximo;
+	string string;
+	struct tipoItem *anterior;
+	struct tipoItem *proximo;
 }tipoPessoa;
 
 //Definir estrutura da lista
 typedef struct tipoLista
 {
-	tipoPessoa *inicioDaLista;
-	tipoPessoa *finalDaLista;
+	string *inicioDaLista;
+	string *finalDaLista;
 	int tamanhoDaLista;
 	bool *listaZerada;
 }tipoLista;

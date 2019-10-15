@@ -26,7 +26,7 @@ bool cadastrarUmaPessoa (tipoLista *lista){
 	lerDadosPessoa(pessoa);
 	
 	//Inserir pessoa na lista
-	if (!inserirItemNaLista(lista, pessoa)) return false;
+	if (!inserirPessoaNaLista(lista, pessoa)) return false;
 	
 	//printf("\nMensagem de sucesso ao usuario");
 	mensagemSucesso();
