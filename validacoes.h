@@ -1,4 +1,31 @@
-#include "funcoesbase.h"
+#include "funcoesdosistema.h"
+
+//Retorna true se for um numero natural
+bool numeroNatural(int numero) {
+
+	if (numero >= 0) return true;
+
+	return false;
+}
+
+//Retorna true se for um numero natural POSITIVO
+bool numeroNaturalPositivo(int numero) {
+
+	if (numero > 0) return true;
+
+	return false;
+}
+
+//Retorna true se a quantidade de caracteres impressos for maior que 0. Exibe mensagem de erro.
+bool validarImpressao(int numero) {
+
+	if (numero > 0)
+		return true;
+
+	printf("\nNenhum caractere foi impresso na tela.\n");
+
+	return false;
+}
 
 //A lista é vazia quando o inicio e o final são nulos, o tamanho é zero e a variavel listaZerada é true
 bool listaVazia(tipoLista* lista) {

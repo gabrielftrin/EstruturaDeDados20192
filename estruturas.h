@@ -3,22 +3,27 @@
 #include <stdlib.h>
 #include <string.h>
 
-//Definir tipo string
+//Definição tipo string
 typedef char* string;
 
-//Definir estrutura do item da lista
-typedef struct tipoitem
+typedef struct tipoPessoa
 {
-	int codigo; 
+	int codigo;
 	char nome[30];
 	int idade;
 	float altura;
-	string string;
-	struct tipoItem *anterior;
-	struct tipoItem *proximo;
 }tipoPessoa;
 
-//Definir estrutura da lista
+//Definição da estrutura de um item genérico da lista
+typedef struct tipoItem
+{
+	string string;
+	tipoPessoa pessoa;
+	struct tipoItem *anterior;
+	struct tipoItem *proximo;
+}tipoItem;
+
+//Definição da estrutura de uma lista genérica
 typedef struct tipoLista
 {
 	string *inicioDaLista;
@@ -26,3 +31,15 @@ typedef struct tipoLista
 	int tamanhoDaLista;
 	bool *listaZerada;
 }tipoLista;
+
+//Definição da estrutura de uma fila genérica
+typedef struct tipoFila
+{
+	int tamanhoDaFila;
+}tipoFila;
+
+//Definição da estrutura de uma pilha genérica
+typedef struct tipoPilha
+{
+	int tamanhoDaPilha;
+}tipoPilha;
