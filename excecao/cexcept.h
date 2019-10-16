@@ -200,6 +200,9 @@ struct exception_context { \
   volatile struct { etype etmp; } v; \
 }
 
+extern struct exception_context the_exception_context;
+//struct exception_context the_exception_context[1];
+
 /* etmp must be volatile because the application might use automatic */
 /* storage for the_exception_context, and etmp is modified between   */
 /* the calls to setjmp() and longjmp().  A wrapper struct is used to */

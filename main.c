@@ -55,49 +55,39 @@ void main(void)
 		//string numeroDeCaracteresExcedido;
 
 	}erro;*/
-	/*
+	
 	#define numeroDeCaracteresExcedido "Numero de caracteres excedido."
 
 	//erro erroDeExecucao;
 
-	printf("\nDigite o conteudo a ser validado: ");
+	/*printf("\nDigite o conteudo a ser validado: ");
 	fflush(stdin);
-	fgets(op, 14, stdin);
+	fgets(op, 14, stdin);*/
 	
-	if (strlen(op) = < 10) {
+	//if (strlen(op) = < 10) {	}
+	//else {	//erro.numeroDeCaracteresExcedido}
 
+	int tam = 2;
+
+	bool teste(int tam) {
+
+
+		if (tam < 3) {
+
+			
+			return false;
+		}
 
 	}
-	else {
-		
-		
-		//erro.numeroDeCaracteresExcedido
-	}
 
-	int tam;
-	tam = strlen(op);
+	 teste(tam);
 	
 	printf("\nresult %s\n", op);
 	printf("\nstring %d\n", tam);	
 	
-	assert*/
 
-	Try{
-
-			int n = 1;
-		n = 2 / 0;
-
-	}
-
-
-	try
-	{
 	
-	}
-	catch (const std::exception&)
-	{
-		printf("erro");
-	}
+
 	
 }
 
@@ -113,5 +103,3 @@ void main(void)
 	//se o caracter é um dígito
 		//se não for retorne falso
 	//vá pro próximo caracter
-
-
