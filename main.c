@@ -1,4 +1,10 @@
 //#include "inicializacao.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <validacoes.h>
+
 /*
 #include <stdio.h>
 #include <stdbool.h>
@@ -28,41 +34,12 @@ void main(int argc, char const *argv[])
 
 }
 */
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>//biblioteca p/ as funções isalpha isdigit toupper tolower
+//biblioteca p/ as funções isalpha isdigit toupper tolower
 
-int main(void)
+void main(void)
 {
-	char letra;
-	char op;
 
-	printf("Digite uma letra do alfabeto: ");
-	scanf("%c", &letra);
-
-	//isalpha verifica se é uma letra do alfabeto
-	if (isalpha(letra))
-	{
-		printf("\nVoce digitou a letra %c \n\n", letra);
-
-		//toupper transforma em maiuscula
-		letra = toupper(letra);
-		printf("Maiuscula: %c \n\n", letra);
-
-		//tolower transforma em minuscula
-		letra = tolower(letra);
-		printf("Minuscula: %c \n\n", letra);
-	}
-	else
-	{
-		printf("Voce nao digitou uma letra!!!\n");
-	}
-
-	printf("\nInforme um numero de 0 a 9: ");
-	fflush(stdin);
-	scanf("%c", &op);
-
-	//isdigit verifica se o caracater recebido é um dígito
+	/*
 	if (isdigit(op))
 	{
 		printf("Digito: %c \n\n", op);
@@ -70,6 +47,55 @@ int main(void)
 	else
 		printf("Voce nao digitou um numero!!!\n\n");
 
-	system("pause");
-	return 0;
+*/
+	char op[10];
+
+	typedef struct erro
+	{
+		string numeroDeCaracteresExcedido;
+
+	}erro;
+
+	numeroDeCaracteresExcedido = "Numero de caracteres excedido.";
+
+	erro erroDeExecucao;
+
+	printf("\nDigite o conteudo a ser validado: ");
+	fflush(stdin);
+	fgets(op, 11, stdin);
+	
+	if (strlen(op) = < 10) {
+
+
+	}
+	else {
+
+		erroDeExecucao
+			;
+		erro.numeroDeCaracteresExcedido
+	}
+
+	int tam;
+	tam = strlen(op);
+	
+	printf("\nresult %s\n", op);
+	printf("\nstring %d\n", tam);	
+	
+	assert
+	
 }
+
+///tudo é char
+// nenhum caractere pode ser virgula
+// nenhum caractece pode ser ponto
+// todo caractere deve ser digito 2 147 483 647
+
+//Ler 10 caracteres
+//se tiver 10
+	//o primeiro deve ser 1 ou 2
+//ver um caracter
+	//se o caracter é um dígito
+		//se não for retorne falso
+	//vá pro próximo caracter
+
+
