@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include <validacoes.h>
+#include "excecao\cexcept.h"
 
 /*
 #include <stdio.h>
@@ -50,29 +50,28 @@ void main(void)
 */
 	char op[10];
 
-	typedef struct erro
+	/*typedef struct erro
 	{
-		string numeroDeCaracteresExcedido;
+		//string numeroDeCaracteresExcedido;
 
-	}erro;
+	}erro;*/
+	/*
+	#define numeroDeCaracteresExcedido "Numero de caracteres excedido."
 
-	numeroDeCaracteresExcedido = "Numero de caracteres excedido.";
-
-	erro erroDeExecucao;
+	//erro erroDeExecucao;
 
 	printf("\nDigite o conteudo a ser validado: ");
 	fflush(stdin);
-	fgets(op, 11, stdin);
+	fgets(op, 14, stdin);
 	
 	if (strlen(op) = < 10) {
 
 
 	}
 	else {
-
-		erroDeExecucao
-			;
-		erro.numeroDeCaracteresExcedido
+		
+		
+		//erro.numeroDeCaracteresExcedido
 	}
 
 	int tam;
@@ -81,7 +80,24 @@ void main(void)
 	printf("\nresult %s\n", op);
 	printf("\nstring %d\n", tam);	
 	
-	assert
+	assert*/
+
+	Try{
+
+			int n = 1;
+		n = 2 / 0;
+
+	}
+
+
+	try
+	{
+	
+	}
+	catch (const std::exception&)
+	{
+		printf("erro");
+	}
 	
 }
 
