@@ -6,7 +6,7 @@
 
 void main()
 {
-	char n = "72";
+	char n = '2';
 	printf("\nnumero completo: %s\n", n);
 	
 	char c = strpbrk(n,n);
@@ -14,23 +14,29 @@ void main()
 	printf("\nprim carc: %c\n", c);
 
 
+
+
+
 }
-/*
-//Valida se o número é natural até 2 147 483 647
+
+//2 147 483 647
 bool validarNumeroNatural(int numero) {
 
-	if (strlen(numero) > 10)
+	int tamanho = strlen(numero);
+
+	if (tamanho > 10)
 	{
 		lancarErro(1);
 		return false;
 	}
 
-	if (strlen(numero) == 10) {
+	if (tamanho == 10) {
 		if (true)
 		{
 
 		}
 	}
+
 }
 
 int op;
@@ -40,7 +46,7 @@ fgets(op, 14, stdin);
 
 if (strlen(op) = < 10) {}
 else { erro.numeroDeCaracteresExcedido }
-*/
+
 ///tudo é char
 // nenhum caractere pode ser virgula
 // nenhum caractece pode ser ponto
