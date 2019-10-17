@@ -5,3 +5,4 @@
 	
 	//Comando para compilar em casa no caminho "C:\Users\Gabriel\Desktop"
 	//gcc.lnk -o objeto.exe O:\OneDrive\GitHub\EstruturaDeDados20192\main.c && obj.lnk
+		
