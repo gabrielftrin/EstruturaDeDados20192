@@ -1,4 +1,4 @@
-#include "estruturas.h"
+
 
 /*
 //Exibe uma pausa na tela para que o usuário possa ler e tomar decisões

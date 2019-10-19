@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
 
 //Definição tipo string
 typedef char* string;
@@ -14,7 +16,7 @@ typedef struct tipoPessoa
 	float altura;
 }tipoPessoa;
 
-//Definição da estrutura de um item genérico da lista
+//Definição da estrutura de um item genérico de lista
 typedef struct tipoItem
 {
 	string string;
