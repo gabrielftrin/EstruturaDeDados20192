@@ -14,6 +14,15 @@ void lancarErro(int codigoDeErro) {
 	listaDeCodigosDeErro[i] = codigoDeErro;	
 }
 
+void mostrarErrosNaTela() {
+	int i = 0;
+	while (listaDeCodigosDeErro[i] != 0)
+	{
+		printf("\nMensagem de erro: %s\n", listaDeMensagensDeErro[i]);
+		i++;
+	}
+}
+
 void imprimirListaDeErros() {
 
 	int i = 0;
@@ -24,7 +33,7 @@ void imprimirListaDeErros() {
 		switch (listaDeCodigosDeErro[i])
 		{
 		case 1:
-			listaDeMensagensDeErro[i] = "Numero com mais de 10 caracteres";
+			listaDeMensagensDeErro[i] = "Numero com mais de 10 caracteres.";
 			break;
 		case 2:
 			listaDeMensagensDeErro[i] = "Numero com 10 caracteres, o primeiro digito e diferente de 1 e diferente de 2.";
@@ -48,16 +57,16 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Nao foi possivel validar se o caractere e um numero ou nao.";
 			break;
 		case 9:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "O numero nao e natural.";
 			break;
 		case 10:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "O numero e zero.";
 			break;
 		case 11:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Nenhum caractere foi lido.";
 			break;
 		case 12:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Nao foi possivel ler o texto do teclado.";
 			break;
 		case 13:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";
@@ -65,7 +74,114 @@ void imprimirListaDeErros() {
 		case 14:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";
 			break;
-
+		case 15:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 16:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 17:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 18:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 19:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 20:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 21:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 22:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 23:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 24:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 25:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 26:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 27:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 28:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 29:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 30:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 31:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 32:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 33:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 34:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 35:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 36:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 37:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 38:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 39:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 40:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 41:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 42:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 43:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 44:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 45:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 46:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 47:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 48:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 49:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
+		case 50:
+			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			break;
 
 
 
@@ -77,10 +193,6 @@ void imprimirListaDeErros() {
 	}
 
 	//Imprimir lista de erros
-	i = 0;
-	while (listaDeCodigosDeErro[i] != 0)
-	{
-		printf("\nMensagem de erro: %s\n", listaDeMensagensDeErro[i]);
-		i++;
-	}
+	mostrarErrosNaTela();
 }
+

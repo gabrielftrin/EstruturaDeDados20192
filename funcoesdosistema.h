@@ -1,5 +1,3 @@
-
-
 /*
 //Exibe uma pausa na tela para que o usuário possa ler e tomar decisões
 void pausa() {
