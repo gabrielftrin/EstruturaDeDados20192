@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 
+#define MENSAGEM_DE_ERRO "Mensagem de erro do compilador"
 
 //Definição tipo string
 typedef char* string;

@@ -1,46 +1,10 @@
 #include "validacoes.h"
 
-string lerTextoDoTeclado() {
-
-	string texto;
-	string lixo = texto;
-	int retornoDaLeitura = 0;
-	setbuf(stdin, NULL);
-
-	
-	//while (retorno == 0)	{
-	//setbuf(stdin, NULL);
-
-	
-	retornoDaLeitura = scanf("%256[^\n]", texto);
-
-	printf("tamanho: %d retorno: %d", strlen(texto), retornoDaLeitura);
-
-	//printf("%s", EOF);
-	
-	
-
-	//if (retorno != 1 && retorno != 0)
-	//{
-	//	lancarErro(12);
-	//	return NULL;
-	//}
-
-	//if (lixo == texto)
-	//{
-	//	return NULL;
-	//}
-
-	return texto;
-}
-
-
 void main()
 {
 
 	string teste = lerTextoDoTeclado();
 	printf("\nponteiro de char retornado na funcao: %s\n", teste);
-	//perror("errosfdss");
 
 }
 

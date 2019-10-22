@@ -4,6 +4,7 @@
 int listaDeCodigosDeErro[quantidadeDeErros];
 string listaDeMensagensDeErro[quantidadeDeErros];
 
+//Armazenar codigo de erro num vetor de erros
 void lancarErro(int codigoDeErro) {
 
 	int i = 0;
@@ -14,6 +15,7 @@ void lancarErro(int codigoDeErro) {
 	listaDeCodigosDeErro[i] = codigoDeErro;	
 }
 
+//Imprimir lista de mensagens de erro lançadas
 void mostrarErrosNaTela() {
 	int i = 0;
 	while (listaDeCodigosDeErro[i] != 0)
@@ -23,6 +25,7 @@ void mostrarErrosNaTela() {
 	}
 }
 
+//Preencher vetor de mensagens de rro de acordo com o código
 void imprimirListaDeErros() {
 
 	int i = 0;
@@ -69,10 +72,10 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Nao foi possivel ler o texto do teclado.";
 			break;
 		case 13:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro na leitura de dados do teclado.";
 			break;
 		case 14:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro inesperado na leitura de dados do teclado.";
 			break;
 		case 15:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";
@@ -195,4 +198,3 @@ void imprimirListaDeErros() {
 	//Imprimir lista de erros
 	mostrarErrosNaTela();
 }
-

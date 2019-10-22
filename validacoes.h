@@ -1,5 +1,58 @@
 #include "excecao.h"
 
+
+//Limpa o buffer do teclado (entrada padrão)
+void limparBufferDoTeclado() {
+
+	setbuf(stdin, NULL);
+
+}
+
+//Ler texto do teclado até o usuário apertar enter (quantidade "qualquer" de caracteres). Retorna nulo se der erro ou o ponteiro da string lida
+string lerTextoDoTeclado() {
+
+	//Limpar o buffer do teclado
+	limparBufferDoTeclado();
+
+	//Declarar variavel de retorno da leitura e string
+	int retornoDaLeitura = 0;
+	string texto;
+
+	//Tentar ler pelo menos um caractere do teclado
+	//Enquanto nenhum carcterer for lido, o programa tentará ler de novo
+	do
+	{
+		//Fazer a leitura e armazaenar o resultado da leitura na variável
+		//Para de ler quando o usuário apertar [ENTER]
+		retornoDaLeitura = scanf("%[^\n]", texto);
+
+		//Verificar se houver erro de leitura
+		if (retornoDaLeitura == EOF)
+		{
+			lancarErro(13);
+			perror(MENSAGEM_DE_ERRO);
+			return NULL;
+		}
+
+		//Erro inesperado
+		if (retornoDaLeitura < 0 && retornoDaLeitura != EOF)
+		{
+			lancarErro(14);
+			perror(MENSAGEM_DE_ERRO);
+			return NULL;
+		}
+
+		//Limpar o buffer do teclado
+		limparBufferDoTeclado();
+
+	} while (retornoDaLeitura == 0);
+
+	return texto;
+
+}
+
+//=================================================================
+
 // Retorna verdadeiro se for um número natural
 bool validarNumeroNatural(int numero) {
 
