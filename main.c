@@ -4,7 +4,7 @@ void main()
 {
 
 	string teste = lerTextoDoTeclado();
-	printf("\nponteiro de char retornado na funcao: %s\n", teste);
+	printf("\nConteudo digitado: %s\n", teste);
 
 }
 
