@@ -12,13 +12,9 @@ void main()
 	imprimirListaDeErros();
 }
 
-
-
 /*
 
-
-
-/*converter quantidade em string
+converter quantidade em string
 
 string st = strcat(" %", quantidade);
 string st2 = strcat(st2, "[^\n]");
