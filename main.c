@@ -5,14 +5,26 @@ void main()
 	//Alterar localização do programa para a localização do sistema para permitir uso de caracteres especiais
 	//setlocale(LC_ALL, "Portuguese");
 	
-	int quantidade = 500;
+	int quantidade = 5;
 	string teste = lerTextoDoTeclado(quantidade);
 	printf("\nConteudo digitado: %s\n", teste);
 	
 	imprimirListaDeErros();
 }
 
+
+
 /*
+
+
+
+/*converter quantidade em string
+
+string st = strcat(" %", quantidade);
+string st2 = strcat(st2, "[^\n]");
+scanf(st2, texto);
+
+============================================================
 int inteiro_validado() {
 	//Buffer para entrada da variável
 	char buffer[100];
