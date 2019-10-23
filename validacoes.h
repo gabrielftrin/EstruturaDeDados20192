@@ -1,6 +1,5 @@
 #include "excecao.h"
 
-
 //Limpa o buffer do teclado (entrada padrão)
 void limparBufferDoTeclado() {
 
@@ -8,24 +7,43 @@ void limparBufferDoTeclado() {
 
 }
 
-//Ler texto do teclado até o usuário apertar enter (quantidade "qualquer" de caracteres). Retorna nulo se der erro ou o ponteiro da string lida
-string lerTextoDoTeclado() {
+//Validar alocação de memória, retorna falso se o ponteiro for nulo
+bool validarAlocacaoDeMemoria(void* ponteiro) {
+
+	if (ponteiro == NULL)
+	{
+		lancarErro(15);
+		perror(MENSAGEM_DE_ERRO);
+		return false;
+	}
+	
+	return true;
+}
+
+//Recebe a quantidade de caracteres que devem ser lidos e le essa quantidade do teclado até o usuário apertar enter. Retorna nulo se der erro ou o ponteiro da string lida.
+string lerTextoDoTeclado(int quantidade) {
 
 	//Limpar o buffer do teclado
 	limparBufferDoTeclado();
 
 	//Declarar variavel de retorno da leitura e string
 	int retornoDaLeitura = 0;
-	string texto;
+	string texto = (string)malloc(quantidade * sizeof(char));
 
-	//Tentar ler pelo menos um caractere do teclado
-	//Enquanto nenhum carcterer for lido, o programa tentará ler de novo
+	//Validar alocação
+	if (!validarAlocacaoDeMemoria(texto))
+	{
+		lancarErro(16);
+		perror(MENSAGEM_DE_ERRO);
+		return false;
+	}
+
+	//Enquanto nenhum caractere for lido, o programa tentará ler de novo
 	do
 	{
-		//Fazer a leitura e armazaenar o resultado da leitura na variável
-		//Para de ler quando o usuário apertar [ENTER]
-		retornoDaLeitura = scanf("%[^\n]", texto);
-
+		//Ler do teclado e guardar o resultado. Para de ler quando o usuário apertar [ENTER]
+		retornoDaLeitura = scanf(" %[^\n]", texto);
+		
 		//Verificar se houver erro de leitura
 		if (retornoDaLeitura == EOF)
 		{
@@ -46,6 +64,14 @@ string lerTextoDoTeclado() {
 		limparBufferDoTeclado();
 
 	} while (retornoDaLeitura == 0);
+
+	//Validar tamanho da string lida
+	//if (strlen(texto) != quantidade)
+	//{
+		//lancarErro(17);
+		//perror(MENSAGEM_DE_ERRO);
+		//return NULL;
+	//}
 
 	return texto;
 

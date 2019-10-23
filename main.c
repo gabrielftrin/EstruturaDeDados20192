@@ -1,11 +1,15 @@
 #include "validacoes.h"
 
 void main()
-{
-
-	string teste = lerTextoDoTeclado();
+{	
+	//Alterar localização do programa para a localização do sistema para permitir uso de caracteres especiais
+	//setlocale(LC_ALL, "Portuguese");
+	
+	int quantidade = 500;
+	string teste = lerTextoDoTeclado(quantidade);
 	printf("\nConteudo digitado: %s\n", teste);
-
+	
+	imprimirListaDeErros();
 }
 
 /*

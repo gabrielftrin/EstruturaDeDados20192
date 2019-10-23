@@ -1,8 +1,9 @@
-#include <stdio.h>
-#include <stdbool.h>
+#include <stdio.h> //Biblioteca padrão
+#include <stdbool.h> //Booleano
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> // String
 #include <ctype.h>
+#include <locale.h> 
 
 #define MENSAGEM_DE_ERRO "Mensagem de erro do compilador"
 

@@ -25,7 +25,7 @@ void mostrarErrosNaTela() {
 	}
 }
 
-//Preencher vetor de mensagens de rro de acordo com o código
+//Preencher vetor de mensagens de erro de acordo com o códigoe mostrar na tela
 void imprimirListaDeErros() {
 
 	int i = 0;
@@ -78,13 +78,13 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Erro inesperado na leitura de dados do teclado.";
 			break;
 		case 15:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Nao foi possivel alocar memoria.";
 			break;
 		case 16:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Alocacao de memoria invalida.";
 			break;
 		case 17:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "O tamanho da string lida e diferente do tamanho solicitado.";
 			break;
 		case 18:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";
