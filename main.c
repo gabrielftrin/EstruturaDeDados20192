@@ -1,23 +1,23 @@
 #include "validacoes.h"
+	//Alterar localização do programa para a localização do sistema para permitir uso de caracteres especiais
+	//setlocale(LC_ALL, "Portuguese");
 
 void main()
 {	
-	//Alterar localização do programa para a localização do sistema para permitir uso de caracteres especiais
-	//setlocale(LC_ALL, "Portuguese");
-	
 	int quantidade = 5;
 	string teste ;//= lerTextoDoTeclado(quantidade);
-		limparBufferDoTeclado();
-		scanf("%3s", teste);
+		//limparBufferDoTeclado();
+		scanf(" ", teste);
 	limparBufferDoTeclado();
-		
-		//string teste = strcat(pIni, "5");
-		//string teste2 = strcat(teste, "[^\n]");
-		//retornoDaLeitura = scanf(teste2,texto);
-	const char* parametro = "%2s";
-	scanf(parametro, teste);
+	
+		char  inicio[] = " %";
+		const string numeroConvertidoParaString = "4";
+		strcat(inicio, "4");
+		//strcat(inicio, "[^\n]");
+	const string parametros = " %2s";
+	scanf(parametros, teste);
 
-		limparBufferDoTeclado();
+	
 	printf("\nConteudo digitado: %s teste\n", teste);
 	
 	imprimirListaDeErros();
