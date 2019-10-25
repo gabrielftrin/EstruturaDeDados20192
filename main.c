@@ -6,25 +6,29 @@ void main()
 {	
 	int quantidade = 5;
 	string teste ;//= lerTextoDoTeclado(quantidade);
+		
+		//scanf(" ", teste);
 		//limparBufferDoTeclado();
-		scanf(" ", teste);
-	limparBufferDoTeclado();
 	
-		char  inicio[] = " %";
-		const string numeroConvertidoParaString = "4";
-		strcat(inicio, "4");
-		//strcat(inicio, "[^\n]");
-	const string parametros = " %2s";
-	scanf(parametros, teste);
+		string parteParametro = " %";		printf("\npassou aqui1\n");
+		const string numeroConvertidoParaString = "3";	printf("\npassou aqui2\n");
+		parteParametro = strcat(parteParametro, numeroConvertidoParaString); printf("\npassou aqui3\n");
+		parteParametro = strcat(parteParametro, "[^\n]");printf("\npassou aqui4\n");
+				
+	const char * parametros = parteParametro;printf("\npassou aqui5\n");
+	
+	string texto = " %3[^\n]";printf("\npassou aqui6\n");
+	printf("\n %s \n",parametros);	printf("\npassou aqui7\n");
+	
+	//scanf(" %3[^\n]", teste);
 
-	
-	printf("\nConteudo digitado: %s teste\n", teste);
+	//printf("\nConteudo digitado: %s fim\n", teste);
 	
 	imprimirListaDeErros();
 }
 
 /*
-
+printf("\npassou aqui\n");
 converter inteiro para string
 
 char * _my_itoa( int i )
