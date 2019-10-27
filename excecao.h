@@ -87,7 +87,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "O tamanho da string lida e diferente do tamanho solicitado.";
 			break;
 		case 18:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Nao foi possivel configurar o local corretamente.";
 			break;
 		case 19:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

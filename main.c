@@ -1,112 +1,87 @@
 #include "validacoes.h"
-	//Alterar localização do programa para a localização do sistema para permitir uso de caracteres especiais
-	//setlocale(LC_ALL, "Portuguese");
+
+bool lerInteiroDoTeclado(int* numero) {
+
+
+	//Limpar o buffer do teclado
+	limparBufferDoTeclado();
+
+	//Declarar variavel de retorno da leitura e string
+	int retornoDaLeitura = 0;
+	string texto = (string)malloc(quantidade * sizeof(char));
+
+	//Validar alocação
+	if (!validarAlocacaoDeMemoria(texto))
+	{
+		lancarErro(16);
+		perror(MENSAGEM_DE_ERRO);
+		return false;
+	}
+
+	string numeroConvertidoParaString = converterInteiroEmString(quantidade);
+	char parteParametro[20] = " %";
+	strcat(parteParametro, numeroConvertidoParaString);
+	strcat(parteParametro, "[^\n]");
+	const char* parametros = parteParametro;
+
+	//Enquanto nenhum caractere for lido, o programa tentará ler de novo
+	do
+	{
+		//Ler do teclado e guardar o resultado. Para de ler quando o usuário apertar [ENTER]
+		retornoDaLeitura = scanf(parametros, texto);
+
+		//Verificar se houver erro de leitura
+		if (retornoDaLeitura == EOF)
+		{
+			lancarErro(13);
+			perror(MENSAGEM_DE_ERRO);
+			return NULL;
+		}
+
+		//Erro inesperado
+		if (retornoDaLeitura < 0 && retornoDaLeitura != EOF)
+		{
+			lancarErro(14);
+			perror(MENSAGEM_DE_ERRO);
+			return NULL;
+		}
+
+		//Limpar o buffer do teclado
+		limparBufferDoTeclado();
+
+	} while (retornoDaLeitura == 0);
+
+	//Validar tamanho da string lida
+	//if (strlen(texto) != quantidade)
+	//{
+		//lancarErro(17);
+		//perror(MENSAGEM_DE_ERRO);
+		//return NULL;
+	//}
+
+	return texto;
+
+	return true;
+}
 
 void main()
-{	
-	int quantidade = 5;
-	string teste ;//= lerTextoDoTeclado(quantidade);
-		
-		//scanf(" ", teste);
-		//limparBufferDoTeclado();
-	
-		string parteParametro = " %";		printf("\npassou aqui1\n");
-		const string numeroConvertidoParaString = "3";	printf("\npassou aqui2\n");
-		parteParametro = strcat(parteParametro, numeroConvertidoParaString); printf("\npassou aqui3\n");
-		parteParametro = strcat(parteParametro, "[^\n]");printf("\npassou aqui4\n");
-				
-	const char * parametros = parteParametro;printf("\npassou aqui5\n");
-	
-	string texto = " %3[^\n]";printf("\npassou aqui6\n");
-	printf("\n %s \n",parametros);	printf("\npassou aqui7\n");
-	
-	//scanf(" %3[^\n]", teste);
+{
+	int teste;
 
-	//printf("\nConteudo digitado: %s fim\n", teste);
+	int retorno = 0;
+
+	retorno = scanf("%d", &teste);
 	
+	printf("\nConteudo digitado: %d retorno %d fim \n", teste, retorno);
+
+	string num = lerTextoDoTeclado(14);
+
+	printf("%s", num);
+
 	imprimirListaDeErros();
 }
 
 /*
-printf("\npassou aqui\n");
-converter inteiro para string
-
-char * _my_itoa( int i )
-{
-    static char res[11]; // buffer for max 4G value
-    char * p = res + sizeof res - 1; // pointer to end of buffer
-    *p-- = 0; // 0 - end of string
-    while ( i > 0 )
-    {
-      *p-- = (char)( ( i % 10 ) + '0' );
-      i /= 10;
-    }
-    return p;
-}
-=====
-void Converter(int numero, char* Out)
-{
-     if(numero<10)
-     {
-           Out[0] = '0';
-           itoa(numero, &Out[1], 10);
-     }
-     else
-           itoa(numero, Out, 10);
-}
-======
-// Implementation of itoa() 
-char* itoa(int num, char* str, int base) 
-{ 
-    int i = 0; 
-    bool isNegative = false; 
-  
-     Handle 0 explicitely, otherwise empty string is printed for 0 
-    if (num == 0) 
-    { 
-        str[i++] = '0'; 
-        str[i] = '\0'; 
-        return str; 
-    } 
-  
-    // In standard itoa(), negative numbers are handled only with  
-    // base 10. Otherwise numbers are considered unsigned. 
-    if (num < 0 && base == 10) 
-    { 
-        isNegative = true; 
-        num = -num; 
-    } 
-  
-    // Process individual digits 
-    while (num != 0) 
-    { 
-        int rem = num % base; 
-        str[i++] = (rem > 9)? (rem-10) + 'a' : rem + '0'; 
-        num = num/base; 
-    } 
-  
-    // If number is negative, append '-' 
-    if (isNegative) 
-        str[i++] = '-'; 
-  
-    str[i] = '\0'; // Append string terminator 
-  
-    // Reverse the string 
-    reverse(str, i); 
-  
-    return str; 
-} 
-*/
-/*
-====================================
-converter quantidade em string
-
-string st = strcat(" %", quantidade);
-string st2 = strcat(st2, "[^\n]");
-scanf(st2, texto);
-
-string teste = strcat(" %", 10);
-string teste2 = strcat(teste, "[^\n]");
 
 ============================================================
 int inteiro_validado() {

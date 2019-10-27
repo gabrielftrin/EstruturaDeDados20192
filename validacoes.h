@@ -1,10 +1,85 @@
 #include "excecao.h"
 
+//Alterar localização do programa para a localização do sistema para permitir uso de caracteres especiais
+bool configurarLocal() {
+	
+	string retorno = setlocale(LC_ALL, "Portuguese");
+
+	if (retorno == NULL || retorno == "")
+	{
+		lancarErro(18);
+		perror(MENSAGEM_DE_ERRO);
+		return false;
+	}
+
+	return true;
+}
+
 //Limpa o buffer do teclado (entrada padrão)
 void limparBufferDoTeclado() {
 
 	setbuf(stdin, NULL);
 
+}
+
+//[REVISAR] Ter atenção aos numeros terminados em 0
+int inverterNumero(int numero) {
+
+	int numeroInvertido = 0;
+	while (numero != 0)
+	{
+		numeroInvertido = numeroInvertido * 10;
+		numeroInvertido = numeroInvertido + numero % 10;
+		numero = numero / 10;
+	}
+
+	return numeroInvertido;
+
+}
+
+//[REVISAR] Converte número em string (apenas entre -69 e +69)
+string converterInteiroEmString(int numero) {
+
+	int i = 0;
+	bool numeroNegativo = false;
+	bool multiploDeDez = false;
+	char numeroConvertivoEmString[11];
+	string resultado;
+
+	if (numero == 0)
+	{
+		return "0";
+	}
+
+	if (numero < 0)
+	{
+		numeroNegativo = true;
+		numero = -numero;
+		numeroConvertivoEmString[i++] = '-';
+	}
+
+	if (numero % 10 == 0) multiploDeDez = true;
+
+	if (numero == 10) return "10";
+	if (numero == 20) return "20";
+	if (numero == 30) return "30";
+	if (numero == 40) return "40";
+	if (numero == 50) return "50";
+	if (numero == 60) return "60";
+
+	numero = inverterNumero(numero);
+
+	while (numero != 0)
+	{
+		int resto = numero % 10;
+		numeroConvertivoEmString[i++] = resto + '0';
+		numero = numero / 10;
+	}
+
+	numeroConvertivoEmString[i] = '\0'; // Append string terminator 
+
+	resultado = numeroConvertivoEmString;
+	return resultado;
 }
 
 //Validar alocação de memória, retorna falso se o ponteiro for nulo
@@ -38,11 +113,17 @@ string lerTextoDoTeclado(int quantidade) {
 		return false;
 	}
 
+	string numeroConvertidoParaString = converterInteiroEmString(quantidade);
+	char parteParametro[20] = " %";
+	strcat(parteParametro, numeroConvertidoParaString);
+	strcat(parteParametro, "[^\n]");
+	const char* parametros = parteParametro;
+
 	//Enquanto nenhum caractere for lido, o programa tentará ler de novo
 	do
 	{
 		//Ler do teclado e guardar o resultado. Para de ler quando o usuário apertar [ENTER]
-		retornoDaLeitura = scanf(" %[^\n]", texto);
+		retornoDaLeitura = scanf(parametros, texto);
 		
 		//Verificar se houver erro de leitura
 		if (retornoDaLeitura == EOF)
