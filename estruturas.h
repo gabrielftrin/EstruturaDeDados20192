@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <string.h> // String
 #include <ctype.h>
-#include <locale.h> 
+#include <locale.h> //Configurar local/região/país
+#include "funcoesdosistema.h"
 
 #define MENSAGEM_DE_ERRO "Mensagem de erro do compilador"
 

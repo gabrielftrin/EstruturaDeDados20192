@@ -20,9 +20,10 @@ void mostrarErrosNaTela() {
 	int i = 0;
 	while (listaDeCodigosDeErro[i] != 0)
 	{
-		printf("\nMensagem de erro: %s\n", listaDeMensagensDeErro[i]);
+		printf("\nMensagem de erro: %s", listaDeMensagensDeErro[i]);
 		i++;
 	}
+	printf("\n");
 }
 
 //Preencher vetor de mensagens de erro de acordo com o códigoe mostrar na tela
@@ -84,16 +85,16 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Alocacao de memoria invalida.";
 			break;
 		case 17:
-			listaDeMensagensDeErro[i] = "O tamanho da string lida e diferente do tamanho solicitado.";
+			listaDeMensagensDeErro[i] = "O tamanho do texto lido e maior que tamanho solicitado.";
 			break;
 		case 18:
 			listaDeMensagensDeErro[i] = "Nao foi possivel configurar o local corretamente.";
 			break;
 		case 19:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Nao foi possivel ler o numero do teclado.";
 			break;
 		case 20:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "O numero nao e positivo.";
 			break;
 		case 21:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

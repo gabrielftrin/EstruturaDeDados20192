@@ -51,7 +51,6 @@ tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
 	scanf("%f", &pessoa->altura);
 	fflush(stdin);
 
-	printf("\n\nnome: %s teste %c\n\n", pessoa->nome, pessoa->nome);
 	return pessoa;
 }
 
