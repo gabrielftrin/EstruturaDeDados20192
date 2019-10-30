@@ -8,7 +8,7 @@ bool configurarLocal() {
 	if (retorno == NULL || retorno == "")
 	{
 		lancarErro(18);
-		//perror(MENSAGEM_DE_ERRO);
+		perror(MENSAGEM_DE_ERRO);
 		return false;
 	}
 
@@ -110,8 +110,8 @@ int* lerNumeroInteiroDoTeclado() {
 	return numero;
 }
 
-//Retorna o ponteiro do número NATURAL lido ou NULL em caso de erro
-int* lerNumeroNaturalDoTeclado(){
+//Retorna o número NATURAL lido ou EOF (-1) em caso de erro
+int lerNumeroNaturalDoTeclado(){
 
 	//Declarar e ler o número
 	int *numero = lerNumeroInteiroDoTeclado();
@@ -120,8 +120,7 @@ int* lerNumeroNaturalDoTeclado(){
 	if (numero == NULL) {
 
 		lancarErro(19);
-		perror(MENSAGEM_DE_ERRO);
-		return NULL;
+		return EOF;
 	}
 
 	//Declarar número natural
@@ -131,11 +130,10 @@ int* lerNumeroNaturalDoTeclado(){
 	if (!validarNumeroNatural(numeroNatural)) {
 	
 		lancarErro(9);
-		perror(MENSAGEM_DE_ERRO);
-		return NULL;
+		return EOF;
 	}
 
-	return numero;
+	return numeroNatural;
 }
 
 //Recebe a quantidade de caracteres que devem ser lidos. Retorna nulo se der erro ou o ponteiro da string lida.
@@ -148,7 +146,6 @@ string lerTextoDoTeclado(int quantidade) {
 	if (!validarNumeroNaturalPositivo(quantidade)) {
 		
 		lancarErro(20);
-		perror(MENSAGEM_DE_ERRO);
 		return NULL;
 	}
 

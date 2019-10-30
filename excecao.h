@@ -88,7 +88,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "O tamanho do texto lido e maior que tamanho solicitado.";
 			break;
 		case 18:
-			listaDeMensagensDeErro[i] = "Nao foi possivel configurar o local corretamente.";
+			listaDeMensagensDeErro[i] = "O local e nulo ou vazio.";
 			break;
 		case 19:
 			listaDeMensagensDeErro[i] = "Nao foi possivel ler o numero do teclado.";
@@ -97,19 +97,19 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "O numero nao e positivo.";
 			break;
 		case 21:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "O programa nao executou corretamente.";
 			break;
 		case 22:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Nao foi possivel configurar o local corretamente.";
 			break;
 		case 23:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Algo nao executou corretamente.";
 			break;
 		case 24:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Menu nao executou corretamente.";
 			break;
 		case 25:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro ao ler numero do teclado.";
 			break;
 		case 26:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

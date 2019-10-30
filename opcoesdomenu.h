@@ -20,7 +20,7 @@ bool cadastrarUmaPessoa (tipoLista *lista){
 
 	//printf("\nAlocar pessoa");
 	tipoPessoa *pessoa = alocarPessoa(pessoa);
-	if (!validarAlocacaoPessoa(pessoa)) return false;
+	if (!validarAlocacaoDeMemoria(pessoa)) return false;
 
 	//printf("\nLer dados da pessoa");
 	lerDadosPessoa(pessoa);
@@ -75,7 +75,7 @@ bool removerUmaPessoaPeloCodigo (tipoLista *lista){
 	int codigo = lerCodigoPessoa();
 
 	//printf("Validar codigo\n");
-	if(!numeroNatural(codigo)) return false;
+	if(!validarNumeroNatural(codigo)) return false;
 	
 	//printf("Buscar codigo na Lista\n");
 	tipoPessoa *pessoa = buscarCodigoNaLista(lista,codigo);
@@ -84,16 +84,16 @@ bool removerUmaPessoaPeloCodigo (tipoLista *lista){
 	if (pessoa == NULL){
 		
 		//Mensagem ao usuario
-		if (!validarImpressao(printf("Nenhuma pessoa foi removida da lista.\n"))) return false;
+		printf("Nenhuma pessoa foi removida da lista.\n");
 		
-		return true;	
+		return true;
 	}
 		
 	//printf("Destruir a pessoa\n");
 	if (!destruirPessoa(lista, pessoa)) return false;
 
 	//mensagem de sucesso
-	if (!mensagemSucesso()) return false;
+	mensagemSucesso();
 	
 	return true;
 }
@@ -120,7 +120,7 @@ bool destruirLista(tipoLista* lista) {
 	free(lista);
 	
 	//Mensagem ao usuario
-	if (!mensagemSucesso()) return false;
+	mensagemSucesso();
 	
 	//Sair do programa
 	sairDoPrograma();	

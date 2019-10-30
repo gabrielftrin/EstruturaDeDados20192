@@ -1,10 +1,10 @@
-#include "validacoes.h"
+#include "validacoesespecificas.h"
 
 //Retorna true se conseguiu zerar a lista
 bool zerarLista(tipoLista* lista) {
 
 	//Validar alocação da lista
-	if (!validarAlocacaoLista(lista)) return false;
+	if (!validarAlocacaoDeMemoria(lista)) return false;
 
 	//Zerar lista
 	lista->inicioDaLista = NULL;
@@ -24,7 +24,7 @@ tipoPessoa* alocarPessoa(tipoPessoa* pessoa) {
 	pessoa = (tipoPessoa *) malloc(sizeof(tipoPessoa));
 
 	//Validar alocação de memória da pessoa
-	if (!validarAlocacaoPessoa(pessoa)) pessoa = NULL;
+	if (!validarAlocacaoDeMemoria(pessoa)) pessoa = NULL;
 
 	return pessoa;
 }
@@ -58,15 +58,15 @@ tipoPessoa* lerDadosPessoa(tipoPessoa* pessoa) {
 bool imprimirDadosDaPessoa(tipoPessoa* pessoa) {
 
 	//Validar pessoa
-	if (!validarAlocacaoPessoa(pessoa)) return false;
+	if (!validarAlocacaoDeMemoria(pessoa)) return false;
 
 	//Imprimir dados da pessoa
-	//if (!validarImpressao(printf("\nSeguem os dados da pessoa:\n\n"))) return false;
-	if (!validarImpressao(printf("\n Codigo: %d\n", pessoa->codigo))) return false;
-	if (!validarImpressao(printf(" Nome: %s\n", pessoa->nome))) return false;
-	if (!validarImpressao(printf(" Idade: %d\n", pessoa->idade))) return false;
-	if (!validarImpressao(printf(" Altura: %f\n\n", pessoa->altura))) return false;
-	
+	printf("\nSeguem os dados da pessoa:\n\n");
+	printf("\n Codigo: %d\n", pessoa->codigo);
+	printf(" Nome: %s\n", pessoa->nome);
+	printf(" Idade: %d\n", pessoa->idade);
+	printf(" Altura: %f\n\n", pessoa->altura);
+
 	return true;
 }
 
@@ -76,7 +76,7 @@ int lerNaturalValido() {
 	int numero;
 
 	if (scanf("%d", &numero)) {
-		if (numeroNatural(numero)) {
+		if (validarNumeroNatural(numero)) {
 
 			return numero;
 		}
@@ -91,13 +91,13 @@ int lerNaturalValido() {
 int lerCodigoPessoa() {
 
 	//Imprimir solicitação do código
-	if (!validarImpressao(printf("Informe o codigo da pessoa:"))) return false;
+	printf("Informe o codigo da pessoa:");
 
 	//Ler o código
 	int codigo = lerNaturalValido();
 	
 	//Validar código	
-	if (!numeroNatural(codigo)) return (-1);
+	if (!validarNumeroNatural(codigo)) return (-1);
 
 	return codigo;
 }
@@ -109,7 +109,7 @@ tipoPessoa* buscarCodigoNaLista(tipoLista* lista, int codigo) {
 	if (!validarLista(lista)) return NULL;
 
 	//printf("Validar codigo\n");
-	if (!numeroNatural(codigo)) return NULL;
+	if (!validarNumeroNatural(codigo)) return NULL;
 
 	//printf("Verificar se a lista e vazia\n");
 	if (listaVazia(lista)) return NULL;
@@ -155,11 +155,9 @@ tipoPessoa* buscarCodigoNaLista(tipoLista* lista, int codigo) {
 }
 
 //Imprime uma mensagem de sucesso na tela
-bool mensagemSucesso() {
+void mensagemSucesso() {
 
-	if (!validarImpressao(printf("\nOperacao realizada com sucesso.\n"))) return false;
-
-	return true;
+	printf("\nOperacao realizada com sucesso.\n");
 }
 
 //Destroi uma pessoa da lista, a pessoa não pode ser nula
@@ -169,7 +167,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 	if (!validarLista(lista)) return false;
 
 	//printf("Validar pessoa, a pessoa não pode ser nulo\n");
-	if (!validarAlocacaoPessoa(pessoa)) return false;
+	if (!validarAlocacaoDeMemoria(pessoa)) return false;
 
 	//printf("Caso 1 - A lista possui apenas um elemento\n");
 	if (
@@ -243,7 +241,7 @@ bool destruirPessoa(tipoLista* lista, tipoPessoa* pessoa) {
 	free(pessoa);
 
 	//printf("Mensagem ao usuario\n");
-	//if (!mensagemSucesso()) return false;
+	//mensagemSucesso();
 
 	return true;
 }

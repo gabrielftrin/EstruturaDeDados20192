@@ -1,8 +1,8 @@
 #include <stdio.h> //Biblioteca padrão
-#include <stdbool.h> //Booleano
-#include <stdlib.h>
-#include <string.h> // String
-#include <ctype.h>
+#include <stdbool.h> //Definição do tipo Booleano
+#include <stdlib.h> //define quatro tipos de variáveis, várias macros e várias funções para executar funções gerais (malloc, etc.)
+//#include <string.h> // Manipular strings
+//#include <ctype.h> //declara várias funções que são úteis para testar e mapear caracteres. (isdigit() por exemplo)
 #include <locale.h> //Configurar local/região/país
 #include "funcoesdosistema.h"
 
@@ -31,8 +31,8 @@ typedef struct tipoItem
 //Definição da estrutura de uma lista genérica
 typedef struct tipoLista
 {
-	string *inicioDaLista;
-	string *finalDaLista;
+	tipoItem *inicioDaLista;
+	tipoItem *finalDaLista;
 	int tamanhoDaLista;
 	bool *listaZerada;
 }tipoLista;
