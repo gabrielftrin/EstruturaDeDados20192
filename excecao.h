@@ -112,7 +112,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Erro ao ler numero do teclado.";
 			break;
 		case 26:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Nao foi possivel abrir o arquivo.";
 			break;
 		case 27:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

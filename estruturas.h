@@ -1,7 +1,7 @@
 #include <stdio.h> //Biblioteca padrão
 #include <stdbool.h> //Definição do tipo Booleano
 #include <stdlib.h> //define quatro tipos de variáveis, várias macros e várias funções para executar funções gerais (malloc, etc.)
-//#include <string.h> // Manipular strings
+#include <string.h> // Manipular strings
 //#include <ctype.h> //declara várias funções que são úteis para testar e mapear caracteres. (isdigit() por exemplo)
 #include <locale.h> //Configurar local/região/país
 #include "funcoesdosistema.h"
