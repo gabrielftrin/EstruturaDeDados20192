@@ -1,37 +1,21 @@
-#include "validacoes.h"
+#include "funcoesdosistema.h"
 
 void main()
 {
-	configurarLocal();
-	FILE *arquivo;
+	//Declarar ponteiro da árvore
+	itemDaArvore* raiz = NULL;
 
-	arquivo = fopen("arquivo.txt", "r");
-	if (!validarAlocacaoDeMemoria(arquivo))
+	/*if (!inicializarPrograma())
 	{
-		lancarErro(26);
-		perror(MENSAGEM_DE_ERRO);
-		sairDoPrograma();
-	}
-	char c;
-	int i = 0;
-	do
-	{
-		c = getc(arquivo);
-		printf("%c", c);
-		
-	} while (!feof(arquivo));
-		
-	fclose(arquivo);
+		lancarErro(21);
+		imprimirListaDeErros();
+	}*/
 
-	printf("\nteste\n");
-	imprimirListaDeErros();
-}
-/*
-if (!aplicarConfiguracoesIniciais())
-{
-	lancarErro(23);
-	imprimirListaDeErros();
-}
 
-return 0;
-*/
+	printf("teste\n");
+
+	pausa();
+	printf("teste\n");
+
+
+}

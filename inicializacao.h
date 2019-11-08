@@ -3,6 +3,12 @@
 //Executar uma funcao do menu de acordo com a opcao, retorna falso se alguma funcao qualquer der erro
 bool executarFuncaoDoMenu(int opcao, tipoLista* lista) {
 
+1. Criar a árvore. 2. Inserir valor (palavra) na árvore. 3. Consulta uma
+palavra na árvore. 4. Listar todas as palavras na árvore. 5. Remover a árvore. 6.
+Encerrar o programa
+
+
+
 	//Validar alocação da lista
 	if (!validarAlocacaoDeMemoria(lista)) return false;
 
@@ -36,13 +42,14 @@ void imprimirOpcoesDoMenu() {
 	
 	printf(
 		"\n===== Trabalho pratico =====\n"
-		"Aluno: Gabriel Trindade\n\n"
+		"Alunos: Denise Alpim e Gabriel Trindade\n\n"
 
-		"\n1) Criar a lista de pessoas"
-		"\n2) Cadastrar uma nova pessoa no final da lista"
-		"\n3) Consultar uma pessoa pelo codigo"
-		"\n4) Remover uma pessoa"
-		"\n5) Destruir a lista e encerrar o programa"
+		"\n1) Criar a arvore"
+		"\n2) Inserir valor (palavra) na arvore"
+		"\n3) Consulta uma palavra na arvore"
+		"\n4) Listar todas as palavras cadastradas na arvore"
+		"\n5) Remover a árvore"
+		"\n6) Encerrar o programa"
 		"\n\n"
 	);
 }
@@ -50,10 +57,7 @@ void imprimirOpcoesDoMenu() {
 //Executar o menu
 bool menu() {
 
-	//Validar alocação da lista
-	//if (!validarAlocacaoDeMemoria(lista)) return false;
-
-	//Declarar a variavel que vai guardar a opcao que o usuario escolher
+	//Declarar a variavel para guardar a opcao que o usuario escolher
 	int opcao;
 
 	//Rodar o programa
@@ -67,12 +71,17 @@ bool menu() {
 
 		//Validar conteúdo digitado
 		if (opcao == EOF) {
+
 			lancarErro(25);
 			return false;
 		}
 
 		//Executar função do menu
-		//if (!executarFuncaoDoMenu(opcao, lista)) opcao = 5;
+		if (!executarFuncaoDoMenu(opcao)) {
+
+			lancarErro(27);
+			return false;
+		}
 
 		//Pausa antes de escolher uma nova opcao
 		//pausa();
@@ -88,17 +97,13 @@ bool menu() {
 //Inicializar a execução do programa
 bool inicializarPrograma() {
 
-	//Declarar lista
-	//tipoLista* lista = NULL;
-	//Alocar memória
-	//lista = malloc(sizeof(tipoLista));
-	//Validar alocação
-	//if (!validarAlocacaoDeMemoria(lista)) return false;
+	//Configurar local para permitir acentuação de caracteres especiais
+	if (!configurarLocal()) {
 
-	//Pré configurar lista
-	//lista->listaZerada = false;
-	//lista->tamanhoDaLista = -1;
-
+		lancarErro(22);
+		return false;
+	}
+	
 	//Exucutar menu
 	if (!menu()) {
 
@@ -106,25 +111,5 @@ bool inicializarPrograma() {
 		return false;
 	}
 	
-	return true;
-}
-
-//Aplicar configurações iniciais básicas antes de iniciar o programa propriamente dito
-bool aplicarConfiguracoesIniciais() {
-
-	//Configurar local para permitir acentuação de caracteres especiais
-	if (!configurarLocal()) {
-
-		lancarErro(22);
-		return false;
-	}
-
-	//Iniciar o código do programa
-	if (!inicializarPrograma())
-	{
-		lancarErro(21);
-		return false;
-	}
-
 	return true;
 }

@@ -115,7 +115,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Nao foi possivel abrir o arquivo.";
 			break;
 		case 27:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro ao executar funcao do menu.";
 			break;
 		case 28:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";
