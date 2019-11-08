@@ -10,6 +10,8 @@ void pausa() {
 ////Limpa tudo que estiver na tela
 //void limparTela() {
 //	system("cls");
+//system("tput reset");
+//system("clear");
 //}
 
 
