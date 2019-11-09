@@ -31,10 +31,9 @@ O arquivo 'main.c' chama o 'inicializacao.h' (menu) que chama o 'opcoesdomenu.h'
 
 ## Em quais arquivo mexer para fazer o programa funcionar?
 
-Em apenas 2:
+Em apenas 1:
 
 * No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA função do menu deve ser escrita
-* No arquivo estruturas.h para declarar a definição dos tipos de dados (typedef struct...)
 
 ## Contato
 
