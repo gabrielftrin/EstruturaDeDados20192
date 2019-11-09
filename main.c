@@ -1,21 +1,14 @@
-#include "funcoesdosistema.h"
+#include "inicializacao.h"
 
 void main()
 {
 	//Declarar ponteiro da árvore
 	itemDaArvore* raiz = NULL;
-
-	/*if (!inicializarPrograma())
+	
+	//Iniciar a execução do programa
+	if (!inicializarPrograma())
 	{
 		lancarErro(21);
 		imprimirListaDeErros();
-	}*/
-
-
-	printf("teste\n");
-
-	pausa();
-	printf("teste\n");
-
-
+	}
 }

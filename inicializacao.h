@@ -1,4 +1,4 @@
-#include "validacoes.h"
+#include "funcoesdomenu.h"
 /*
 //Executar uma funcao do menu de acordo com a opcao, retorna falso se alguma funcao qualquer der erro
 bool executarFuncaoDoMenu(int opcao, tipoLista* lista) {
@@ -6,8 +6,6 @@ bool executarFuncaoDoMenu(int opcao, tipoLista* lista) {
 1. Criar a árvore. 2. Inserir valor (palavra) na árvore. 3. Consulta uma
 palavra na árvore. 4. Listar todas as palavras na árvore. 5. Remover a árvore. 6.
 Encerrar o programa
-
-
 
 	//Validar alocação da lista
 	if (!validarAlocacaoDeMemoria(lista)) return false;
