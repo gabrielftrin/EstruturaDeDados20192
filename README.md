@@ -6,7 +6,7 @@ Disciplina: MATD04 - Estrutura de Dados <br />
 ## Tutorial de instalação do compilador GCC
 	
 * Ambiente Windows: https://terminaldeinformacao.com/2015/10/08/como-instalar-e-configurar-o-gcc-no-windows-mingw/
-* Ambiente Linuz: http://www.mundodoshackers.com.br/como-instalar-o-gcc-no-linux-ubuntu
+* Ambiente Linux (ubuntu): http://www.mundodoshackers.com.br/como-instalar-o-gcc-no-linux-ubuntu
 
 ## Como compilar e executar o código
 
