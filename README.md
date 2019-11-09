@@ -1,6 +1,6 @@
 # Trabalho Prático II
 
-Alunos: Denise Alpim e Gabriel Trindade
+Alunos: Denise Alpim e Gabriel Trindade <br />
 Disciplina: MATD04 - Estrutura de Dados <br />
 
 ## Tutorial de instalação do compilador GCC
@@ -31,9 +31,8 @@ O arquivo 'main.c' chama o 'inicializacao.h' (menu) que chama o 'opcoesdomenu.h'
 
 ## Em quais arquivo mexer para fazer o programa funcionar?
 
-Em apenas 3:
+Em apenas 2:
 
-* No arquivo inicializacao.h para alterar o texto que é exibido no menu
 * No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA função do menu deve ser escrita
 * No arquivo estruturas.h para declarar a definição dos tipos de dados (typedef struct...)
 
