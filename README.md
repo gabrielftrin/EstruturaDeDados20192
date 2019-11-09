@@ -1,17 +1,17 @@
 # Trabalho Prático II
-## Denise Alpim e Gabriel Trindade
 
+Alunos: Denise Alpim e Gabriel Trindade
 Disciplina: MATD04 - Estrutura de Dados <br />
 
-## Instalar o compilador GCC
+## Tutorial de instalação do compilador GCC
 	
 * Ambiente Windows: https://terminaldeinformacao.com/2015/10/08/como-instalar-e-configurar-o-gcc-no-windows-mingw/
 * Ambiente Linuz: http://www.mundodoshackers.com.br/como-instalar-o-gcc-no-linux-ubuntu
 
 ## Como compilar e executar o código
 
-* Windows: gcc -o programa.exe main.c && "C:Mingw\bin\programa.exe"
-* Linux: gcc -o programa.exe main.c ; programa.exe
+* No windows: gcc -o programa.exe main.c && "C:Mingw\bin\programa.exe"
+* No linux: gcc -o programa main.c ; ./programa
 
 ## Descrição de cada arquivo
 
@@ -23,7 +23,21 @@ Disciplina: MATD04 - Estrutura de Dados <br />
 * estruturas.h: Neste arquivo são declaras as structs e os tipos de dados. Além disso aqui também são incluidas as bibliotecas do C.
 * funcoesdosistema.h: nNeste arquivo contém apenas funções básicas do sistema como: sairDoPrograma(), pausar() e limparTela()
 
-##Contato
+## Funcionamento do programa
+
+O único arquivo que deve ser compilado é o main.c. Este arquivo chama todos os outros automaticamente. No arquivo main.c, existe apenas a chamada da função inicializarPrograma(). Todo o resto da implementação acontece nos outros arquivos. O programa funciona com uma cascata de chamadas.
+
+O arquivo 'main.c' chama o 'inicializacao.h' (menu) que chama o 'opcoesdomenu.h' (tem a codificação de cada uma das funções do menu) que chama o arquivo 'validacoes.h' (que tem algumas validações básicas como validarAlocacaoDeMemoria) que chama o arquivo 'excecao.h' (tratamento de erros) que chama o arquivo 'estruturas.h' (definição das estruturas e tipos de dados) que chama 'funcoesdosistema.h'
+
+## Em quais arquivo mexer para fazer o programa funcionar?
+
+Em apenas 3:
+
+* No arquivo inicializacao.h para alterar o texto que é exibido no menu
+* No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA função do menu deve ser escrita
+* No arquivo estruturas.h para declarar a definição dos tipos de dados (typedef struct...)
+
+## Contato
 
 Qualquer dúvida, enviar e-mail para gabriel.trindade@ufba.br
 
