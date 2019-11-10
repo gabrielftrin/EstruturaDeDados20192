@@ -45,8 +45,8 @@ void imprimirOpcoesDoMenu() {
 		"\n=================== Trabalho prático II ===================\n"
 		" Alunos: Denise Alpim e Gabriel Trindade\n"
 
-		"\n	1) Criar a árvore"
-		"\n	2) Inserir valor (palavra) na árvore"
+		"\n	1) Criar (zerar) a árvore"
+		"\n	2) Inserir valor (palavra) na árvore pelo arquivo .txt"
 		"\n	3) Consulta uma palavra na árvore"
 		"\n	4) Listar todas as palavras cadastradas na árvore"
 		"\n	5) Remover a árvore"

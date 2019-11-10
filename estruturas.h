@@ -15,5 +15,8 @@ typedef char* string;
 typedef struct itemDaArvore
 {
 	int chave;
-	struct itemDaArvore *proximaLetra[TAMANHO_DO_ALFABETO];
+	struct itemDaArvore* proximaLetra[TAMANHO_DO_ALFABETO];
 }itemDaArvore;
+
+//Declarar ponteiro da árvore
+itemDaArvore* raiz = NULL;
