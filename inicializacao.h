@@ -1,53 +1,56 @@
-#include "funcoesdomenu.h"
-/*
+#include "opcoesdomenu.h"
+
 //Executar uma funcao do menu de acordo com a opcao, retorna falso se alguma funcao qualquer der erro
-bool executarFuncaoDoMenu(int opcao, tipoLista* lista) {
+bool executarFuncaoDoMenu(int opcao) {
 
-1. Criar a árvore. 2. Inserir valor (palavra) na árvore. 3. Consulta uma
-palavra na árvore. 4. Listar todas as palavras na árvore. 5. Remover a árvore. 6.
-Encerrar o programa
-
-	//Validar alocação da lista
-	if (!validarAlocacaoDeMemoria(lista)) return false;
+	//Validar opção informada
+	if (!validarNumeroNaturalPositivo(opcao))
+	{
+		lancarErro(20);
+		return false;
+	}
 
 	switch (opcao) {
 
-	case 1:
-		if (criarListaDePessoas(lista)) { break; }
-		return false;
-	case 2:
-		if (cadastrarUmaPessoa(lista)) { break; }
-		return false;
-	case 3:
-		if (consultarUmaPessoa(lista)) { break; }
-		return false;
-	case 4:
-		if (removerUmaPessoaPeloCodigo(lista)) { break; }
-		return false;
-	case 5:
-		if (destruirLista(lista)) { break; };
-		return false;
-	default:
-		sairDoPrograma();
-		break;
+		case 1:
+			if (criarArvore()) { break; }
+			return false;
+		case 2:
+			if (inserirPalavraNaArvore()) { break; }
+			return false;
+		case 3:
+			if (consultarPalavraNaArvore()) { break; }
+			return false;
+		case 4:
+			if (listarPalavrasDaArvore()) { break; }
+			return false;
+		case 5:
+			if (removerArvore()) { break; };
+			return false;
+		case 6:
+			sairDoPrograma();
+			break;
+		default:
+			printf("\nOpção inválida\n");
+			break;
 	}
 
 	return true;
 }
-*/
+
 //Imprimir opcoes do menu
 void imprimirOpcoesDoMenu() {
 	
 	printf(
-		"\n===== Trabalho pratico =====\n"
-		"Alunos: Denise Alpim e Gabriel Trindade\n\n"
+		"\n=================== Trabalho prático II ===================\n"
+		" Alunos: Denise Alpim e Gabriel Trindade\n"
 
-		"\n1) Criar a arvore"
-		"\n2) Inserir valor (palavra) na arvore"
-		"\n3) Consulta uma palavra na arvore"
-		"\n4) Listar todas as palavras cadastradas na arvore"
-		"\n5) Remover a árvore"
-		"\n6) Encerrar o programa"
+		"\n	1) Criar a árvore"
+		"\n	2) Inserir valor (palavra) na árvore"
+		"\n	3) Consulta uma palavra na árvore"
+		"\n	4) Listar todas as palavras cadastradas na árvore"
+		"\n	5) Remover a árvore"
+		"\n	6) Encerrar o programa"
 		"\n\n"
 	);
 }
@@ -57,6 +60,9 @@ bool menu() {
 
 	//Declarar a variavel para guardar a opcao que o usuario escolher
 	int opcao;
+
+	//Limpar a tela para o menu aparecer sempre em cima
+	limparTela();
 
 	//Rodar o programa
 	do {
@@ -82,12 +88,12 @@ bool menu() {
 		}
 
 		//Pausa antes de escolher uma nova opcao
-		//pausa();
+		pausa();
 
 		//Limpar a tela para o menu aparecer sempre em cima
-		//limparTela();
+		limparTela();
 
-	} while (opcao != 5);
+	} while (opcao != 6);
 
 	return true;
 }

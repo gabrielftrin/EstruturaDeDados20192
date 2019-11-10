@@ -199,3 +199,12 @@ void imprimirListaDeErros() {
 	//Imprimir lista de erros
 	mostrarErrosNaTela();
 }
+
+void limparErros() {
+
+	for (int i = 0; i < quantidadeDeErros; i++)
+	{
+		listaDeCodigosDeErro[i] = 0;
+		listaDeMensagensDeErro[i] = " ";
+	}
+}

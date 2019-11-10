@@ -1,31 +1,29 @@
-#include "estruturas.h"
-
 //Exibe uma pausa na tela para que o usuário possa ler e tomar decisões
 void pausa() {
 
-	printf("\nPressione [ENTER] para continuar...");
+	printf("\nPressione [ENTER] para continuar... ");
 	scanf("[^\n]");
 }
 
 //Limpa tudo que estiver na tela
 void limparTela() {
-	system("cls");
-system("tput reset");
-system("clear");
 
+	//Caso o sistema seja windows
+	#ifdef WIN32 //|| Win32 || win32 || Windows || WINDOWS || windows
+	   	system("cls");
+		return;
+	#endif
 
-#ifdef WIN32WIN32 || Win32 || win32
-printf("wubdiwsssss\n");
-#endif // WINDOWS
-
-#ifdef linuxlinux || LINUX || Linux || UNIX
-printf("linuxxxxxx\n");
-
-#endif // WINDOWS
-//}
-
+	//Caso o sistema seja linux
+	#ifdef linux //|| LINUX || Linux || UNIX
+		system("tput reset");
+		return;
+	#endif
+}
 
 //Fecha o programa
 void sairDoPrograma() {
+
+	printf("\nSaindo do programa...\n");
 	exit(0);
 }

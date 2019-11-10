@@ -8,7 +8,9 @@ void main()
 	//Iniciar a execução do programa
 	if (!inicializarPrograma())
 	{
-		lancarErro(21);
 		imprimirListaDeErros();
+		limparErros();
+		pausa();
+		main();
 	}
 }
