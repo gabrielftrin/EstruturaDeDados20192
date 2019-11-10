@@ -4,35 +4,31 @@
 bool executarFuncaoDoMenu(int opcao) {
 
 	//Validar opção informada
-	if (!validarNumeroNaturalPositivo(opcao))
-	{
-		lancarErro(20);
-		return false;
-	}
+	if (!validarNumeroNaturalPositivo(opcao)) return false;
 
 	switch (opcao) {
 
-		case 1:
-			if (criarArvore()) { break; }
-			return false;
-		case 2:
-			if (inserirPalavraNaArvore()) { break; }
-			return false;
-		case 3:
-			if (consultarPalavraNaArvore()) { break; }
-			return false;
-		case 4:
-			if (listarPalavrasDaArvore()) { break; }
-			return false;
-		case 5:
-			if (removerArvore()) { break; };
-			return false;
-		case 6:
-			sairDoPrograma();
-			break;
-		default:
-			printf("\nOpção inválida\n");
-			break;
+	case 1:
+		if (criarArvore()) { break; }
+		return false;
+	case 2:
+		if (inserirPalavraNaArvore()) { break; }
+		return false;
+	case 3:
+		if (consultarPalavraNaArvore()) { break; }
+		return false;
+	case 4:
+		if (listarPalavrasDaArvore()) { break; }
+		return false;
+	case 5:
+		if (removerArvore()) { break; };
+		return false;
+	case 6:
+		sairDoPrograma();
+		break;
+	default:
+		printf("\nOpção inválida\n");
+		break;
 	}
 
 	return true;
@@ -40,7 +36,7 @@ bool executarFuncaoDoMenu(int opcao) {
 
 //Imprimir opcoes do menu
 void imprimirOpcoesDoMenu() {
-	
+
 	printf(
 		"\n=================== Trabalho prático II ===================\n"
 		" Alunos: Denise Alpim e Gabriel Trindade\n"
@@ -59,13 +55,13 @@ void imprimirOpcoesDoMenu() {
 bool menu() {
 
 	//Declarar a variavel para guardar a opcao que o usuario escolher
-	int opcao;
-
-	//Limpar a tela para o menu aparecer sempre em cima
-	limparTela();
+	int opcao = 0;
 
 	//Rodar o programa
 	do {
+
+		//Limpar a tela para o menu aparecer sempre em cima
+		limparTela();
 
 		//Mostrar as opções do menu na tela
 		imprimirOpcoesDoMenu();
@@ -74,26 +70,15 @@ bool menu() {
 		opcao = lerNumeroNaturalDoTeclado();
 
 		//Validar conteúdo digitado
-		if (opcao == EOF) {
-
-			lancarErro(25);
-			return false;
-		}
+		if (opcao == EOF) return false;
 
 		//Executar função do menu
-		if (!executarFuncaoDoMenu(opcao)) {
-
-			lancarErro(27);
-			return false;
-		}
+		if (!executarFuncaoDoMenu(opcao)) return false;
 
 		//Pausa antes de escolher uma nova opcao
 		pausa();
 
-		//Limpar a tela para o menu aparecer sempre em cima
-		limparTela();
-
-	} while (opcao != 6);
+	} while (opcao != CODIGO_FECHA_PROGRAMA);
 
 	return true;
 }
@@ -102,18 +87,10 @@ bool menu() {
 bool inicializarPrograma() {
 
 	//Configurar local para permitir acentuação de caracteres especiais
-	if (!configurarLocal()) {
+	if (!configurarLocal()) return false;
 
-		lancarErro(22);
-		return false;
-	}
-	
 	//Exucutar menu
-	if (!menu()) {
+	if (!menu()) return false;
 
-		lancarErro(24);
-		return false;
-	}
-	
 	return true;
 }

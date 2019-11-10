@@ -15,7 +15,7 @@ Disciplina: MATD04 - Estrutura de Dados <br />
 
 ## Descrição de cada arquivo
 
-* main.c: Neste arquivo tem apenas a funcao ininicalizarPrograma(). Caso esta função retorne falso, serão exibidos os erros na tela.
+* main.c: Neste arquivo tem apenas a funcao inicializarPrograma(). Caso esta função retorne falso, serão exibidos os erros na tela.
 * inicializacao.h: Neste arquivo estão declaradas as funções: inicializarPrograma(), menu(), imprimirOpcoesDoMenu() e executarFuncaoDoMenu()
 * opcoesdomenu.h: Neste arquivo está declarada cada uma das funções do menu
 * validacoes.h: Neste arquivo estão algumas funções de validação básica
@@ -31,18 +31,21 @@ O arquivo 'main.c' chama o 'inicializacao.h' (menu) que chama o 'opcoesdomenu.h'
 
 ## Em quais arquivo mexer para fazer o programa funcionar?
 
-Em apenas 1:
+Em apenas 1: No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA função do menu deve ser escrita. As funções que devem ser implementadas são:
 
-* No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA função do menu deve ser escrita
+* Criar (zerar) a árvore (feito)
+* Inserir valor (palavra) na árvore pelo arquivo .txt
+* Consulta uma palavra na árvore
+* Listar todas as palavras cadastradas na árvore
+* Remover a árvore
+* Encerrar o programa (feito)
 
 ## Contato
 
 Qualquer dúvida, enviar e-mail para gabriel.trindade@ufba.br
 
-Comando para compilar fora de casa no caminho "C:\Users\gtrindade>"
-
+Comando para compilar fora de casa no caminho "C:\Users\gtrindade>" <br />
 gcc.lnk -o objeto.exe "C:\Users\gtrindade\OneDrive - TecnoTRENDS\Arquivos\GitHub\EstruturaDeDados20192\main.c" && obj.lnk
 
-Comando para compilar em casa no caminho "C:\Users\Gabriel\Desktop"
-
+Comando para compilar em casa no caminho "C:\Users\Gabriel\Desktop" <br />
 gcc.lnk -o objeto.exe O:\OneDrive\GitHub\EstruturaDeDados20192\main.c && obj.lnk	

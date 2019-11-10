@@ -85,7 +85,6 @@ int* lerNumeroInteiroDoTeclado() {
 		//Ler do teclado e guardar o resultado. Para de ler quando o usuário apertar [ENTER]
 		retornoDaLeitura = scanf("%d", numero);
 
-
 		//Verificar se houver erro de leitura
 		if (retornoDaLeitura == EOF) {
 			lancarErro(13);
