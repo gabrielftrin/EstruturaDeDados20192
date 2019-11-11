@@ -1,6 +1,6 @@
 #include "opcoesdomenu.h"
 
-//Executar uma funcao do menu de acordo com a opcao, retorna falso se alguma funcao qualquer der erro
+//Executar uma função do menu de acordo com a opção, retorna falso se alguma função qualquer der erro
 bool executarFuncaoDoMenu(int opcao) {
 
 	//Validar opção informada
@@ -34,7 +34,7 @@ bool executarFuncaoDoMenu(int opcao) {
 	return true;
 }
 
-//Imprimir opcoes do menu
+//Imprimir opções do menu
 void imprimirOpcoesDoMenu() {
 
 	printf(
