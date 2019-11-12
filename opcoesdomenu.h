@@ -30,21 +30,36 @@ bool inserirPalavraNaArvore() {
 	//Converter texto para inteiro
 	int entradas = atoi(linha); if (entradas == 0) return false;
 
-	int codigo = 0;
-	string palavra = NULL;
+	//Declarar vírgula
 	const char virgula = ',';
 
 	//Ler cada linha
 	for (int i = 0; i < entradas; i++)
 	{
+		//Pegar a linha do arquivo
 		if (fgets(linha, TAMANHO_DA_LINHA, arquivo) == NULL) return false;
 
+		//Encontrar a vírgula na linha
+		string ponteiroDaVirgula = strchr(linha, virgula);
+
+		//Tamanho da palavra
+		int tamanhoDaPalavra = strlen(linha) - strlen(ponteiroDaVirgula);
+
+		//Palavra
+		char palavra[tamanhoDaPalavra];
+		memcpy(palavra, linha, tamanhoDaPalavra);
+
+		//Tamanho do código
+		int tamanhoDoCodigo = strlen(ponteiroDaVirgula) - 2;
+
+		//Código
+		char codigoEmTexto[tamanhoDoCodigo];
+		memcpy(codigoEmTexto, (ponteiroDaVirgula + 2), tamanhoDoCodigo);
+
+		//Converter código para int
+		int codigoEmInteiro = atoi(codigoEmTexto);
+
 		
-		string retorno = strchr(linha, virgula);
-
-		printf("\nlinha %s retorno: %s", linha, retorno);
-
-
 		/*
 
 		itemDaArvore* item = raiz;
@@ -69,7 +84,10 @@ bool inserirPalavraNaArvore() {
 
 		*/
 
+		strcat(palavra, " \0 /0");
 
+		printf("codigo %d, palavra %s teste\n", codigoEmInteiro, palavra);
+		ponteiroDaVirgula = NULL;
 	}
 
 	// recebe como entrada o ponteiro geral da arvore, a palavra a ser inserida e o valor
