@@ -9,6 +9,7 @@
 #define MENSAGEM_DE_ERRO "Mensagem de erro do compilador"
 #define TAMANHO_DO_ALFABETO 26
 #define CODIGO_FECHA_PROGRAMA 6
+#define TAMANHO_DA_LINHA 20
 
 //Definição tipo string
 typedef char* string;
