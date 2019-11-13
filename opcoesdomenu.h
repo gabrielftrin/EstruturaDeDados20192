@@ -13,6 +13,7 @@ bool criarArvore() {
 	return true;
 }
 
+
 bool lerLinhaDoArquivo() {
 
 
@@ -82,47 +83,64 @@ bool inserirPalavraNaArvore() {
 		//Percorrer a árvore até o final da palavra
 		for (int i = 0; i < (strlen(palavra) - 1); i++)
 		{
-			if (itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'] == NULL)
-			{
-				itemDaArvore novoItem = alocarItemDaArvore();
+			//Aloca memória para um novo item se o caractere for nulo
+			if (itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'] == NULL) {
+				printf("criando no na posicao %d\n", (*palavraDaArvore - 'a'));
+				//Alocar novo item
+				itemDaArvore* novoItem = alocarItemDaArvore();
 
+				//Validar alocação
+				if (!validarAlocacaoDeMemoria(novoItem)) return false;
+
+				//Colocar o novo item na arvore
+				itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'] = novoItem;
 			}
+			printf("chave antes de ir ao proximo no: %d\n", itemAuxiliar->chave);
+			//Passa para o próximo item
+			itemAuxiliar = itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'];
+			int numero = (*palavraDaArvore - 'a'); 
+			
 
-			printf("nao nulo\n");
-
-
+			char c;
+			int i = 12;
+			
+			printf("\n\nUsando int\n");
+			
+				printf("Pos %d: char %c \t", i, i);
+			pausa();
+			//Passar para o próximo caractere
+			palavraDaArvore++;
 		}
-	
 
-		/*
-
-			// aloca um novo no caso o ponteiro referente ao caractere (letra) da palavra seja nulo
-			if (aux->vetor_alfabeto[*palavra - 'a'] == NULL) // posicao eh calcuada via aritmetica de caracteres
-				aux->vetor_alfabeto[*palavra - 'a'] = aloca_NovoNo(); // aloca novo no e faz apontamento
-
-			  // avanca para o proximo no na arvore
-			aux = aux->vetor_alfabeto[*palavra - 'a'];
-			// avanca para o proximo caractere (letra) da palavra
-			palavra++;
-		}
-		// ao final da palavra, insere o valor associado a esta palavra no no folha
-		aux->valor = valor;
-		return 0;
-
-
-		*/
-
-
-
-
+		//Inserir valor
+		itemAuxiliar->chave = codigoEmInteiro;
+		printf("chave aux: %d\n", itemAuxiliar->chave);
 		ponteiroDaVirgula = NULL;
 		printf("9\n");
+
+		itemDaArvore* teste = raiz;
+		int i = 0; int cont = 0;
+		while (teste->chave == -1)
+		{
+			if (teste->proximaLetra[i] != NULL) {
+				printf("%c\n", (i + 'a'));
+				teste = teste->proximaLetra[i + 'a'];
+				printf("diferente de nulo\n");
+				printf("chave %d", teste->chave);
+			}
+			printf("testess %d\n", i);
+			printf("chave %d", teste->chave);
+
+			i++;
+		}
+
+		printf("saiu do laco\n");
 		break;
 	}
 
 	// recebe como entrada o ponteiro geral da arvore, a palavra a ser inserida e o valor
 	fclose(arquivo);
-
+	printf("chegou aqui\n");
 	return true;
 }
 
