@@ -13,6 +13,11 @@ bool criarArvore() {
 	return true;
 }
 
+bool lerLinhaDoArquivo() {
+
+
+}
+
 //Inserir palavras do arquivo na árvore
 bool inserirPalavraNaArvore() {
 
@@ -21,7 +26,7 @@ bool inserirPalavraNaArvore() {
 	if (!validarAlocacaoDeMemoria(arquivo)) return false;
 
 	//Declarar linha de leitura atual
-	string linha = (string)malloc(sizeof(char) * 20);
+	string linha = (string)malloc(sizeof(char) * TAMANHO_DA_LINHA);
 	if (!validarAlocacaoDeMemoria(linha)) return false;
 
 	//Ler quantidade de entradas e validar alocação de memória
@@ -59,15 +64,38 @@ bool inserirPalavraNaArvore() {
 		//Converter código para int
 		int codigoEmInteiro = atoi(codigoEmTexto);
 
-		
+		//Validar se a raiz foi criada
+		if (!validarAlocacaoDeMemoria(raiz)) return false;
+
+		//Criar variável auxiliar
+		itemDaArvore* itemAuxiliar = raiz;
+
+		//Colocar a palavra em minúsculo
+		for (int i = 0; i < (tamanhoDaPalavra - 1); i++)
+		{
+			palavra[i] = tolower(palavra[i]);
+		}
+
+		//Criar ponteiro da palavra
+		string palavraDaArvore = &palavra[0];
+
+		//Percorrer a árvore até o final da palavra
+		for (int i = 0; i < (strlen(palavra) - 1); i++)
+		{
+			if (itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'] == NULL)
+			{
+				itemDaArvore novoItem = alocarItemDaArvore();
+
+			}
+
+			printf("nao nulo\n");
+
+
+		}
+	
+
 		/*
 
-		itemDaArvore* item = raiz;
-
-		struct _trie* aux = raiz; // ponteiro auxiliar, inicia na raiz da arvore
- // laco para percorrer a palavra, enquanto nao for caractere \0
-		while (*palavra)
-		{
 			// aloca um novo no caso o ponteiro referente ao caractere (letra) da palavra seja nulo
 			if (aux->vetor_alfabeto[*palavra - 'a'] == NULL) // posicao eh calcuada via aritmetica de caracteres
 				aux->vetor_alfabeto[*palavra - 'a'] = aloca_NovoNo(); // aloca novo no e faz apontamento
@@ -84,10 +112,12 @@ bool inserirPalavraNaArvore() {
 
 		*/
 
-		strcat(palavra, " \0 /0");
 
-		printf("codigo %d, palavra %s teste\n", codigoEmInteiro, palavra);
+
+
 		ponteiroDaVirgula = NULL;
+		printf("9\n");
+		break;
 	}
 
 	// recebe como entrada o ponteiro geral da arvore, a palavra a ser inserida e o valor

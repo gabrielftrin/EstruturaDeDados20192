@@ -34,7 +34,7 @@ O arquivo 'main.c' chama o 'inicializacao.h' (menu) que chama o 'opcoesdomenu.h'
 Em apenas 1: No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA função do menu deve ser escrita. As funções que devem ser implementadas são:
 
 * Criar (zerar) a árvore (feito)
-* Inserir valor (palavra) na árvore pelo arquivo .txt
+* Inserir valor (palavra) na árvore pelo arquivo .txt (Em desenvolvimento)
 * Consulta uma palavra na árvore
 * Listar todas as palavras cadastradas na árvore
 * Remover a árvore
