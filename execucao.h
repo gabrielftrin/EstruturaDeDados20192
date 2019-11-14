@@ -9,7 +9,7 @@ void mensagemSucesso() {
 //Alocar memória para um novo item da árvore
 itemDaArvore* alocarItemDaArvore() {
 
-	itemDaArvore* novoItem = (itemDaArvore *) malloc(sizeof(itemDaArvore));
+	itemDaArvore* novoItem = (itemDaArvore*)malloc(sizeof(itemDaArvore));
 
 	if (!validarAlocacaoDeMemoria(novoItem)) return NULL;
 
@@ -33,19 +33,19 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 	if (!validarAlocacaoDeMemoria(raiz)) return false;
 
 	//Criar ponteiro auxiliar do tipo 'item da arvore'
-	itemDaArvore itemAuxiliar = raiz;
+	itemDaArvore* itemAuxiliar = raiz;
 
 	//Percorrer a árvore até o final da palavra ou a palavra não existir
 	for (int i = 0; i < (strlen(palavra) - 1); i++)
 	{
 		//Verifica se a letra corrente/atual está na árvore
-		if (itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'] == NULL) {
+		if (itemAuxiliar->proximaLetra[*palavra - 'a'] == NULL) {
 
 			//Se ainda não tiver chegado no final da palavra
 			if (i < (strlen(palavra) - 2))
 			{
 				//Sai do laço
-				printf("\A palavra nao esta na arvore.\n");
+				printf("\nA palavra nao esta na arvore.\n");
 				return true;
 			}
 
@@ -69,11 +69,10 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 				lancarErro(29);
 				return false;
 			}
-
 		}
 
 		//Passa para o próximo item
-		itemAuxiliar = itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'];
+		itemAuxiliar = itemAuxiliar->proximaLetra[*palavra - 'a'];
 	}
 
 	lancarErro(28);
