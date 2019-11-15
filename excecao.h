@@ -118,10 +118,10 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Erro ao executar funcao do menu.";
 			break;
 		case 28:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro nao esperado ao consultar palavra na arvore.";
 			break;
 		case 29:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "A chave (codigo) da palavra e menor que -1.";
 			break;
 		case 30:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";
