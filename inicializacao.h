@@ -1,6 +1,6 @@
 #include "opcoesdomenu.h"
 
-//Executar uma função do menu de acordo com a opção, retorna falso se alguma função qualquer der erro
+//Executar uma função do menu de acordo com a opção informada
 bool executarFuncaoDoMenu(int opcao) {
 
 	//Validar opção informada
