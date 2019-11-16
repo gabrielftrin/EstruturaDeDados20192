@@ -133,7 +133,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Erro nao esperado ao inverter DEBUG.";
 			break;
 		case 33:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "A raiz da arvore e nula.";
 			break;
 		case 34:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

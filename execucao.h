@@ -1,7 +1,5 @@
 #include "validacoes.h"
 
-void imprimirOpcoesDoMenu();
-
 //Imprime uma mensagem de sucesso na tela
 void mensagemSucesso() {
 
@@ -10,6 +8,8 @@ void mensagemSucesso() {
 
 //Alocar memória para um novo item da árvore
 itemDaArvore* alocarItemDaArvore() {
+
+	if (DEBUG == true) printf("Iniciando a funcao, 'alocarItemDaArvore'...\n");
 
 	itemDaArvore* novoItem = (itemDaArvore*)malloc(sizeof(itemDaArvore));
 
@@ -28,49 +28,63 @@ itemDaArvore* alocarItemDaArvore() {
 //Verificar se uma determinada palavra está cadastrada na arvore
 bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 
+	if (DEBUG == true) printf("Iniciando a funcao, 'consultarUmaDeterminadaPalavraNaArvore'...\n");
+
 	//Verificar se a palavra é nula
 	if (!validarAlocacaoDeMemoria(palavra)) return false;
 
+	if (DEBUG == true) printf("A palavra recebida validada com sucesso. Validando raiz da arvore..\n");
+
 	//Verificar se a raiz é nula
-	if (!validarAlocacaoDeMemoria(raiz)) return false;
+	if (!validarArvoreCriada()) return false;
+
+	if (DEBUG == true) printf("Raiz validada com sucesso. Calculando tamanho da palavra...\n");
 
 	//Criar ponteiro auxiliar do tipo 'item da arvore'
 	itemDaArvore* itemAuxiliar = raiz;
 
 	//Verificar o tamanho da palavra
 	int tamanho = strlen(palavra);
-	if (DEBUG == true) printf("antes do for... letra '%c' tamanho do 'for' %d\n", *palavra, tamanho);
+
+	if (DEBUG == true) printf("Primeira letra da palavra: '%c'. Tamanho da palavra '%d'. Iniciando iteracao...\n", *palavra, tamanho);
+
 	//Percorrer a árvore até o final da palavra ou a palavra não existir
 	for (int i = 0; i < tamanho; i++)
 	{
-		if (DEBUG == true) printf("verificando a letra %c\n", (*palavra));
-		if (DEBUG == true) printf("codigo item atual: %d iteracao %d\n", itemAuxiliar->chave, i);
+		if (DEBUG == true) printf("Iteracao '%d'. Verificando a letra '%c'. Codigo do item atual '%d'.\n", i, (*palavra), itemAuxiliar->chave);
 
 		//Verifica se a letra corrente/atual está na árvore
-		if (itemAuxiliar->proximaLetra[*palavra - 'a'] == NULL) {
-			if (DEBUG == true) printf("esta posição do vetor de letra é nula.\n");
+		if (itemAuxiliar->proximaLetra[*palavra - 'a'] == NULL)
+		{
+			if (DEBUG == true) printf("A posicao %d do vetor e nula.\n", (*palavra - 'a');
+
 			//Se ainda não tiver chegado no final da palavra
 			if (i < (tamanho - 1))
 			{
+				if (DEBUG == true) printf("Esta nao e a ultima letra da palavra.\n");
+
 				//Sai do laço
-				printf("\nA palavra nao esta na arvore. iteracao %d\n", i);
+				printf("\nA palavra não está na árvore. Apenas as %d primeiras letras estão na árvore.\n", i);
+
 				return true;
 			}
 
 			//Se chegou no final da palavra
 			if (i == (tamanho - 1))
 			{
+				if (DEBUG == true) printf("Esta e a ultima letra da arvore.\n");
+
 				//Verifica se código foi preenchido
 				if (itemAuxiliar->chave > -1)
 				{
-					printf("\nA palavra '%s' esta na arvore.\nSua chave e: %d\n", (palavra - i), itemAuxiliar->chave);
+					printf("\nA palavra '%s' está na árvore. Sua chave é: %d\n", (palavra - i), itemAuxiliar->chave);
 					return true;
 				}
 
 				//Verifica se o código é -1
-				if (itemAuxiliar->chave == -1)
+				if (itemAuxiliar->chave <= -1)
 				{
-					printf("\nA(s) %d primeira(s) letra(s) da palavra estao na arvore.\nPorém sua chave/código é igual a: %d\n", i, itemAuxiliar->chave);
+					printf("\nA(s) primeira(s) '%d' letra(s) da palavra '%s' estão na árvore. Porém sua chave é igual a: '%d'\n", i, (palavra - i), itemAuxiliar->chave);
 					return true;
 				}
 
@@ -81,7 +95,7 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 
 		//Passa para o próximo item
 		itemAuxiliar = itemAuxiliar->proximaLetra[*palavra - 'a'];
-		if (DEBUG == true) printf("próximo item, código: %d iteracao %d\n", itemAuxiliar->chave, i);
+		if (DEBUG == true) printf("Passando para o próximo item... código: %d iteracao %d\n", itemAuxiliar->chave, i);
 		if (DEBUG == true) printf("letra %c\n", *palavra);
 		palavra++;
 
@@ -235,4 +249,16 @@ bool inverterDebug() {
 
 	lancarErro(32);
 	return false;
+}
+
+//Verificar se a raiz da árvore é nula
+bool validarArvoreCriada() {
+
+	if (!validarAlocacaoDeMemoria(raiz))
+	{
+		lancarErro(33);
+		return false;
+	}
+
+	return true;
 }

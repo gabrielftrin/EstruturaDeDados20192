@@ -3,6 +3,8 @@
 //Criar a árvore
 bool criarArvore() {
 
+	if (DEBUG == true) printf("Iniciando a funcao, 'criarArvore'...\n");
+
 	//Anular a raiz existente
 	raiz = NULL;
 
@@ -10,7 +12,7 @@ bool criarArvore() {
 	raiz = alocarItemDaArvore();
 
 	//Validar alocação de memória
-	if (!validarAlocacaoDeMemoria(raiz)) return false;
+	if (!validarArvoreCriada(raiz)) return false;
 
 	//Imprimir mensagem de sucesso na tela
 	mensagemSucesso();
@@ -21,22 +23,35 @@ bool criarArvore() {
 //Inserir palavras do arquivo na árvore
 bool inserirPalavraNaArvore() {
 
+	if (DEBUG == true) printf("Iniciando a funcao, 'inserirPalavraNaArvore'...\n");
+
 	//Declarar e abrir arquivo, validar abertura do arquivo
 	FILE* arquivo = fopen("arquivo.txt", "r");
 	if (!validarAlocacaoDeMemoria(arquivo)) return false;
+
+	if (DEBUG == true) printf("O arquivo foi aberto com sucesso.\n");
 
 	//Declarar linha de leitura atual
 	string linha = (string)malloc(sizeof(char) * TAMANHO_DA_LINHA);
 	if (!validarAlocacaoDeMemoria(linha)) return false;
 
+	if (DEBUG == true) printf("Memoria para linha alocada com sucesso. Lendo primeira linha do arquivo...\n");
+
 	//Ler quantidade de entradas e validar alocação de memória
 	if (!validarAlocacaoDeMemoria(fgets(linha, TAMANHO_DA_LINHA, arquivo))) return false;
 
+	if (DEBUG == true) printf("Primeira linha lida com sucesso. Convertendo codigo para inteiro...\n");
+
 	//Converter texto para inteiro e validar conversão
-	int entradas = atoi(linha); if (!validarNumeroNaturalPositivo(entradas)) return false;
+	int entradas = atoi(linha);
+	if (!validarNumeroNaturalPositivo(entradas)) return false;
+
+	if (DEBUG == true) printf("Codigo convertido com sucesso. Iniciando a leitura das linhas do arquivo...\n");
 
 	//Ler as linhas do arquivo
 	if (!lerLinhasDoArquivo(linha, arquivo, entradas)) return false;
+
+	if (DEBUG == true) printf("As linhas do arquivo foram lidas com sucesso. Fechando o arquivo...\n");
 
 	//Fehar o arquivo
 	if (fclose(arquivo) == EOF)
@@ -45,6 +60,8 @@ bool inserirPalavraNaArvore() {
 		perror(MENSAGEM_DE_ERRO);
 		return false;
 	}
+
+	if (DEBUG == true) printf("O arquivo fechou com sucesso.\n");
 
 	//Imprimir mensagem de sucesso na tela
 	mensagemSucesso();
@@ -55,6 +72,8 @@ bool inserirPalavraNaArvore() {
 //Ler uma palavra do teclado e consultar na árvore
 bool consultarPalavraNaArvore() {
 
+	if (DEBUG == true) printf("Iniciando a funcao, 'consultarPalavraNaArvore'...\n");
+
 	//Declara palavra a ser lida
 	string palavra = NULL;
 
@@ -63,12 +82,17 @@ bool consultarPalavraNaArvore() {
 
 	//Ler palavra do teclado
 	palavra = lerTextoDoTeclado(TAMANHO_DA_LINHA);
-
-	//Validar leitura
 	if (!validarAlocacaoDeMemoria(palavra)) return false;
+
+	if (DEBUG == true) printf("Palavra lida com sucesso. Consultando a palavra na arvore...\n");
 
 	//Verificar se a palavra está na árvore
 	if (!consultarUmaDeterminadaPalavraNaArvore(palavra)) return false;
+
+	if (DEBUG == true) printf("Consulta realizada com sucesso.\n");
+
+	//Imprimir mensagem de sucesso na tela
+	mensagemSucesso();
 
 	return true;
 }
@@ -76,18 +100,9 @@ bool consultarPalavraNaArvore() {
 //Listar todas as palavras cadastradas na árvore
 bool listarPalavrasDaArvore() {
 
-	string teste;
-	printf("valor: ");
-	scanf("%s", teste);
-	printf("teste %s\n");
+	if (DEBUG == true) printf("Iniciando a funcao, 'listarPalavrasDaArvore'...\n");
 
-	string apontador = teste;
-	printf("apontador %s\n", apontador);
-
-	printf("limpando teste...");
-	free(teste);
-
-	printf("valor de apontador %s\n", apontador);
+	printf("Função ainda não implementada.\n");
 
 	return true;
 }
@@ -95,86 +110,13 @@ bool listarPalavrasDaArvore() {
 //Limpar todos os nós da árvore
 bool removerArvore() {
 
-	//raiz = alocarItemDaArvore();
-	//raiz->proximaLetra[2] = alocarItemDaArvore();
+	if (DEBUG == true) printf("Iniciando a funcao, 'removerArvore'...\n");
 
-	if (raiz != NULL)
-	{
-		itemDaArvore* itemAuxiliar = raiz;
-		itemDaArvore* itemPai = NULL;
-		int posicaoPai = -1;
-		int i = 0;
-		int contador = -1;
-		while (raiz != NULL)
-		{
-			i = 0;
-			if (DEBUG == true) printf("inicio no while PRINCIPAL. iteracao: %d\n", i);
-			if (DEBUG == true) printf("ponteiro do pai: %p\n", itemPai);
+	//Anular a raiz
+	raiz = NULL;
 
-			while (i < TAMANHO_DO_ALFABETO)
-			{
-				contador++;
-				if (DEBUG == true) printf("percorrendo no, iteracao (i) %d\n", i);
-				if (contador > 60) return false;
+	//Imprimir mensagem de sucesso na tela
+	mensagemSucesso();
 
-				if (itemAuxiliar->proximaLetra[i] == NULL)
-				{
-					if (DEBUG == true) printf("a iteracao %d esta nula\n", i);
-
-					if (i == (TAMANHO_DO_ALFABETO - 1))
-					{
-						if (DEBUG == true) printf("a posicao %d e a ultima... apagando no...\n");
-						free(itemAuxiliar);
-
-						if (itemPai != NULL)
-						{
-							if (DEBUG == true) printf("apagando referencia do pai, vetor-pai:%d...\n", posicaoPai);
-							itemPai->proximaLetra[posicaoPai] = NULL;
-							itemPai = NULL;
-						}
-
-						if (itemPai == NULL)
-						{
-							if (DEBUG == true) printf("o pai e nulo. saindo da funcao.\n");
-							mensagemSucesso();
-							raiz = NULL;
-							return true;
-						}
-
-						if (DEBUG == true) printf("recebendo ponteiro da raiz...\n");
-						itemAuxiliar = raiz;
-
-						if (raiz == NULL)
-						{
-							if (DEBUG == true) printf("A raiz é nula. Saindo da função...\n");
-							return true;
-						}
-
-						break;
-					}
-				}
-
-				if (itemAuxiliar->proximaLetra[i] != NULL)
-				{
-					if (DEBUG == true) printf("a posicao %d nao e nula\n", i);
-					itemPai = itemAuxiliar;
-					posicaoPai = i;
-					itemAuxiliar = itemAuxiliar->proximaLetra[i];
-					if (DEBUG == true) printf("..........indo para o proximo no... i=%d\n", i);
-					break;
-				}
-
-				if (DEBUG == true) printf("incrementando iteracao... (i) %d\n", i);
-				i++;
-			}
-			if (DEBUG == true) printf("ponteiro do pai: %p\n", itemPai);
-			if (DEBUG == true) printf("saiu do while do NO ATUAL\n");
-		}
-
-		if (DEBUG == true) printf("saiu do while PRINCIPAL\n");
-
-	}
-
-	lancarErro(31);
-	return false;;
+	return true;
 }
