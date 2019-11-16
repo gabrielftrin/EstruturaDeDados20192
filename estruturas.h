@@ -10,7 +10,9 @@
 #define TAMANHO_DO_ALFABETO 26
 #define CODIGO_FECHA_PROGRAMA 6
 #define TAMANHO_DA_LINHA 20
-#define DEBUG 0
+
+//Definição da variável debug
+bool DEBUG = true;
 
 //Definição tipo string
 typedef char* string;

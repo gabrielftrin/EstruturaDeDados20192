@@ -21,11 +21,14 @@ bool executarFuncaoDoMenu(int opcao) {
 		if (listarPalavrasDaArvore()) { break; }
 		return false;
 	case 5:
-		if (removerArvore()) { break; };
+		if (removerArvore()) { break; }
 		return false;
 	case 6:
 		sairDoPrograma();
 		break;
+	case 99:
+		if (inverterDebug()) { break; }
+		return false;
 	default:
 		printf("\nOpção inválida\n");
 		break;

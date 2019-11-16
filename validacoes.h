@@ -2,7 +2,7 @@
 
 //Alterar localização do programa para a localização do sistema para permitir uso de caracteres especiais
 bool configurarLocal() {
-	
+
 	string retorno = setlocale(LC_ALL, "Portuguese");
 
 	if (retorno == NULL || retorno == "")
@@ -30,7 +30,7 @@ bool validarAlocacaoDeMemoria(void* ponteiro) {
 		perror(MENSAGEM_DE_ERRO);
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -73,13 +73,13 @@ int* lerNumeroInteiroDoTeclado() {
 	int retornoDaLeitura = 0;
 
 	//Declarar numero, alocar e validar memória
-	int * numero = (int *) malloc (sizeof(int));
+	int* numero = (int*)malloc(sizeof(int));
 	if (!validarAlocacaoDeMemoria(numero)) {
 		lancarErro(16);
 		perror(MENSAGEM_DE_ERRO);
 		return NULL;
 	}
-	
+
 	//Enquanto nenhum caractere for lido, o programa tentará ler de novo
 	do {
 		//Ler do teclado e guardar o resultado. Para de ler quando o usuário apertar [ENTER]
@@ -97,7 +97,7 @@ int* lerNumeroInteiroDoTeclado() {
 			lancarErro(14);
 			perror(MENSAGEM_DE_ERRO);
 			return NULL;
-		}		
+		}
 
 		//Limpar o buffer do teclado
 		limparBufferDoTeclado();
@@ -110,10 +110,10 @@ int* lerNumeroInteiroDoTeclado() {
 }
 
 //Retorna o número NATURAL lido ou EOF (-1) em caso de erro
-int lerNumeroNaturalDoTeclado(){
+int lerNumeroNaturalDoTeclado() {
 
 	//Declarar e ler o número
-	int *numero = lerNumeroInteiroDoTeclado();
+	int* numero = lerNumeroInteiroDoTeclado();
 
 	//Validar leitura do número
 	if (numero == NULL) {
@@ -127,7 +127,7 @@ int lerNumeroNaturalDoTeclado(){
 
 	//Validar número natural
 	if (!validarNumeroNatural(numeroNatural)) {
-	
+
 		lancarErro(9);
 		return EOF;
 	}
@@ -143,7 +143,7 @@ string lerTextoDoTeclado(int quantidade) {
 
 	//Validar quantidade
 	if (!validarNumeroNaturalPositivo(quantidade)) {
-		
+
 		lancarErro(20);
 		return NULL;
 	}
@@ -154,7 +154,7 @@ string lerTextoDoTeclado(int quantidade) {
 
 	//Validar alocação
 	if (!validarAlocacaoDeMemoria(texto)) {
-		
+
 		lancarErro(16);
 		perror(MENSAGEM_DE_ERRO);
 		return false;
@@ -164,7 +164,7 @@ string lerTextoDoTeclado(int quantidade) {
 	do {
 		//Ler do teclado e guardar o resultado. Para de ler quando o usuário apertar [ENTER]
 		retornoDaLeitura = scanf("%[^\n]", texto);
-		
+
 		//Verificar se houver erro de leitura
 		if (retornoDaLeitura == EOF) {
 			lancarErro(13);
@@ -185,7 +185,7 @@ string lerTextoDoTeclado(int quantidade) {
 
 	//Validar tamanho da string lida
 	if (strlen(texto) > quantidade) {
-		
+
 		lancarErro(17);
 		perror(MENSAGEM_DE_ERRO);
 		return NULL;

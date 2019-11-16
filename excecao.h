@@ -79,7 +79,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Erro inesperado na leitura de dados do teclado.";
 			break;
 		case 15:
-			listaDeMensagensDeErro[i] = "Nao foi possivel alocar memoria.";
+			listaDeMensagensDeErro[i] = "O ponteiro recebido e nulo.";
 			break;
 		case 16:
 			listaDeMensagensDeErro[i] = "Alocacao de memoria invalida.";
@@ -127,10 +127,10 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Erro ao fechar arquivo.";
 			break;
 		case 31:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro nao esperado ao tentar apagar todos os itens da arvore.";
 			break;
 		case 32:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro nao esperado ao inverter DEBUG.";
 			break;
 		case 33:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

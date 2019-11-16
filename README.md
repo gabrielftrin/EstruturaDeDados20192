@@ -39,7 +39,7 @@ Em apenas 1: No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA função do m
 * Inserir valor (palavra) na árvore pelo arquivo .txt (feito)
 * Consulta uma palavra na árvore (feito)
 * Listar todas as palavras cadastradas na árvore (Para fazer)
-* Remover a árvore (Em desenvolvimento)
+* Remover a árvore (Em testes)
 * Encerrar o programa (feito)
 
 ## Contato
