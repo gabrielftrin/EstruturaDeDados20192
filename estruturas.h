@@ -9,11 +9,13 @@
 #define MENSAGEM_DE_ERRO "Mensagem de erro do compilador"
 #define TAMANHO_DO_ALFABETO 26
 #define CODIGO_FECHA_PROGRAMA 6
-#define TAMANHO_DA_LINHA 30
+#define TAMANHO_DA_LINHA 20
+#define DEBUG 0
 
 //Definição tipo string
 typedef char* string;
 
+//Definir estrutura de um item da árvore
 typedef struct itemDaArvore
 {
 	int chave;

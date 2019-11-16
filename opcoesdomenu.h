@@ -30,64 +30,22 @@ bool inserirPalavraNaArvore() {
 	if (!validarAlocacaoDeMemoria(linha)) return false;
 
 	//Ler quantidade de entradas e validar alocação de memória
-	if (fgets(linha, TAMANHO_DA_LINHA, arquivo) == NULL) return false;
+	if (!validarAlocacaoDeMemoria(fgets(linha, TAMANHO_DA_LINHA, arquivo))) return false;
 
-	//Converter texto para inteiro
-	int entradas = atoi(linha); if (entradas == 0) return false;
+	//Converter texto para inteiro e validar conversão
+	int entradas = atoi(linha); if (!validarNumeroNaturalPositivo(entradas)) return false;
 
-	//Declarar vírgula
-	const char virgula = ',';
+	//Ler as linhas do arquivo
+	if (!lerLinhasDoArquivo(linha, arquivo, entradas)) return false;
 
-	//Ler cada linha
-	for (int i = 0; i < entradas; i++)
-	{
-		//Pegar a linha do arquivo
-		if (fgets(linha, TAMANHO_DA_LINHA, arquivo) == NULL) return false;
-		printf("lendo linha do arquivo:%s;\n", linha);
-		//Encontrar a vírgula na linha
-		string ponteiroDaVirgula = strchr(linha, virgula);
-		printf("resto da linha a partir da virgula:%s;\n", ponteiroDaVirgula);
-		//Tamanho da palavra
-		int tamanhoDaPalavra = strlen(linha) - strlen(ponteiroDaVirgula);
-		printf("tamanhos: linha:%d resto da linha:%d; diferenca:%d\n", strlen(linha), strlen(ponteiroDaVirgula), tamanhoDaPalavra);
-		//Palavra
-		char palavra[tamanhoDaPalavra];
-		memcpy(palavra, linha, tamanhoDaPalavra);
-		printf("copiando palavra para o vetor. Palavra:%s\nlinha:%s\ntamanho:%d\n", palavra, linha, tamanhoDaPalavra);
-		//Tamanho do código
-		int tamanhoDoCodigo = strlen(ponteiroDaVirgula) - 2;
-
-		//Código
-		char codigoEmTexto[tamanhoDoCodigo];
-		memcpy(codigoEmTexto, (ponteiroDaVirgula + 2), tamanhoDoCodigo);
-
-		//Converter código para int
-		int codigoEmInteiro = atoi(codigoEmTexto);
-
-		//Validar se a raiz foi criada
-		if (!validarAlocacaoDeMemoria(raiz)) return false;
-
-		//Criar variável auxiliar
-		itemDaArvore* itemAuxiliar = raiz;
-
-		//Colocar a palavra em minúsculo
-		for (int i = 0; i < (tamanhoDaPalavra - 1); i++)
-		{
-			palavra[i] = tolower(palavra[i]);
-		}
-
-		//Criar ponteiro da palavra
-		string palavraDaArvore = "joao";//&palavra[0];
-		printf("passando palavra pro ponteiro:%s;\ntamanho:%d\n", palavraDaArvore, strlen(palavraDaArvore));
-		//Inserir a palavra na árvore
-		if (!inserirDeterminadaPalavraNaArvore(palavraDaArvore, codigoEmInteiro)) return false;
-		printf("terminou de ler a linha...\n\n");
-		ponteiroDaVirgula = NULL;
-	}
-	printf("\nleu todas as linhas\n");
 	//Fehar o arquivo
-	fclose(arquivo);
-	consultarUmaDeterminadaPalavraNaArvore("joao");
+	if (fclose(arquivo) == EOF)
+	{
+		lancarErro(30);
+		perror(MENSAGEM_DE_ERRO);
+		return false;
+	}
+
 	//Imprimir mensagem de sucesso na tela
 	mensagemSucesso();
 
@@ -101,10 +59,10 @@ bool consultarPalavraNaArvore() {
 	string palavra = NULL;
 
 	//Pedir ao  usuário que digite a palavra
-	printf("\nDigite a palavra que deseja buscar: (Ate 20 caracteres)\n\n");
+	printf("\nDigite a palavra que deseja buscar: (Ate %d caracteres)\n\n", TAMANHO_DA_LINHA);
 
 	//Ler palavra do teclado
-	palavra = lerTextoDoTeclado(20);
+	palavra = lerTextoDoTeclado(TAMANHO_DA_LINHA);
 
 	//Validar leitura
 	if (!validarAlocacaoDeMemoria(palavra)) return false;

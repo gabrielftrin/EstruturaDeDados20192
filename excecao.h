@@ -124,7 +124,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "A chave (codigo) da palavra e menor que -1.";
 			break;
 		case 30:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro ao fechar arquivo.";
 			break;
 		case 31:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";
