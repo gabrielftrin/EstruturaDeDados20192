@@ -22,10 +22,11 @@ Disciplina: MATD04 - Estrutura de Dados <br />
 * validacoes.h: Neste arquivo estão algumas funções de validação básica
 * excecao.h: Neste aqui estão as funções que gerenciam o tratamento de erros
 * estruturas.h: Neste arquivo são declaras as structs e os tipos de dados. Além disso aqui também são incluidas as bibliotecas do C.
-* funcoesdosistema.h: nNeste arquivo contém apenas funções básicas do sistema como: sairDoPrograma(), pausar() e limparTela()
+* funcoesdosistema.h: Neste arquivo contém apenas funções básicas do sistema como: sairDoPrograma(), pausar() e limparTela()
 
 ## Funcionamento do programa
 
+O programa foi pensado para ter funções simples que realizam todo o trabalho mecânico deixando o progrador livre para pensar na implementação das estruturas propriamente ditas.
 O único arquivo que deve ser compilado é o main.c. Este arquivo chama todos os outros automaticamente. No arquivo main.c, existe apenas a chamada da função inicializarPrograma(). Todo o resto da implementação acontece nos outros arquivos. O programa funciona com uma cascata de chamadas.
 
 O arquivo 'main.c' chama o 'inicializacao.h' (menu) que chama o 'opcoesdomenu.h' (tem a codificação de cada uma das funções do menu) que chama o arquivo 'execucao.h' que chama o arquivo 'validacoes.h' (que tem algumas validações básicas como validarAlocacaoDeMemoria) que chama o arquivo 'excecao.h' (tratamento de erros) que chama o arquivo 'estruturas.h' (definição das estruturas e tipos de dados) que chama 'funcoesdosistema.h'
@@ -36,11 +37,12 @@ Em apenas 1: No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA função do m
 
 * Criar (zerar) a árvore (feito)
 * Inserir valor (palavra) na árvore pelo arquivo .txt (Em testes)
-* Consulta uma palavra na árvore (Em desenvolvimento)
-* Listar todas as palavras cadastradas na árvore
-* Remover a árvore
+* Consulta uma palavra na árvore (Em testes)
+* Listar todas as palavras cadastradas na árvore (Para fazer)
+* Remover a árvore (Em planejamento)
 * Encerrar o programa (feito)
 
 ## Contato
 
 Qualquer dúvida, enviar e-mail para gabriel.trindade@ufba.br
+
