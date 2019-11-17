@@ -27,7 +27,7 @@ bool validarAlocacaoDeMemoria(void* ponteiro) {
 	if (ponteiro == NULL)
 	{
 		lancarErro(15);
-		perror(MENSAGEM_DE_ERRO);
+		//perror(MENSAGEM_DE_ERRO);
 		return false;
 	}
 

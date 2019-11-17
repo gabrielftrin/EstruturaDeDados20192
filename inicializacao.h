@@ -42,7 +42,7 @@ void imprimirOpcoesDoMenu() {
 
 	printf(
 		"\n=================== Trabalho prático II ===================\n"
-		" Alunos: Denise Alpim e Gabriel Trindade\n"
+		" Alunos: Denise Alpim e Gabriel Trindade\n (opção 99 para ativar/desativar o modo DEBUG)\n"
 
 		"\n	1) Criar (zerar) a árvore"
 		"\n	2) Inserir valor (palavra) na árvore pelo arquivo .txt"

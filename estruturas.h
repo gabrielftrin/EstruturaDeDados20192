@@ -12,7 +12,7 @@
 #define TAMANHO_DA_LINHA 20
 
 //Definição da variável debug
-bool DEBUG = true;
+bool DEBUG = false;
 
 //Definição tipo string
 typedef char* string;

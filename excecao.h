@@ -12,7 +12,7 @@ void lancarErro(int codigoDeErro) {
 	{
 		i++;
 	}
-	listaDeCodigosDeErro[i] = codigoDeErro;	
+	listaDeCodigosDeErro[i] = codigoDeErro;
 }
 
 //Imprimir lista de mensagens de erro lançadas
@@ -136,7 +136,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "A raiz da arvore e nula.";
 			break;
 		case 34:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro nao esperado ao inserir item na arvore.";
 			break;
 		case 35:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";
