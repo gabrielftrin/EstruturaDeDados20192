@@ -102,7 +102,7 @@ bool listarPalavrasDaArvore() {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'listarPalavrasDaArvore'...\n");
 
-	printf("Função ainda não implementada.\n");
+	printf("Funcao ainda nao implementada.\n");
 
 	return true;
 }
