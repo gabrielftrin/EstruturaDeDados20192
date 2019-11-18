@@ -139,13 +139,13 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Erro nao esperado ao inserir item na arvore.";
 			break;
 		case 35:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro nao esperado ao inserir item na pilha.";
 			break;
 		case 36:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "O ponteiro da pilha de chamadas e nulo.";
 			break;
 		case 37:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "Erro nao esperado ao remover topo da pilha.";
 			break;
 		case 38:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

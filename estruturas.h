@@ -12,7 +12,7 @@
 #define TAMANHO_DA_LINHA 20
 
 //Definição da variável debug
-bool DEBUG = false;
+bool DEBUG = true;
 
 //Definição tipo string
 typedef char* string;
@@ -26,3 +26,21 @@ typedef struct itemDaArvore
 
 //Declarar ponteiro da árvore
 itemDaArvore* raiz = NULL;
+
+//Definir estrutura de um item da pilha
+typedef struct itemDaPilha {
+
+	itemDaArvore* itemParaVerificar;
+	int vetorParaVerificar;
+	struct itemDaPilha* itemAnteriorDaPilha;
+}itemDaPilha;
+
+//Definir estrutura de uma pilha
+typedef struct pilha {
+
+	itemDaPilha* topo;
+	int quantidadeDeItens;
+}pilha;
+
+//Declarar ponteiro da pilha
+pilha* pilhaDeChamadas = NULL;

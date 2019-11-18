@@ -318,3 +318,88 @@ bool inverterDebug() {
 	lancarErro(32);
 	return false;
 }
+
+//Inserir item na pilha de chamadas de itens da árvore
+bool inserirItemNaPilha(int vetorParaVerificar, itemDaArvore* itemParaVerificar, pilha* pilhaDeChamadas) {
+
+	if (DEBUG == true) printf("Iniciando a funcao, 'inserirItemNaPilha'...\n");
+
+	if (!validarNumeroNatural(vetorParaVerificar)) return false;
+
+	if (!validarAlocacaoDeMemoria(itemParaVerificar)) return false;
+
+	if (pilhaDeChamadas == NULL)
+	{
+		if (DEBUG == true) printf("A pilha está vazia, Criando pilha...\n");
+
+		pilhaDeChamadas = (pilha*)malloc(sizeof(pilha));
+		if (!validarAlocacaoDeMemoria(pilhaDeChamadas)) return false;
+
+		pilhaDeChamadas->quantidadeDeItens = 0;
+		pilhaDeChamadas->topo = NULL;
+	}
+
+	if (DEBUG == true) printf("Alocando memória para o item da pilha...\n");
+
+	itemDaPilha* item = (itemDaPilha*)malloc(sizeof(itemDaPilha));
+	if (!validarAlocacaoDeMemoria(item)) return false;
+
+	item->itemParaVerificar = itemParaVerificar;
+	item->vetorParaVerificar = vetorParaVerificar;
+	item->itemAnteriorDaPilha = NULL;
+
+	if (pilhaDeChamadas->topo == NULL && pilhaDeChamadas->quantidadeDeItens == 0)
+	{
+		if (DEBUG == true) printf("O topo é nulo. Retornando true...\n");
+
+		pilhaDeChamadas->topo = item;
+		pilhaDeChamadas->quantidadeDeItens = 1;
+		return true;
+	}
+
+	if (pilhaDeChamadas->topo != NULL && pilhaDeChamadas->quantidadeDeItens > 0)
+	{
+		if (DEBUG == true) printf("O topo NÃO é nulo. Retornando true...\n");
+
+		item->itemAnteriorDaPilha = pilhaDeChamadas->topo;
+		pilhaDeChamadas->topo = item;
+		pilhaDeChamadas->quantidadeDeItens++;
+		return true;
+	}
+
+	if (DEBUG == true) printf("Lançando erro nao esperado...\n");
+
+	lancarErro(35);
+	return false;
+}
+
+//Remover topo da pilha de chamadas de itens da árvore
+itemDaPilha* removerTopoDaPilha(pilha* pilhaDeChamadas) {
+
+	if (DEBUG == true) printf("Iniciando a funcao, 'removerItemDaPilha'...\n");
+
+	if (pilhaDeChamadas == NULL)
+	{
+		if (DEBUG == true) printf("O ponteiro da pilha de chamadas e nulo. Nenhum item foi removido. Retornando nulo...\n");
+
+		return NULL;
+	}
+
+	if (((pilhaDeChamadas->topo == NULL) && (pilhaDeChamadas->quantidadeDeItens == 0)) || )
+	{
+		if (DEBUG == true) printf("A pilha de chamadas está vazia. Nenhum item foi removido. Retornando nulo...\n");
+
+		return NULL;
+	}
+
+	if (pilhaDeChamadas->topo != NULL && pilhaDeChamadas->quantidadeDeItens > 0)
+	{
+		itemDaPilha* topoRemovido = pilhaDeChamadas->topo;
+		pilhaDeChamadas->topo = pilhaDeChamadas->topo->itemAnteriorDaPilha;
+		pilhaDeChamadas->quantidadeDeItens--;
+		return topoRemovido;
+	}
+
+	lancarErro(37);
+	return false;
+}

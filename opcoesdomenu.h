@@ -102,7 +102,109 @@ bool listarPalavrasDaArvore() {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'listarPalavrasDaArvore'...\n");
 
-	printf("Funcao ainda nao implementada.\n");
+	//Verifica se a raiz da árvore está vazia
+	if (raiz == NULL)
+	{
+		printf("\nA raiz da arvore esta vazia.\n");
+		mensagemSucesso();
+		return true;
+	}
+
+	if (DEBUG == true) printf("A raiz da arvore nao e nula.\n");
+
+	//Criar e limpar vetor de caracteres
+	char palavra[TAMANHO_DA_LINHA];
+	for (int i = 0; i < TAMANHO_DA_LINHA; i++) palavra[i] = '\0';
+	int letraAtual = 0;
+
+	//Criar item auxiliar
+	itemDaArvore* itemAuxiliar = raiz;
+	itemDaPilha* itemPilha = NULL;
+	int vetorDoItemDaArvore = 0;
+
+	//Percorrer cada item da árvore
+	while (itemAuxiliar != NULL)
+	{
+		if (DEBUG == true) printf("\nInicio da iteracao no item...\n");
+
+		if (itemPilha != NULL)
+		{
+			vetorDoItemDaArvore = itemPilha->vetorParaVerificar;
+		}
+
+		//Percorrer cada vetor de um item da árvore
+		for (int i = vetorDoItemDaArvore; i < TAMANHO_DO_ALFABETO; i++)
+		{
+			if (DEBUG == true) printf("\nInicio da iteracao '%d'...\n", i);
+
+			if (itemAuxiliar->proximaLetra[i] == NULL)
+			{
+				if (DEBUG == true) printf("O vetor e nulo. Iteracao '%d'\n", i);
+
+				//Verificar se foi cadastrado um código
+				if (itemAuxiliar->chave > -1)
+				{
+					printf("Palavra: '%s'\n", palavra);
+
+
+					vetorDoItemDaArvore = (i + 1);
+					if (vetorDoItemDaArvore >= TAMANHO_DO_ALFABETO)
+					{
+						itemPilha = removerTopoDaPilha(pilhaDeChamadas);
+
+						if (itemPilha == NULL)
+						{
+							mensagemSucesso();
+							return true;
+						}
+					}
+					break;
+				}
+
+				//Verifica se esta é a última letra do alfabeto
+				if (i == (TAMANHO_DO_ALFABETO - 1))
+				{
+					if (itemAuxiliar->chave == -1)
+					{
+						itemPilha = removerTopoDaPilha(pilhaDeChamadas);
+
+						if (itemPilha == NULL)
+						{
+							mensagemSucesso();
+							return true;
+						}
+					}
+				}
+			}
+
+			if (itemAuxiliar->proximaLetra[i] != NULL)
+			{
+				if (DEBUG == true) printf("O vetor nao e nulo. Iteracao '%d'\n", i);
+
+				palavra[letraAtual] = i + 'a';
+				letraAtual++;
+				if (!inserirItemNaPilha((i + 1), itemAuxiliar, pilhaDeChamadas)) return false;
+				itemAuxiliar = itemAuxiliar->proximaLetra[i];
+				break;
+			}
+
+			if (DEBUG == true) printf("Final de uma iteracao '%d' do for...\n", i);
+		}
+
+		if (DEBUG == true) printf("Saiu do for. VetorDoItemDaArvore '%d' palavra '%s' letraAtual '%d' '%c'\n", vetorDoItemDaArvore, palavra, letraAtual, letraAtual);
+	}
+
+	if (DEBUG == true) printf("Saiu o while que percorre a arvore.\n");
+
+
+	if (listaDeCodigosDeErro[0] != 0)
+	{
+		if (DEBUG == true) printf("Algum erro foi lancado. Retornando falso...\n");
+
+		return false;
+	}
+
+	if (DEBUG == true) printf("Retornando true no final da funcao...\n");
 
 	return true;
 }
