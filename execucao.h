@@ -103,9 +103,12 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 		//Se chegou no final da palavra, retorna true informando que a palavra não está na árvore
 		if (i == (tamanho - 1))
 		{
-			if (DEBUG == true) printf("\nA iteração é igual ao tamanho -1. Dados: iteração:'%d', palavra:'%s', chave:'%d'. Retornando true...\n", i, (palavra - i), itemAuxiliar->chave);
+			if (DEBUG == true) printf("\nA iteração é igual ao tamanho -1 (ultima letra da palavra). Dados: iteração:'%d', palavra:'%s', chave:'%d'. Retornando true...\n", i, (palavra - i), itemAuxiliar->chave);
 
 			printf("\nA palavra '%s' não está na árvore. Apenas as primeiras %d letras estão na árvore.\n", (palavra - i), i);
+
+			mensagemSucesso();
+			return true;
 		}
 
 		if (DEBUG == true) printf("Incrementando palavra...\n");
@@ -385,7 +388,7 @@ itemDaPilha* removerTopoDaPilha(pilha* pilhaDeChamadas) {
 		return NULL;
 	}
 
-	if (((pilhaDeChamadas->topo == NULL) && (pilhaDeChamadas->quantidadeDeItens == 0)) || )
+	if ((pilhaDeChamadas->topo == NULL) && (pilhaDeChamadas->quantidadeDeItens == 0))
 	{
 		if (DEBUG == true) printf("A pilha de chamadas está vazia. Nenhum item foi removido. Retornando nulo...\n");
 

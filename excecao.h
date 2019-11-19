@@ -207,6 +207,6 @@ void limparErros() {
 	for (int i = 0; i < quantidadeDeErros; i++)
 	{
 		listaDeCodigosDeErro[i] = 0;
-		listaDeMensagensDeErro[i] = " ";
+		listaDeMensagensDeErro[i] = "\0";
 	}
 }

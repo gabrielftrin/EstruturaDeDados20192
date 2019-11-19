@@ -25,6 +25,14 @@ bool inserirPalavraNaArvore() {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'inserirPalavraNaArvore'...\n");
 
+	//Verificar se a arvore foi criada
+	if (!validarAlocacaoDeMemoria(raiz))
+	{
+		printf("\nA arvore ainda nao foi criada. Crie a arvore primeiro.\n");
+		limparErros();
+		return true;
+	}
+
 	//Declarar e abrir arquivo, validar abertura do arquivo
 	FILE* arquivo = fopen("arquivo.txt", "r");
 	if (!validarAlocacaoDeMemoria(arquivo)) return false;
@@ -74,6 +82,14 @@ bool consultarPalavraNaArvore() {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'consultarPalavraNaArvore'...\n");
 
+	//Verificar se a arvore foi criada
+	if (!validarAlocacaoDeMemoria(raiz))
+	{
+		printf("\nA arvore ainda nao foi criada. Crie a arvore primeiro.\n");
+		limparErros();
+		return true;
+	}
+
 	//Declara palavra a ser lida
 	string palavra = NULL;
 
@@ -121,15 +137,25 @@ bool listarPalavrasDaArvore() {
 	itemDaArvore* itemAuxiliar = raiz;
 	itemDaPilha* itemPilha = NULL;
 	int vetorDoItemDaArvore = 0;
-
+	bool palavraEncontrada = false;
+	bool novoItem = true;
+	int contador = 0;
 	//Percorrer cada item da árvore
 	while (itemAuxiliar != NULL)
 	{
+		contador++; if (contador > 20) return false;
 		if (DEBUG == true) printf("\nInicio da iteracao no item...\n");
 
-		if (itemPilha != NULL)
+		if (novoItem == true)
 		{
-			vetorDoItemDaArvore = itemPilha->vetorParaVerificar;
+			vetorDoItemDaArvore = 0;
+		}
+		else
+		{
+			if (itemPilha != NULL)
+			{
+				vetorDoItemDaArvore = itemPilha->vetorParaVerificar;
+			}
 		}
 
 		//Percorrer cada vetor de um item da árvore
@@ -145,9 +171,9 @@ bool listarPalavrasDaArvore() {
 				if (itemAuxiliar->chave > -1)
 				{
 					printf("Palavra: '%s'\n", palavra);
-
-
+					palavraEncontrada = true;
 					vetorDoItemDaArvore = (i + 1);
+
 					if (vetorDoItemDaArvore >= TAMANHO_DO_ALFABETO)
 					{
 						itemPilha = removerTopoDaPilha(pilhaDeChamadas);
@@ -158,7 +184,9 @@ bool listarPalavrasDaArvore() {
 							return true;
 						}
 					}
+
 					break;
+
 				}
 
 				//Verifica se esta é a última letra do alfabeto
@@ -170,6 +198,11 @@ bool listarPalavrasDaArvore() {
 
 						if (itemPilha == NULL)
 						{
+							if (palavraEncontrada == false)
+							{
+								printf("Nenhuma palavra foi encontrada. A arvore esta vazia.\n");
+							}
+
 							mensagemSucesso();
 							return true;
 						}
@@ -185,17 +218,18 @@ bool listarPalavrasDaArvore() {
 				letraAtual++;
 				if (!inserirItemNaPilha((i + 1), itemAuxiliar, pilhaDeChamadas)) return false;
 				itemAuxiliar = itemAuxiliar->proximaLetra[i];
+				vetorDoItemDaArvore = (i + 1);
+				novoItem = true;
 				break;
 			}
 
-			if (DEBUG == true) printf("Final de uma iteracao '%d' do for...\n", i);
+			if (DEBUG == true) printf("Final da iteracao '%d' do for...\n", i);
 		}
 
-		if (DEBUG == true) printf("Saiu do for. VetorDoItemDaArvore '%d' palavra '%s' letraAtual '%d' '%c'\n", vetorDoItemDaArvore, palavra, letraAtual, letraAtual);
+		if (DEBUG == true) printf("Saiu do for. VetorDoItemDaArvore '%d' palavra '%s' letraAtual '%d' '%c'\n", vetorDoItemDaArvore, palavra, letraAtual, (letraAtual + 'a'));
 	}
 
 	if (DEBUG == true) printf("Saiu o while que percorre a arvore.\n");
-
 
 	if (listaDeCodigosDeErro[0] != 0)
 	{
