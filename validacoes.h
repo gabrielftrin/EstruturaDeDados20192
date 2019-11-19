@@ -5,11 +5,17 @@ bool configurarLocal() {
 
 	string retorno = setlocale(LC_ALL, "Portuguese");
 
-	if ((retorno == NULL) || (retorno == "") || (retorno == "\0"))
+	if ((retorno == NULL) || (retorno == "") || (retorno == "\0")|| (retorno == " "))
 	{
-		lancarErro(18);
-		perror(MENSAGEM_DE_ERRO);
-		return false;
+
+		retorno = setlocale(LC_ALL, "");
+
+		if ((retorno == NULL) || (retorno == "") || (retorno == "\0")|| (retorno == " "))
+		{
+			lancarErro(18);
+			perror(MENSAGEM_DE_ERRO);
+			return false;
+		}
 	}
 
 	return true;

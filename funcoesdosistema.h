@@ -25,6 +25,6 @@ void limparTela() {
 void sairDoPrograma() {
 
 	limparTela();
-	printf("Saindo do programa...");
+	printf("Saindo do programa...\n");
 	exit(0);
 }

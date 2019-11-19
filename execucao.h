@@ -119,7 +119,7 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 		if (DEBUG == true) printf("Palavra incrementada. Nova letra '%c'.\n", *palavra);
 	}
 
-	if (DEBUG == true) printf("Lançando erro...\nDados: Tamanho '%d', Letra '%c', Vetor '%d'\n", tamanho, palavra, (*palavra - 'a'));
+	if (DEBUG == true) printf("Lançando erro...\nDados: Tamanho '%d', Letra '%c', Vetor '%d'\n", tamanho, *palavra, (*palavra - 'a'));
 
 	lancarErro(28);
 	return false;
@@ -203,7 +203,7 @@ bool inserirDeterminadaPalavraNaArvore(string palavraDaArvore, int codigo, int t
 			if (DEBUG == true) printf("Dados atuais: Chave: '%d', Letra: '%c'. Vetor: '%d'.\n", itemAuxiliar->chave, (*palavraDaArvore), (*palavraDaArvore - 'a'));
 		}
 
-		if (DEBUG == true) printf("Letra atual '%c'. Passando para próxima letra...\n");
+		if (DEBUG == true) printf("Letra atual '%c'. Passando para próxima letra...\n", (*palavraDaArvore + 'a'));
 
 		//Passar para o próximo caractere
 		palavraDaArvore++;
@@ -252,7 +252,7 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 		//Tamanho da palavra
 		int tamanhoDaPalavra = strlen(linha) - strlen(ponteiroDaVirgula);
 
-		if (DEBUG == true) printf("Resultado: Linha '%d', Resto da linha: '%d', Diferenca '%d'. Copiando palavra da linha...\n", strlen(linha), strlen(ponteiroDaVirgula), tamanhoDaPalavra);
+		if (DEBUG == true) printf("Resultado: Linha '%d', Resto da linha: '%d', Diferenca '%d'. Copiando palavra da linha...\n", (int) strlen(linha), (int) strlen(ponteiroDaVirgula), tamanhoDaPalavra);
 
 		//Palavra
 		char palavra[tamanhoDaPalavra];
@@ -282,7 +282,7 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 		//Criar ponteiro da palavra
 		string palavraDaArvore = &palavra[0];
 
-		if (DEBUG == true) printf("Dados atuais: Palavra:'%s', Tamanho:'%d', Código:'%d'.\nEntrando na função 'inserirDeterminadaPalavra'...\n", palavraDaArvore, strlen(palavraDaArvore), codigoEmInteiro);
+		if (DEBUG == true) printf("Dados atuais: Palavra:'%s', Tamanho:'%d', Código:'%d'.\nEntrando na função 'inserirDeterminadaPalavra'...\n", palavraDaArvore, (int) strlen(palavraDaArvore), codigoEmInteiro);
 
 		//Inserir a palavra na árvore
 		if (!inserirDeterminadaPalavraNaArvore(palavraDaArvore, codigoEmInteiro, tamanhoDaPalavra)) return false;
@@ -335,7 +335,7 @@ pilha* criarPilha() {
 	novaPilha->quantidadeDeItens = 0;
 	novaPilha->topo = NULL;
 
-	if (DEBUG == true) printf("Imprimindo NOVA pilha: '%d'...\n", novaPilha);
+	if (DEBUG == true) printf("Imprimindo NOVA pilha: '%p'...\n", novaPilha);
 	return novaPilha;
 }
 
@@ -348,17 +348,17 @@ bool inserirItemNaPilha(int vetorParaVerificar, itemDaArvore* itemParaVerificar,
 
 	if (!validarAlocacaoDeMemoria(itemParaVerificar)) return false;
 
-	if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+	if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
 
 	if (pilhaDeChamadas == NULL) {
 
-		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
 		pilhaDeChamadas = criarPilha();
-		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
 		if (pilhaDeChamadas == NULL) return false;
 	}
 
-	if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+	if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
 
 	if (DEBUG == true) printf("Alocando memória para o item da pilha...\n");
 
@@ -376,7 +376,7 @@ bool inserirItemNaPilha(int vetorParaVerificar, itemDaArvore* itemParaVerificar,
 		pilhaDeChamadas->topo = item;
 		pilhaDeChamadas->quantidadeDeItens = 1;
 		if (DEBUG == true) printf("Quantidade de itens da pilha '%d'. Retornando true\n", pilhaDeChamadas->quantidadeDeItens);
-		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
 
 		return true;
 	}

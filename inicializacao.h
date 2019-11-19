@@ -41,14 +41,14 @@ bool executarFuncaoDoMenu(int opcao) {
 void imprimirOpcoesDoMenu() {
 
 	printf(
-		"\n=================== Trabalho prático II ===================\n"
-		" Alunos: Denise Alpim e Gabriel Trindade\n (opção 99 para ativar/desativar o modo DEBUG)\n"
+		"\n=================== Trabalho pratico II ===================\n"
+		" Alunos: Denise Alpim e Gabriel Trindade\n (opcao 99 para ativar/desativar o modo DEBUG)\n"
 
-		"\n	1) Criar (zerar) a árvore"
-		"\n	2) Inserir valor (palavra) na árvore pelo arquivo .txt"
-		"\n	3) Consulta uma palavra na árvore"
-		"\n	4) Listar todas as palavras cadastradas na árvore"
-		"\n	5) Remover a árvore"
+		"\n	1) Criar (zerar) a arvore"
+		"\n	2) Inserir valor (palavra) na arvore pelo 'arquivo.txt'"
+		"\n	3) Consulta uma palavra na arvore"
+		"\n	4) Listar todas as palavras cadastradas na arvore"
+		"\n	5) Remover a arvore"
 		"\n	6) Encerrar o programa"
 		"\n\n"
 	);
