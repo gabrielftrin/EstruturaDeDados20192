@@ -144,23 +144,32 @@ bool listarPalavrasDaArvore() {
 	while (itemAuxiliar != NULL)
 	{
 		contador++; if (contador > 20) return false;
-		if (DEBUG == true) printf("\nInicio da iteracao no item...\n");
+		if (DEBUG == true) printf("\nInicio da iteracao no item... contador'%d'\n", contador);
+		if ((DEBUG == true) && (pilhaDeChamadas != NULL)) printf("\nTAMANHO DA PILHA '%d'\n", pilhaDeChamadas->quantidadeDeItens);
+		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
 
-		if (novoItem == true)
+		if (vetorDoItemDaArvore < (TAMANHO_DO_ALFABETO - 1))
 		{
 			vetorDoItemDaArvore = 0;
+			if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+
 		}
-		else
+
+
+		if (itemPilha != NULL)
 		{
-			if (itemPilha != NULL)
-			{
-				vetorDoItemDaArvore = itemPilha->vetorParaVerificar;
-			}
+			if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+
+			vetorDoItemDaArvore = itemPilha->vetorParaVerificar;
 		}
+		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+
 
 		//Percorrer cada vetor de um item da árvore
 		for (int i = vetorDoItemDaArvore; i < TAMANHO_DO_ALFABETO; i++)
 		{
+			if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+
 			if (DEBUG == true) printf("\nInicio da iteracao '%d'...\n", i);
 
 			if (itemAuxiliar->proximaLetra[i] == NULL)
@@ -170,16 +179,26 @@ bool listarPalavrasDaArvore() {
 				//Verificar se foi cadastrado um código
 				if (itemAuxiliar->chave > -1)
 				{
-					printf("Palavra: '%s'\n", palavra);
-					palavraEncontrada = true;
-					vetorDoItemDaArvore = (i + 1);
+					if (DEBUG == true) printf("A chave '%d' é maior que -1.\n", itemAuxiliar->chave);
 
-					if (vetorDoItemDaArvore >= TAMANHO_DO_ALFABETO)
+					if (palavraEncontrada == false)
 					{
+						if (DEBUG == true) printf("Palavra entrada == false.\n");
+
+						printf("Palavra: '%s'\n", palavra);
+						palavraEncontrada = true;
+					}
+
+					if (i == (TAMANHO_DO_ALFABETO - 1))
+					{
+						if (DEBUG == true) printf("Esta é a ultima letra do item. Removendo topo\n", itemAuxiliar->chave);
+
 						itemPilha = removerTopoDaPilha(pilhaDeChamadas);
 
 						if (itemPilha == NULL)
 						{
+							if (DEBUG == true) printf("A pilha esta vazia. '%d'\n", pilhaDeChamadas->quantidadeDeItens);
+
 							mensagemSucesso();
 							return true;
 						}
@@ -216,10 +235,16 @@ bool listarPalavrasDaArvore() {
 
 				palavra[letraAtual] = i + 'a';
 				letraAtual++;
+				if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+
 				if (!inserirItemNaPilha((i + 1), itemAuxiliar, pilhaDeChamadas)) return false;
+				if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+
+				if (DEBUG == true) printf("A insercao retornou true. Indo pra o proximo item da arvore '%d' '%c'\n", i, (i + 'a'));
+
 				itemAuxiliar = itemAuxiliar->proximaLetra[i];
-				vetorDoItemDaArvore = (i + 1);
 				novoItem = true;
+				return true;
 				break;
 			}
 

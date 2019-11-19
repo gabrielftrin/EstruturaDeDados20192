@@ -322,6 +322,23 @@ bool inverterDebug() {
 	return false;
 }
 
+//Criar a pilha de chamadas
+pilha* criarPilha() {
+
+	if (DEBUG == true) printf("Iniciando a funcao, 'criarPilha'...\n");
+
+	pilha* novaPilha = NULL;
+
+	novaPilha = (pilha*)malloc(sizeof(pilha));
+	if (!validarAlocacaoDeMemoria(novaPilha)) return NULL;
+
+	novaPilha->quantidadeDeItens = 0;
+	novaPilha->topo = NULL;
+
+	if (DEBUG == true) printf("Imprimindo NOVA pilha: '%d'...\n", novaPilha);
+	return novaPilha;
+}
+
 //Inserir item na pilha de chamadas de itens da árvore
 bool inserirItemNaPilha(int vetorParaVerificar, itemDaArvore* itemParaVerificar, pilha* pilhaDeChamadas) {
 
@@ -331,16 +348,17 @@ bool inserirItemNaPilha(int vetorParaVerificar, itemDaArvore* itemParaVerificar,
 
 	if (!validarAlocacaoDeMemoria(itemParaVerificar)) return false;
 
-	if (pilhaDeChamadas == NULL)
-	{
-		if (DEBUG == true) printf("A pilha está vazia, Criando pilha...\n");
+	if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
 
-		pilhaDeChamadas = (pilha*)malloc(sizeof(pilha));
-		if (!validarAlocacaoDeMemoria(pilhaDeChamadas)) return false;
+	if (pilhaDeChamadas == NULL) {
 
-		pilhaDeChamadas->quantidadeDeItens = 0;
-		pilhaDeChamadas->topo = NULL;
+		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+		pilhaDeChamadas = criarPilha();
+		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+		if (pilhaDeChamadas == NULL) return false;
 	}
+
+	if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
 
 	if (DEBUG == true) printf("Alocando memória para o item da pilha...\n");
 
@@ -357,20 +375,27 @@ bool inserirItemNaPilha(int vetorParaVerificar, itemDaArvore* itemParaVerificar,
 
 		pilhaDeChamadas->topo = item;
 		pilhaDeChamadas->quantidadeDeItens = 1;
+		if (DEBUG == true) printf("Quantidade de itens da pilha '%d'. Retornando true\n", pilhaDeChamadas->quantidadeDeItens);
+		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%d'...\n", pilhaDeChamadas);
+
 		return true;
 	}
 
 	if (pilhaDeChamadas->topo != NULL && pilhaDeChamadas->quantidadeDeItens > 0)
 	{
-		if (DEBUG == true) printf("O topo NÃO é nulo. Retornando true...\n");
+		if (DEBUG == true) printf("O topo da pilha NÃO é nulo.\n");
 
 		item->itemAnteriorDaPilha = pilhaDeChamadas->topo;
 		pilhaDeChamadas->topo = item;
 		pilhaDeChamadas->quantidadeDeItens++;
+
+		if (DEBUG == true) printf("O item foi inserido no topo da pilha\n");
+		if (DEBUG == true) printf("Quantidade de itens da pilha '%d'.\n", pilhaDeChamadas->quantidadeDeItens);
+
 		return true;
 	}
 
-	if (DEBUG == true) printf("Lançando erro nao esperado...\n");
+	if (DEBUG == true) printf("\nLançando erro nao esperado ao INSERIR ITEM NA PILHA...\n");
 
 	lancarErro(35);
 	return false;

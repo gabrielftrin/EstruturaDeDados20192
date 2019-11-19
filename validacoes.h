@@ -5,7 +5,7 @@ bool configurarLocal() {
 
 	string retorno = setlocale(LC_ALL, "Portuguese");
 
-	if (retorno == NULL || retorno == "")
+	if ((retorno == NULL) || (retorno == "") || (retorno == "\0"))
 	{
 		lancarErro(18);
 		perror(MENSAGEM_DE_ERRO);
