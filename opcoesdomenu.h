@@ -283,6 +283,13 @@ bool listarPalavrasDaArvore() {
 				if (DEBUG == true) printf("Final da iteracao '%d' do for...\n", i);
 			}
 
+			if (itemAuxiliar->proximaLetra[i] != NULL)
+			{
+
+
+
+			}
+
 			if (DEBUG == true) printf("Saiu do for. quantidade '%d'\n", QUANTIDADE_ITEM_ARVORE);
 
 		}
