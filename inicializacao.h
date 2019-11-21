@@ -40,9 +40,16 @@ bool executarFuncaoDoMenu(int opcao) {
 //Imprimir opções do menu
 void imprimirOpcoesDoMenu() {
 
+	string status = "DESATIVADO";
+
+	if (DEBUG == true)
+	{
+		status = "ATIVADO";
+	}
+
 	printf(
 		"\n=================== Trabalho pratico II ===================\n"
-		" Alunos: Denise Alpim e Gabriel Trindade\n (opcao 99 para ativar/desativar o modo DEBUG)\n"
+		" Alunos: Denise Alpim e Gabriel Trindade (O modo DEBUG esta %s)\n (opcao 99 para ativar/desativar o modo DEBUG)\n"
 
 		"\n	1) Criar (zerar) a arvore"
 		"\n	2) Inserir valor (palavra) na arvore pelo 'arquivo.txt'"
@@ -51,6 +58,7 @@ void imprimirOpcoesDoMenu() {
 		"\n	5) Remover a arvore"
 		"\n	6) Encerrar o programa"
 		"\n\n"
+		,status
 	);
 }
 

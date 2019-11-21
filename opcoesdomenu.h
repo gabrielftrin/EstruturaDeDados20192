@@ -144,7 +144,20 @@ bool listarPalavrasDaArvore() {
 	while (listaDeItens[0] != NULL)
 	{
 		if (DEBUG == true) printf("\nInicio da busca de letras em um item da arvore...\n");
+		int contador = 0;
 
+		for (int i = 0; i < QUANTIDADE_ITEM_ARVORE; i++)
+		{
+			if (listaDeItens[i] != NULL)
+			{
+				contador++;
+				if (DEBUG == true) printf("Item nao nulo '%d' quantidade itens arvore'%d'...\n", i,QUANTIDADE_ITEM_ARVORE);
+			}
+
+		}
+
+		if (DEBUG == true) printf("Quantidade de itens na lista: '%d'\n", contador);
+		return true;
 		//Percorrer cada vetor do item da árvore
 		for (int i = 0; i < TAMANHO_DO_ALFABETO; i++)
 		{
@@ -200,7 +213,7 @@ bool listarPalavrasDaArvore() {
 
 									if (listaDeItens[j + 1] != NULL)
 									{
-										if (DEBUG == true) printf("A proxima posicao da lista nao esta vazia. Proxima posicao: '%d'\n", j);
+										if (DEBUG == true) printf("A proxima posicao da lista nao esta vazia. Proxima posicao: '%d'\n", (j + 1));
 
 										int k = j;
 										while (k < QUANTIDADE_ITEM_ARVORE)
@@ -218,6 +231,7 @@ bool listarPalavrasDaArvore() {
 											k++;
 										}
 									}
+
 								}
 
 								break;
@@ -231,6 +245,9 @@ bool listarPalavrasDaArvore() {
 						}
 
 						if (listaDeItens[0] == NULL) break;
+
+						if (DEBUG == true) printf("A lista nao esta vazia. A procura pelo item na lista para apaga-lo foi concluida.\n");
+						if (DEBUG == true) printf("Procurando item mais recente da lista...\n");
 
 						//Procurar item mais recente da lista
 						for (int j = 0; j < QUANTIDADE_ITEM_ARVORE; j++)
@@ -262,10 +279,11 @@ bool listarPalavrasDaArvore() {
 							}
 						}
 
-						if (DEBUG == true) printf("saindoooo\n");
-
-						return true;
 					}
+
+					if (DEBUG == true) printf("saindoooo\n");
+
+					return true;
 				}
 
 				if (itemAuxiliar->proximaLetra[i] != NULL)
@@ -285,8 +303,36 @@ bool listarPalavrasDaArvore() {
 
 			if (itemAuxiliar->proximaLetra[i] != NULL)
 			{
+				//Inserir item atual na lista
+				for (int j = 0; j < QUANTIDADE_ITEM_ARVORE; j++)
+				{
+					if (listaDeItens[j] == NULL)
+					{
+						listaDeItens[j] = itemAuxiliar;
+						break;
+					}
+				}
+
+				//Concastenar letra encontrada
+				palavra[letraAtual] = i + 'a';
+				letraAtual++;
+
+				//Se não for a última letra
+				if (i < (TAMANHO_DO_ALFABETO - 1))
+				{
+					int j = i;
+					//Enquanto não for a última letra
+					while (j < (TAMANHO_DO_ALFABETO - 1))
+					{
+						if (itemAuxiliar->proximaLetra[i + 1] != NULL)
+						{
 
 
+						}
+
+						j++;
+					}
+				}
 
 			}
 

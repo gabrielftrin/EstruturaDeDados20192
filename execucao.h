@@ -284,7 +284,7 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 		//Criar ponteiro da palavra
 		string palavraDaArvore = &palavra[0];
 
-		if (DEBUG == true) printf("Dados atuais: Palavra:'%s', Tamanho:'%d', Código:'%d'.\nEntrando na função 'inserirDeterminadaPalavra'...\n", palavraDaArvore, strlen(palavraDaArvore), codigoEmInteiro);
+		if (DEBUG == true) printf("Dados atuais: Palavra:'%s', Tamanho:'%d', Código:'%d'.\nEntrando na função 'inserirDeterminadaPalavraNaArvore'...\n", palavraDaArvore, strlen(palavraDaArvore), codigoEmInteiro);
 
 		//Inserir a palavra na árvore
 		if (!inserirDeterminadaPalavraNaArvore(palavraDaArvore, codigoEmInteiro, tamanhoDaPalavra)) return false;
