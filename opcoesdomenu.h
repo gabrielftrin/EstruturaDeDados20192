@@ -35,7 +35,13 @@ bool inserirPalavraNaArvore() {
 
 	//Declarar e abrir arquivo, validar abertura do arquivo
 	FILE* arquivo = fopen("arquivo.txt", "r");
-	if (!validarAlocacaoDeMemoria(arquivo)) return false;
+	if (!validarAlocacaoDeMemoria(arquivo))
+	{
+		printf("\nNao foi possivel encontrar o arquivo 'arquivo.txt'.\n"
+		"O arquivo deve ser salvo na mesma pasta do arquivo 'main.c'.");
+		limparErros();
+		return false;
+	}
 
 	if (DEBUG == true) printf("O arquivo foi aberto com sucesso.\n");
 
@@ -183,7 +189,7 @@ bool listarPalavrasDaArvore() {
 					//Verificar se a lista de itens esta vazia
 					if (listaDeItens[0] == NULL)
 					{
-						if (DEBUG == true) printf("O primeiro elemento da lista de itens esta vazio. A arvore foi percorrida completamente. Retornando true...\n", (i + 'a'));
+						if (DEBUG == true) printf("O primeiro elemento da lista de itens esta vazio. A arvore foi percorrida completamente. Retornando true...\n");
 
 						return true;
 					}

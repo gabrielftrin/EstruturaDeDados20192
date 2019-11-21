@@ -1,9 +1,9 @@
 #include "inicializacao.h"
 
-//Função principal
+//Funcao principal
 void main()
 {
-	//Iniciar a execução do programa
+	//Iniciar a execucao do programa
 	if (!inicializarPrograma())
 	{
 		imprimirListaDeErros();

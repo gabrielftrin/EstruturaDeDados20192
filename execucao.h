@@ -6,7 +6,7 @@ void mensagemSucesso() {
 	printf("\nOperacao realizada com sucesso.\n");
 }
 
-//Verificar se a raiz da árvore é nula
+//Verificar se a raiz da ï¿½rvore ï¿½ nula
 bool validarArvoreCriada() {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'validarArvoreCriada'...\n");
@@ -20,7 +20,7 @@ bool validarArvoreCriada() {
 	return true;
 }
 
-//Alocar memória para um novo item da árvore
+//Alocar memï¿½ria para um novo item da ï¿½rvore
 itemDaArvore* alocarItemDaArvore() {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'alocarItemDaArvore'...\n");
@@ -41,20 +41,20 @@ itemDaArvore* alocarItemDaArvore() {
 	return novoItem;
 }
 
-//Verificar se uma determinada palavra está cadastrada na arvore
+//Verificar se uma determinada palavra estï¿½ cadastrada na arvore
 bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'consultarUmaDeterminadaPalavraNaArvore'...\n");
 
-	//Verificar se a palavra é nula
+	//Verificar se a palavra ï¿½ nula
 	if (!validarAlocacaoDeMemoria(palavra)) return false;
 
 	if (DEBUG == true) printf("A palavra recebida foi validada com sucesso. Validando raiz da arvore..\n");
 
-	//Verificar se a raiz é nula
+	//Verificar se a raiz ï¿½ nula
 	if (!validarArvoreCriada())
 	{
-		printf("\nA árvore está vazia.\n");
+		printf("\nA ï¿½rvore estï¿½ vazia.\n");
 		return true;
 	}
 
@@ -68,46 +68,46 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 
 	if (DEBUG == true) printf("Primeira letra da palavra: '%c'. Tamanho da palavra '%d'. Iniciando iteracao...\n", *palavra, tamanho);
 
-	//Percorrer a árvore até o final da palavra ou até palavra não existir
+	//Percorrer a ï¿½rvore atï¿½ o final da palavra ou atï¿½ palavra nï¿½o existir
 	for (int i = 0; i < tamanho; i++)
 	{
-		if (DEBUG == true) printf("\nIteração '%d'. Verificando a letra '%c'. Código do item atual '%d'.\n", i, (*palavra), itemAuxiliar->chave);
+		if (DEBUG == true) printf("\nIteraï¿½ï¿½o '%d'. Verificando a letra '%c'. Cï¿½digo do item atual '%d'.\n", i, (*palavra), itemAuxiliar->chave);
 
-		//Verifica se a letra corrente/atual está na árvore
+		//Verifica se a letra corrente/atual estï¿½ na ï¿½rvore
 		if (itemAuxiliar->proximaLetra[*palavra - 'a'] == NULL)
 		{
 			if (DEBUG == true) printf("A posicao %d do vetor e nula.\n", (*palavra - 'a'));
 
-			printf("\nA palavra '%s' não está na árvore. Apenas as primeiras %d letras estão na árvore.\n", (palavra - i), i);
+			printf("\nA palavra '%s' nï¿½o estï¿½ na ï¿½rvore. Apenas as primeiras %d letras estï¿½o na ï¿½rvore.\n", (palavra - i), i);
 
-			if (DEBUG == true) printf("\nDados: iteração:'%d', palavra:'%s', chave:'%d'. Retornando true...\n", i, (palavra - i), itemAuxiliar->chave);
+			if (DEBUG == true) printf("\nDados: iteraï¿½ï¿½o:'%d', palavra:'%s', chave:'%d'. Retornando true...\n", i, (palavra - i), itemAuxiliar->chave);
 
 			return true;
 		}
 
-		//Passa para o próximo item
+		//Passa para o prï¿½ximo item
 		itemAuxiliar = itemAuxiliar->proximaLetra[*palavra - 'a'];
 
-		if (DEBUG == true) printf("Passando para o próximo item... código: '%d', iteração '%d'\n", itemAuxiliar->chave, i);
+		if (DEBUG == true) printf("Passando para o prï¿½ximo item... cï¿½digo: '%d', iteraï¿½ï¿½o '%d'\n", itemAuxiliar->chave, i);
 
 		//Se a chave for positiva encontrou a palavra
 		if (itemAuxiliar->chave > -1)
 		{
-			if (DEBUG == true) printf("O código do item é maior que -1. Código: '%d', iteração '%d'\n", itemAuxiliar->chave, i);
+			if (DEBUG == true) printf("O cï¿½digo do item ï¿½ maior que -1. Cï¿½digo: '%d', iteraï¿½ï¿½o '%d'\n", itemAuxiliar->chave, i);
 
 			if (i >= (tamanho - 1))
 			{
-				printf("\nA palavra '%s' está na árvore. Sua chave é: %d\n", (palavra - i), itemAuxiliar->chave);
+				printf("\nA palavra '%s' estï¿½ na ï¿½rvore. Sua chave ï¿½: %d\n", (palavra - i), itemAuxiliar->chave);
 				return true;
 			}
 		}
 
-		//Se chegou no final da palavra, retorna true informando que a palavra não está na árvore
+		//Se chegou no final da palavra, retorna true informando que a palavra nï¿½o estï¿½ na ï¿½rvore
 		if (i == (tamanho - 1))
 		{
-			if (DEBUG == true) printf("\nA iteração é igual ao tamanho -1 (ultima letra da palavra). Dados: iteração:'%d', palavra:'%s', chave:'%d'. Retornando true...\n", i, (palavra - i), itemAuxiliar->chave);
+			if (DEBUG == true) printf("\nA iteraï¿½ï¿½o ï¿½ igual ao tamanho -1 (ultima letra da palavra). Dados: iteraï¿½ï¿½o:'%d', palavra:'%s', chave:'%d'. Retornando true...\n", i, (palavra - i), itemAuxiliar->chave);
 
-			printf("\nA palavra '%s' não está na árvore. Apenas as primeiras %d letras estão na árvore.\n", (palavra - i), i);
+			printf("\nA palavra '%s' nï¿½o estï¿½ na ï¿½rvore. Apenas as primeiras %d letras estï¿½o na ï¿½rvore.\n", (palavra - i), i);
 
 			mensagemSucesso();
 			return true;
@@ -121,13 +121,13 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 		if (DEBUG == true) printf("Palavra incrementada. Nova letra '%c'.\n", *palavra);
 	}
 
-	if (DEBUG == true) printf("Lançando erro...\nDados: Tamanho '%d', Letra '%c', Vetor '%d'\n", tamanho, palavra, (*palavra - 'a'));
+	if (DEBUG == true) printf("Lancando erro...\nDados: Tamanho '%d', Letra '%c', Vetor '%d'\n", tamanho, *palavra, (*palavra - 'a'));
 
 	lancarErro(28);
 	return false;
 }
 
-//Insere uma determinada palavra e um determinado código na árvore
+//Insere uma determinada palavra e um determinado cï¿½digo na ï¿½rvore
 bool inserirDeterminadaPalavraNaArvore(string palavraDaArvore, int codigo, int tamanho) {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'inserirDeterminadoItemNaArvore'...\n");
@@ -135,51 +135,51 @@ bool inserirDeterminadaPalavraNaArvore(string palavraDaArvore, int codigo, int t
 	//Validar entradas
 	if ((!validarAlocacaoDeMemoria(palavraDaArvore)) || (!validarNumeroNaturalPositivo(codigo)))
 	{
-		if (DEBUG == true) printf("Argumento inválido. A palavra ou o código recebidos, são inválidos. Retornando falso...\n");
+		if (DEBUG == true) printf("Argumento invï¿½lido. A palavra ou o cï¿½digo recebidos, sï¿½o invï¿½lidos. Retornando falso...\n");
 
 		return false;
 	}
 
-	//Criar variável auxiliar
+	//Criar variï¿½vel auxiliar
 	itemDaArvore* itemAuxiliar = raiz;
 
-	if (DEBUG == true) printf("Argumentos recebidos: Palavra:'%s', Código:'%d', Tamanho:'%d'. Iniciando iteração...\n", palavraDaArvore, codigo, tamanho);
+	if (DEBUG == true) printf("Argumentos recebidos: Palavra:'%s', Cï¿½digo:'%d', Tamanho:'%d'. Iniciando iteraï¿½ï¿½o...\n", palavraDaArvore, codigo, tamanho);
 
-	//Percorrer a árvore até o final da palavra
+	//Percorrer a ï¿½rvore atï¿½ o final da palavra
 	for (int i = 0; i < tamanho; i++)
 	{
-		if (DEBUG == true) printf("\nInício da iteração '%d'.\n", i);
+		if (DEBUG == true) printf("\nInï¿½cio da iteraï¿½ï¿½o '%d'.\n", i);
 
-		//Aloca memória para um novo item se o caractere for nulo
+		//Aloca memï¿½ria para um novo item se o caractere for nulo
 		if (itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'] == NULL) {
 
-			if (DEBUG == true) printf("A posição '%d' é nula. Alocando memória para o novo item...\n", (*palavraDaArvore - 'a'));
+			if (DEBUG == true) printf("A posiï¿½ï¿½o '%d' ï¿½ nula. Alocando memï¿½ria para o novo item...\n", (*palavraDaArvore - 'a'));
 
-			//Alocar novo item da árvore
+			//Alocar novo item da ï¿½rvore
 			itemDaArvore* novoItem = alocarItemDaArvore();
 
-			//Validar alocação
+			//Validar alocaï¿½ï¿½o
 			if (!validarAlocacaoDeMemoria(novoItem)) return false;
 
-			if (DEBUG == true) printf("Memória alocada com sucesso. Inserindo o novo item na ávore...\n");
+			if (DEBUG == true) printf("Memï¿½ria alocada com sucesso. Inserindo o novo item na ï¿½vore...\n");
 
 			//Colocar o novo item na arvore
 			itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'] = novoItem;
 		}
 
-		if (DEBUG == true) printf("Passando para o próximo item. Letra '%c', Iteração '%d', Vetor '%d'\n", *palavraDaArvore, i, (*palavraDaArvore - 'a'));
+		if (DEBUG == true) printf("Passando para o prï¿½ximo item. Letra '%c', Iteraï¿½ï¿½o '%d', Vetor '%d'\n", *palavraDaArvore, i, (*palavraDaArvore - 'a'));
 
-		//Passa para o próximo item
+		//Passa para o prï¿½ximo item
 		itemAuxiliar = itemAuxiliar->proximaLetra[*palavraDaArvore - 'a'];
 
-		//Sair do laço quando for a última letra
+		//Sair do laï¿½o quando for a ï¿½ltima letra
 		if (i == (tamanho - 1))
 		{
-			if (DEBUG == true) printf("Esta é a última letra. Iteração '%d'.\n", i);
+			if (DEBUG == true) printf("Esta ï¿½ a ï¿½ltima letra. Iteraï¿½ï¿½o '%d'.\n", i);
 
 			if (itemAuxiliar->chave == -1)
 			{
-				if (DEBUG == true) printf("A chave deste item é '%d'. Inserido o código '%d' na árvore...\n", itemAuxiliar->chave, codigo);
+				if (DEBUG == true) printf("A chave deste item e '%d'. Inserido o codigo '%d' na arvore...\n", itemAuxiliar->chave, codigo);
 
 				//Inserir valor
 				itemAuxiliar->chave = codigo;
@@ -191,13 +191,13 @@ bool inserirDeterminadaPalavraNaArvore(string palavraDaArvore, int codigo, int t
 
 			if (itemAuxiliar->chave > -1)
 			{
-				if (DEBUG == true) printf("A chave '%d' é maior que -1.\n", itemAuxiliar->chave);
+				if (DEBUG == true) printf("A chave '%d' e maior que -1.\n", itemAuxiliar->chave);
 
-				if (DEBUG == true) printf("A palavra '%s' já foi cadastrada na árvore com o código '%d'. Atualizando código para '%d'.\n", (palavraDaArvore - i), itemAuxiliar->chave, codigo);
+				if (DEBUG == true) printf("A palavra '%s' ja foi cadastrada na arvore com o codigo '%d'. Atualizando cï¿½digo para '%d'.\n", (palavraDaArvore - i), itemAuxiliar->chave, codigo);
 
 				itemAuxiliar->chave = codigo;
 
-				if (DEBUG == true) printf("Código '%d' atualizado com sucesso. Retornando true...\n", itemAuxiliar->chave);
+				if (DEBUG == true) printf("Codigo '%d' atualizado com sucesso. Retornando true...\n", itemAuxiliar->chave);
 
 				return true;
 			}
@@ -205,15 +205,15 @@ bool inserirDeterminadaPalavraNaArvore(string palavraDaArvore, int codigo, int t
 			if (DEBUG == true) printf("Dados atuais: Chave: '%d', Letra: '%c'. Vetor: '%d'.\n", itemAuxiliar->chave, (*palavraDaArvore), (*palavraDaArvore - 'a'));
 		}
 
-		if (DEBUG == true) printf("Letra atual '%c'. Passando para próxima letra...\n");
+		if (DEBUG == true) printf("Letra atual '%c'. Passando para proxima letra...\n", (i + 'a'));
 
-		//Passar para o próximo caractere
+		//Passar para o prï¿½ximo caractere
 		palavraDaArvore++;
 
 		if (DEBUG == true) printf("Letra incrementada: '%c'\n", *palavraDaArvore);
 	}
 
-	if (DEBUG == true) printf("Saiu da iteração sem inserir o item. Dados: Letra '%c', Chave do item atual '%d'. Lançando erro...\n", *palavraDaArvore, itemAuxiliar->chave);
+	if (DEBUG == true) printf("Saiu da iteracao sem inserir o item. Dados: Letra '%c', Chave do item atual '%d'. Lanï¿½ando erro...\n", *palavraDaArvore, itemAuxiliar->chave);
 
 	lancarErro(34);
 	return false;
@@ -224,7 +224,7 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'lerLinhasDoArquivo'...\n");
 
-	//Validar entradas da função
+	//Validar entradas da funï¿½ï¿½o
 	if (
 		(!validarAlocacaoDeMemoria(linha)) ||
 		(!validarAlocacaoDeMemoria(arquivo)) ||
@@ -233,28 +233,28 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 		)
 		return false;
 
-	if (DEBUG == true) printf("A linha, a quantidade de entradas, raiz e o arquivo são válidos. Iniciando a iteração.\n");
+	if (DEBUG == true) printf("A linha, a quantidade de entradas, raiz e o arquivo sao validos. Iniciando a iteracao.\n");
 
 	//Iterar sobre as linhas
 	for (int i = 0; i < entradas; i++)
 	{
-		if (DEBUG == true) printf("Início da iteração. Iteração '%d'. Lendo linha do arquivo...\n", i);
+		if (DEBUG == true) printf("Inï¿½cio da iteraï¿½ï¿½o. Iteraï¿½ï¿½o '%d'. Lendo linha do arquivo...\n", i);
 
 		//Pegar a linha do arquivo
 		if (!validarAlocacaoDeMemoria(fgets(linha, TAMANHO_DA_LINHA, arquivo))) return false;
 
-		if (DEBUG == true) printf("Linha lida com sucesso. Linha: '%s'. Procurando vírgula na linha...\n", linha);
+		if (DEBUG == true) printf("Linha lida com sucesso. Linha: '%s'. Procurando vï¿½rgula na linha...\n", linha);
 
-		//Encontrar a vírgula na linha
+		//Encontrar a vï¿½rgula na linha
 		string ponteiroDaVirgula = strchr(linha, ',');
 		if (!validarAlocacaoDeMemoria(ponteiroDaVirgula)) return false;
 
-		if (DEBUG == true) printf("Vírgula encontrada. Resto da linha a partir da vírgula: '%s'.\nCalculando tamanho da palavra...", ponteiroDaVirgula);
+		if (DEBUG == true) printf("Vï¿½rgula encontrada. Resto da linha a partir da vï¿½rgula: '%s'.\nCalculando tamanho da palavra...", ponteiroDaVirgula);
 
 		//Tamanho da palavra
 		int tamanhoDaPalavra = strlen(linha) - strlen(ponteiroDaVirgula);
 
-		if (DEBUG == true) printf("Resultado: Linha '%d', Resto da linha: '%d', Diferenca '%d'. Copiando palavra da linha...\n", strlen(linha), strlen(ponteiroDaVirgula), tamanhoDaPalavra);
+		if (DEBUG == true) printf("Resultado: Linha '%d', Resto da linha: '%d', Diferenca '%d'. Copiando palavra da linha...\n", (int) strlen(linha), (int) strlen(ponteiroDaVirgula), tamanhoDaPalavra);
 
 		//Palavra
 		char palavra[tamanhoDaPalavra];
@@ -262,44 +262,44 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 
 		if (DEBUG == true) printf("Palavra copiada com sucesso. Palavra: '%s', Linha: '%s', Tamanho: '%d'.Copiando, Calculando e convertendo chave...\n", palavra, linha, tamanhoDaPalavra);
 
-		//Tamanho do código
+		//Tamanho do cï¿½digo
 		int tamanhoDoCodigo = strlen(ponteiroDaVirgula) - 2;
 
-		//Código
+		//Cï¿½digo
 		char codigoEmTexto[tamanhoDoCodigo];
 		memcpy(codigoEmTexto, (ponteiroDaVirgula + 2), tamanhoDoCodigo);
 
-		//Converter código para int
+		//Converter cï¿½digo para int
 		int codigoEmInteiro = atoi(codigoEmTexto);
 		if (!validarNumeroNaturalPositivo(codigoEmInteiro)) return false;
 
-		//Criar variável auxiliar
+		//Criar variï¿½vel auxiliar
 		itemDaArvore* itemAuxiliar = raiz;
 
-		if (DEBUG == true) printf("Chave copiada com sucesso. Chave '%d'. Colocando palavra em minúsculo...\n", codigoEmInteiro);
+		if (DEBUG == true) printf("Chave copiada com sucesso. Chave '%d'. Colocando palavra em minï¿½sculo...\n", codigoEmInteiro);
 
-		//Colocar a palavra em minúsculo
+		//Colocar a palavra em minusculo
 		for (int i = 0; i < (tamanhoDaPalavra - 1); i++) palavra[i] = tolower(palavra[i]);
 
 		//Criar ponteiro da palavra
 		string palavraDaArvore = &palavra[0];
 
-		if (DEBUG == true) printf("Dados atuais: Palavra:'%s', Tamanho:'%d', Código:'%d'.\nEntrando na função 'inserirDeterminadaPalavraNaArvore'...\n", palavraDaArvore, strlen(palavraDaArvore), codigoEmInteiro);
+		if (DEBUG == true) printf("Dados atuais: Palavra:'%s', Tamanho:'%d', Codigo:'%d'.\nEntrando na funcao 'inserirDeterminadaPalavraNaArvore'...\n", palavraDaArvore, (int) strlen(palavraDaArvore), codigoEmInteiro);
 
-		//Inserir a palavra na árvore
+		//Inserir a palavra na arvore
 		if (!inserirDeterminadaPalavraNaArvore(palavraDaArvore, codigoEmInteiro, tamanhoDaPalavra)) return false;
 
-		if (DEBUG == true) printf("Inserção da palavra retornou 'true'. A linha foi lida.\n\n");
+		if (DEBUG == true) printf("Insercao da palavra retornou 'true'. A linha foi lida.\n\n");
 
 		ponteiroDaVirgula = NULL;
 	}
 
-	if (DEBUG == true) printf("Saiu do laço de inserção. Todas as linhas foram lidas.\n");
+	if (DEBUG == true) printf("Saiu do laï¿½o de inserï¿½ï¿½o. Todas as linhas foram lidas.\n");
 
 	return true;
 }
 
-//Inverter booleano de ativação do modo DEBUG
+//Inverter booleano de ativacao do modo DEBUG
 bool inverterDebug() {
 
 	if (DEBUG == true) printf("Iniciando a funcao, 'inverterDebug'...\n");
