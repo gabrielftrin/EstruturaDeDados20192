@@ -8,10 +8,12 @@ string listaDeMensagensDeErro[quantidadeDeErros];
 void lancarErro(int codigoDeErro) {
 
 	int i = 0;
+
 	while (listaDeCodigosDeErro[i] != 0)
 	{
 		i++;
 	}
+
 	listaDeCodigosDeErro[i] = codigoDeErro;
 }
 
@@ -148,10 +150,10 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "Erro nao esperado ao remover topo da pilha.";
 			break;
 		case 38:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "O item anterior da lista de itens da arvore para verificar, e nulo.";
 			break;
 		case 39:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "O item da arvore nao foi encontrado na lista de itens para verificar.";
 			break;
 		case 40:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

@@ -36,6 +36,8 @@ itemDaArvore* alocarItemDaArvore() {
 		novoItem->proximaLetra[i] = NULL;
 	}
 
+	QUANTIDADE_ITEM_ARVORE++;
+
 	return novoItem;
 }
 
@@ -119,7 +121,7 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 		if (DEBUG == true) printf("Palavra incrementada. Nova letra '%c'.\n", *palavra);
 	}
 
-	if (DEBUG == true) printf("Lançando erro...\nDados: Tamanho '%d', Letra '%c', Vetor '%d'\n", tamanho, *palavra, (*palavra - 'a'));
+	if (DEBUG == true) printf("Lançando erro...\nDados: Tamanho '%d', Letra '%c', Vetor '%d'\n", tamanho, palavra, (*palavra - 'a'));
 
 	lancarErro(28);
 	return false;
@@ -203,7 +205,7 @@ bool inserirDeterminadaPalavraNaArvore(string palavraDaArvore, int codigo, int t
 			if (DEBUG == true) printf("Dados atuais: Chave: '%d', Letra: '%c'. Vetor: '%d'.\n", itemAuxiliar->chave, (*palavraDaArvore), (*palavraDaArvore - 'a'));
 		}
 
-		if (DEBUG == true) printf("Letra atual '%c'. Passando para próxima letra...\n", (*palavraDaArvore + 'a'));
+		if (DEBUG == true) printf("Letra atual '%c'. Passando para próxima letra...\n");
 
 		//Passar para o próximo caractere
 		palavraDaArvore++;
@@ -252,7 +254,7 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 		//Tamanho da palavra
 		int tamanhoDaPalavra = strlen(linha) - strlen(ponteiroDaVirgula);
 
-		if (DEBUG == true) printf("Resultado: Linha '%d', Resto da linha: '%d', Diferenca '%d'. Copiando palavra da linha...\n", (int) strlen(linha), (int) strlen(ponteiroDaVirgula), tamanhoDaPalavra);
+		if (DEBUG == true) printf("Resultado: Linha '%d', Resto da linha: '%d', Diferenca '%d'. Copiando palavra da linha...\n", strlen(linha), strlen(ponteiroDaVirgula), tamanhoDaPalavra);
 
 		//Palavra
 		char palavra[tamanhoDaPalavra];
@@ -282,7 +284,7 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 		//Criar ponteiro da palavra
 		string palavraDaArvore = &palavra[0];
 
-		if (DEBUG == true) printf("Dados atuais: Palavra:'%s', Tamanho:'%d', Código:'%d'.\nEntrando na função 'inserirDeterminadaPalavra'...\n", palavraDaArvore, (int) strlen(palavraDaArvore), codigoEmInteiro);
+		if (DEBUG == true) printf("Dados atuais: Palavra:'%s', Tamanho:'%d', Código:'%d'.\nEntrando na função 'inserirDeterminadaPalavra'...\n", palavraDaArvore, strlen(palavraDaArvore), codigoEmInteiro);
 
 		//Inserir a palavra na árvore
 		if (!inserirDeterminadaPalavraNaArvore(palavraDaArvore, codigoEmInteiro, tamanhoDaPalavra)) return false;
@@ -319,115 +321,5 @@ bool inverterDebug() {
 	}
 
 	lancarErro(32);
-	return false;
-}
-
-//Criar a pilha de chamadas
-pilha* criarPilha() {
-
-	if (DEBUG == true) printf("Iniciando a funcao, 'criarPilha'...\n");
-
-	pilha* novaPilha = NULL;
-
-	novaPilha = (pilha*)malloc(sizeof(pilha));
-	if (!validarAlocacaoDeMemoria(novaPilha)) return NULL;
-
-	novaPilha->quantidadeDeItens = 0;
-	novaPilha->topo = NULL;
-
-	if (DEBUG == true) printf("Imprimindo NOVA pilha: '%p'...\n", novaPilha);
-	return novaPilha;
-}
-
-//Inserir item na pilha de chamadas de itens da árvore
-bool inserirItemNaPilha(int vetorParaVerificar, itemDaArvore* itemParaVerificar, pilha* pilhaDeChamadas) {
-
-	if (DEBUG == true) printf("Iniciando a funcao, 'inserirItemNaPilha'...\n");
-
-	if (!validarNumeroNatural(vetorParaVerificar)) return false;
-
-	if (!validarAlocacaoDeMemoria(itemParaVerificar)) return false;
-
-	if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
-
-	if (pilhaDeChamadas == NULL) {
-
-		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
-		pilhaDeChamadas = criarPilha();
-		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
-		if (pilhaDeChamadas == NULL) return false;
-	}
-
-	if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
-
-	if (DEBUG == true) printf("Alocando memória para o item da pilha...\n");
-
-	itemDaPilha* item = (itemDaPilha*)malloc(sizeof(itemDaPilha));
-	if (!validarAlocacaoDeMemoria(item)) return false;
-
-	item->itemParaVerificar = itemParaVerificar;
-	item->vetorParaVerificar = vetorParaVerificar;
-	item->itemAnteriorDaPilha = NULL;
-
-	if (pilhaDeChamadas->topo == NULL && pilhaDeChamadas->quantidadeDeItens == 0)
-	{
-		if (DEBUG == true) printf("O topo é nulo. Retornando true...\n");
-
-		pilhaDeChamadas->topo = item;
-		pilhaDeChamadas->quantidadeDeItens = 1;
-		if (DEBUG == true) printf("Quantidade de itens da pilha '%d'. Retornando true\n", pilhaDeChamadas->quantidadeDeItens);
-		if (DEBUG == true) printf("Imprimindo pilha de chamadas: '%p'...\n", pilhaDeChamadas);
-
-		return true;
-	}
-
-	if (pilhaDeChamadas->topo != NULL && pilhaDeChamadas->quantidadeDeItens > 0)
-	{
-		if (DEBUG == true) printf("O topo da pilha NÃO é nulo.\n");
-
-		item->itemAnteriorDaPilha = pilhaDeChamadas->topo;
-		pilhaDeChamadas->topo = item;
-		pilhaDeChamadas->quantidadeDeItens++;
-
-		if (DEBUG == true) printf("O item foi inserido no topo da pilha\n");
-		if (DEBUG == true) printf("Quantidade de itens da pilha '%d'.\n", pilhaDeChamadas->quantidadeDeItens);
-
-		return true;
-	}
-
-	if (DEBUG == true) printf("\nLançando erro nao esperado ao INSERIR ITEM NA PILHA...\n");
-
-	lancarErro(35);
-	return false;
-}
-
-//Remover topo da pilha de chamadas de itens da árvore
-itemDaPilha* removerTopoDaPilha(pilha* pilhaDeChamadas) {
-
-	if (DEBUG == true) printf("Iniciando a funcao, 'removerItemDaPilha'...\n");
-
-	if (pilhaDeChamadas == NULL)
-	{
-		if (DEBUG == true) printf("O ponteiro da pilha de chamadas e nulo. Nenhum item foi removido. Retornando nulo...\n");
-
-		return NULL;
-	}
-
-	if ((pilhaDeChamadas->topo == NULL) && (pilhaDeChamadas->quantidadeDeItens == 0))
-	{
-		if (DEBUG == true) printf("A pilha de chamadas está vazia. Nenhum item foi removido. Retornando nulo...\n");
-
-		return NULL;
-	}
-
-	if (pilhaDeChamadas->topo != NULL && pilhaDeChamadas->quantidadeDeItens > 0)
-	{
-		itemDaPilha* topoRemovido = pilhaDeChamadas->topo;
-		pilhaDeChamadas->topo = pilhaDeChamadas->topo->itemAnteriorDaPilha;
-		pilhaDeChamadas->quantidadeDeItens--;
-		return topoRemovido;
-	}
-
-	lancarErro(37);
 	return false;
 }

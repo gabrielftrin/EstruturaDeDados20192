@@ -11,36 +11,21 @@
 #define CODIGO_FECHA_PROGRAMA 6
 #define TAMANHO_DA_LINHA 20
 
-//Definição da variável debug
-bool DEBUG = true;
-
-//Definição tipo string
+//Definição tipo string como ponteiro de caractere
 typedef char* string;
 
-//Definir estrutura de um item da árvore
+//Definição da estrutura de um item da árvore
 typedef struct itemDaArvore
 {
 	int chave;
 	struct itemDaArvore* proximaLetra[TAMANHO_DO_ALFABETO];
 }itemDaArvore;
 
-//Declarar ponteiro da árvore
+//Declarar ponteiro da raiz da árvore
 itemDaArvore* raiz = NULL;
 
-//Definir estrutura de um item da pilha
-typedef struct itemDaPilha {
+//Definição da variável debug
+bool DEBUG = true;
 
-	itemDaArvore* itemParaVerificar;
-	int vetorParaVerificar;
-	struct itemDaPilha* itemAnteriorDaPilha;
-}itemDaPilha;
-
-//Definir estrutura de uma pilha
-typedef struct pilha {
-
-	itemDaPilha* topo;
-	int quantidadeDeItens;
-}pilha;
-
-//Declarar ponteiro da pilha
-pilha* pilhaDeChamadas = NULL;
+//Declarar quantidade de itens (nós) existentes na árvore
+int QUANTIDADE_ITEM_ARVORE = 0;
