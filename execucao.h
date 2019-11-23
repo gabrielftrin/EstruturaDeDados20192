@@ -36,8 +36,6 @@ itemDaArvore* alocarItemDaArvore() {
 		novoItem->proximaLetra[i] = NULL;
 	}
 
-	QUANTIDADE_ITEM_ARVORE++;
-
 	return novoItem;
 }
 
@@ -186,6 +184,8 @@ bool inserirDeterminadaPalavraNaArvore(string palavraDaArvore, int codigo, int t
 
 				if (DEBUG) printf("Chave inserida: '%d'. Letra atual: '%c'. Vetor atual: '%d'.\nRetornando true...", itemAuxiliar->chave, (*palavraDaArvore), (*palavraDaArvore - 'a'));
 
+				QUANTIDADE_PALAVRAS_CADASTRADAS++;
+
 				return true;
 			}
 
@@ -202,7 +202,11 @@ bool inserirDeterminadaPalavraNaArvore(string palavraDaArvore, int codigo, int t
 				return true;
 			}
 
-			if (DEBUG) printf("Dados atuais: Chave: '%d', Letra: '%c'. Vetor: '%d'.\n", itemAuxiliar->chave, (*palavraDaArvore), (*palavraDaArvore - 'a'));
+			if (DEBUG) printf("Chave menor que -1. Lancando erro... Dados atuais: Chave: '%d', Letra: '%c'. Vetor: '%d'.\n",
+				itemAuxiliar->chave, (*palavraDaArvore), (*palavraDaArvore - 'a'));
+
+			lancarErro(40);
+			return false;
 		}
 
 		if (DEBUG) printf("Letra atual '%c'. Passando para proxima letra...\n");
@@ -322,4 +326,42 @@ bool inverterDebug() {
 
 	lancarErro(32);
 	return false;
+}
+
+//Ler recursivamente um item da arvore
+bool lerItemDaArvore(itemDaArvore* itemAuxiliar, string palavra, int letraAtual)
+{
+	if (DEBUG) printf("\nInicio a funcao 'lerItemDaArvore'...\n");
+
+	string ultimaPalavra = NULL;
+
+	for (int i = 0; i < TAMANHO_DO_ALFABETO; i++)
+	{
+		if (DEBUG) printf("\nInicio da iteracao '%d'...\n", i);
+
+		if (itemAuxiliar->proximaLetra[i] != NULL)
+		{
+			//Concatenar letra encontrada
+			palavra[letraAtual] = i + 'a';
+			lerItemDaArvore(itemAuxiliar->proximaLetra[i], palavra, (letraAtual + 1));
+		}
+
+		if (itemAuxiliar->proximaLetra[i] == NULL)
+		{
+			if (DEBUG) printf("A letra '%c' esta vazia neste item. Iteracao '%d'\n", (i + 'a'), i);
+
+			if (itemAuxiliar->chave > -1)
+			{
+				if (DEBUG) printf("A chave deste item e maior que '-1'. Sua chave e: '%d'\n", itemAuxiliar->chave);
+
+				if (palavra != ultimaPalavra) printf("Palavra: '%s'\n", palavra);
+
+				ultimaPalavra = palavra;
+			}
+		}
+	}
+
+	if (DEBUG) printf("\nFinal da funcao 'lerItemDaArvore'. Retornando true...\n");
+
+	return true;
 }

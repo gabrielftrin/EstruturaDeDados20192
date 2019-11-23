@@ -156,7 +156,7 @@ void imprimirListaDeErros() {
 			listaDeMensagensDeErro[i] = "O item da arvore nao foi encontrado na lista de itens para verificar.";
 			break;
 		case 40:
-			listaDeMensagensDeErro[i] = "Erro nao preenchido";
+			listaDeMensagensDeErro[i] = "A chave deste item da arvore e menor que -1.";
 			break;
 		case 41:
 			listaDeMensagensDeErro[i] = "Erro nao preenchido";

@@ -10,7 +10,7 @@ void limparTela()
 {
 	//Caso o sistema seja windows
 	#ifdef WIN32 //|| Win32 || win32 || Windows || WINDOWS || windows
-	   	system("cls");
+		system("cls");
 		return;
 	#endif
 
@@ -24,7 +24,6 @@ void limparTela()
 //Fecha o programa
 void sairDoPrograma()
 {
-
 	limparTela();
 	printf("Saindo do programa...\n");
 	exit(0);

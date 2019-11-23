@@ -25,7 +25,7 @@ typedef struct itemDaArvore
 itemDaArvore* raiz = NULL;
 
 //Definicao da variavel debug
-bool DEBUG = true;
+bool DEBUG = false;
 
 //Declarar quantidade de itens (nos) existentes na arvore
-int QUANTIDADE_ITEM_ARVORE = 0;
+int QUANTIDADE_PALAVRAS_CADASTRADAS = 0;
