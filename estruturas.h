@@ -1,31 +1,31 @@
-#include <stdio.h> //Biblioteca padrão
-#include <stdbool.h> //Definição do tipo Booleano
-#include <stdlib.h> //define várias funções para executar funções gerais (malloc, system, etc.)
+#include <stdio.h> //Biblioteca padrao
+#include <stdbool.h> //Definicao do tipo Booleano
+#include <stdlib.h> //define varias funcoes para executar funcoes gerais (malloc, system, etc.)
 #include <string.h> // Manipular strings
-#include <ctype.h> //declara várias funções que são úteis para manipular caracteres. (isdigit() por exemplo)
-#include <locale.h> //Configurar local/região/país
+#include <ctype.h> //declara varias funcoes que sao úteis para manipular caracteres. (isdigit() por exemplo)
+#include <locale.h> //Configurar local/regiao/país
 #include "funcoesdosistema.h"
 
 #define MENSAGEM_DE_ERRO "Mensagem de erro do compilador"
 #define TAMANHO_DO_ALFABETO 26
 #define CODIGO_FECHA_PROGRAMA 6
-#define TAMANHO_DA_LINHA 20
+#define TAMANHO_DA_LINHA 30
 
-//Definição tipo string como ponteiro de caractere
+//Definicao tipo string como ponteiro de caractere
 typedef char* string;
 
-//Definição da estrutura de um item da árvore
+//Definicao da estrutura de um item da arvore
 typedef struct itemDaArvore
 {
 	int chave;
 	struct itemDaArvore* proximaLetra[TAMANHO_DO_ALFABETO];
 }itemDaArvore;
 
-//Declarar ponteiro da raiz da árvore
+//Declarar ponteiro da raiz da arvore
 itemDaArvore* raiz = NULL;
 
-//Definição da variável debug
+//Definicao da variavel debug
 bool DEBUG = true;
 
-//Declarar quantidade de itens (nós) existentes na árvore
+//Declarar quantidade de itens (nos) existentes na arvore
 int QUANTIDADE_ITEM_ARVORE = 0;

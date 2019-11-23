@@ -1,9 +1,9 @@
 #include "opcoesdomenu.h"
 
-//Executar uma função do menu de acordo com a opção informada
-bool executarFuncaoDoMenu(int opcao) {
-
-	//Validar opção informada
+//Executar uma funcao do menu de acordo com a opcao informada
+bool executarFuncaoDoMenu(int opcao)
+{
+	//Validar opcao informada
 	if (!validarNumeroNaturalPositivo(opcao)) return false;
 
 	switch (opcao) {
@@ -30,26 +30,24 @@ bool executarFuncaoDoMenu(int opcao) {
 		if (inverterDebug()) { break; }
 		return false;
 	default:
-		printf("\nOpção inválida\n");
+		printf("\nOpcao invalida\n");
 		break;
 	}
 
 	return true;
 }
 
-//Imprimir opções do menu
-void imprimirOpcoesDoMenu() {
-
+//Imprimir opcoes do menu
+void imprimirOpcoesDoMenu()
+{
 	string status = "DESATIVADO";
 
-	if (DEBUG == true)
-	{
-		status = "ATIVADO";
-	}
+	if (DEBUG) status = "ATIVADO";
 
 	printf(
-		"\n=================== Trabalho pratico II ===================\n"
-		" Alunos: Denise Alpim e Gabriel Trindade (O modo DEBUG esta %s)\n (opcao 99 para ativar/desativar o modo DEBUG)\n"
+		"\n======================= Trabalho pratico II =======================\n"
+		" Alunos: Denise Alpim e Gabriel Trindade (O modo DEBUG esta %s)\n"
+		" (opcao 99 para ativar/desativar o modo DEBUG)\n"
 
 		"\n	1) Criar (zerar) a arvore"
 		"\n	2) Inserir valor (palavra) na arvore pelo 'arquivo.txt'"
@@ -58,7 +56,7 @@ void imprimirOpcoesDoMenu() {
 		"\n	5) Remover a arvore"
 		"\n	6) Encerrar o programa"
 		"\n\n"
-		,status
+		, status
 	);
 }
 
@@ -74,7 +72,7 @@ bool menu() {
 		//Limpar a tela para o menu aparecer sempre em cima
 		limparTela();
 
-		//Mostrar as opções do menu na tela
+		//Mostrar as opcoes do menu na tela
 		imprimirOpcoesDoMenu();
 
 		//Ler o conteúdo digitado
@@ -83,7 +81,7 @@ bool menu() {
 		//Validar conteúdo digitado
 		if (opcao == EOF) return false;
 
-		//Executar função do menu
+		//Executar funcao do menu
 		if (!executarFuncaoDoMenu(opcao)) return false;
 
 		//Pausa antes de escolher uma nova opcao
@@ -94,11 +92,17 @@ bool menu() {
 	return true;
 }
 
-//Inicializar a execução do programa
+//Inicializar a execucao do programa
 bool inicializarPrograma() {
 
-	//Configurar local para permitir acentuação de caracteres especiais
-	if (!configurarLocal()) return false;
+	//Configurar local para permitir acentuacao de caracteres especiais
+	if (!configurarLocal())
+	{
+		imprimirListaDeErros();
+		pausa();
+		sairDoPrograma();
+		return false;
+	}
 
 	//Exucutar menu
 	if (!menu()) return false;

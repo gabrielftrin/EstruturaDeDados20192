@@ -1,13 +1,13 @@
-//Exibe uma pausa na tela para que o usuário possa ler e tomar decisões
-void pausa() {
-
+//Exibe uma pausa na tela para que o usuario possa ler e tomar decisoes
+void pausa()
+{
 	printf("\nPressione [ENTER] para continuar... ");
 	scanf("[^\n]");
 }
 
 //Limpa tudo que estiver na tela
-void limparTela() {
-
+void limparTela()
+{
 	//Caso o sistema seja windows
 	#ifdef WIN32 //|| Win32 || win32 || Windows || WINDOWS || windows
 	   	system("cls");
@@ -22,7 +22,8 @@ void limparTela() {
 }
 
 //Fecha o programa
-void sairDoPrograma() {
+void sairDoPrograma()
+{
 
 	limparTela();
 	printf("Saindo do programa...\n");

@@ -17,7 +17,7 @@ void lancarErro(int codigoDeErro) {
 	listaDeCodigosDeErro[i] = codigoDeErro;
 }
 
-//Imprimir lista de mensagens de erro lançadas
+//Imprimir lista de mensagens de erro lancadas
 void mostrarErrosNaTela() {
 	int i = 0;
 	while (listaDeCodigosDeErro[i] != 0)
@@ -28,7 +28,7 @@ void mostrarErrosNaTela() {
 	printf("\n");
 }
 
-//Preencher vetor de mensagens de erro de acordo com o código e mostrar erros na tela
+//Preencher vetor de mensagens de erro de acordo com o codigo e mostrar erros na tela
 void imprimirListaDeErros() {
 
 	int i = 0;
@@ -202,10 +202,10 @@ void imprimirListaDeErros() {
 	mostrarErrosNaTela();
 }
 
-//Limpar a lista de mensagens de erro e a lista de códigos de erro
+//Limpar a lista de mensagens de erro e a lista de codigos de erro
 void limparErros() {
 
-	//De zero até a quantidade de erros, zerar a variável
+	//De zero ate a quantidade de erros, zerar a variavel
 	for (int i = 0; i < quantidadeDeErros; i++)
 	{
 		listaDeCodigosDeErro[i] = 0;

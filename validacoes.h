@@ -1,16 +1,15 @@
 #include "excecao.h"
 
-//Alterar localização do programa para a localização do sistema para permitir uso de caracteres especiais
+//Alterar localizacao do programa para a localizacao do sistema para permitir uso de caracteres especiais
 bool configurarLocal() {
 
 	string retorno = setlocale(LC_ALL, "Portuguese");
 
-	if ((retorno == NULL) || (retorno == "") || (retorno == "\0")|| (retorno == " "))
+	if ((retorno == NULL) || (retorno == "") || (retorno == "\0") || (retorno == " "))
 	{
-
 		retorno = setlocale(LC_ALL, "");
 
-		if ((retorno == NULL) || (retorno == "") || (retorno == "\0")|| (retorno == " "))
+		if ((retorno == NULL) || (retorno == "") || (retorno == "\0") || (retorno == " "))
 		{
 			lancarErro(18);
 			perror(MENSAGEM_DE_ERRO);
@@ -21,13 +20,13 @@ bool configurarLocal() {
 	return true;
 }
 
-//Limpa o buffer do teclado (entrada padrão)
+//Limpa o buffer do teclado (entrada padrao)
 void limparBufferDoTeclado() {
 
 	setbuf(stdin, NULL);
 }
 
-//Validar alocação de memória, retorna falso se o ponteiro for nulo
+//Validar alocacao de memoria, retorna falso se o ponteiro for nulo
 bool validarAlocacaoDeMemoria(void* ponteiro) {
 
 	if (ponteiro == NULL)
@@ -69,7 +68,7 @@ bool validarNumeroNaturalPositivo(int numero) {
 	return true;
 }
 
-//Retorna o ponteiro do número lido ou NULL em caso de erro (caso leia um número maior que int o ponteiro retornará o VALOR -1)
+//Retorna o ponteiro do número lido ou NULL em caso de erro (caso leia um número maior que int o ponteiro retornara o VALOR -1)
 int* lerNumeroInteiroDoTeclado() {
 
 	//Limpar o buffer do teclado
@@ -78,7 +77,7 @@ int* lerNumeroInteiroDoTeclado() {
 	//Declarar variavel de retorno da leitura e string
 	int retornoDaLeitura = 0;
 
-	//Declarar numero, alocar e validar memória
+	//Declarar numero, alocar e validar memoria
 	int* numero = (int*)malloc(sizeof(int));
 	if (!validarAlocacaoDeMemoria(numero)) {
 		lancarErro(16);
@@ -86,9 +85,9 @@ int* lerNumeroInteiroDoTeclado() {
 		return NULL;
 	}
 
-	//Enquanto nenhum caractere for lido, o programa tentará ler de novo
+	//Enquanto nenhum caractere for lido, o programa tentara ler de novo
 	do {
-		//Ler do teclado e guardar o resultado. Para de ler quando o usuário apertar [ENTER]
+		//Ler do teclado e guardar o resultado. Para de ler quando o usuario apertar [ENTER]
 		retornoDaLeitura = scanf("%d", numero);
 
 		//Verificar se houver erro de leitura
@@ -158,7 +157,7 @@ string lerTextoDoTeclado(int quantidade) {
 	int retornoDaLeitura = 0;
 	string texto = (string)malloc(quantidade * sizeof(char));
 
-	//Validar alocação
+	//Validar alocacao
 	if (!validarAlocacaoDeMemoria(texto)) {
 
 		lancarErro(16);
@@ -166,9 +165,9 @@ string lerTextoDoTeclado(int quantidade) {
 		return false;
 	}
 
-	//Enquanto nenhum caractere for lido, o programa tentará ler de novo
+	//Enquanto nenhum caractere for lido, o programa tentara ler de novo
 	do {
-		//Ler do teclado e guardar o resultado. Para de ler quando o usuário apertar [ENTER]
+		//Ler do teclado e guardar o resultado. Para de ler quando o usuario apertar [ENTER]
 		retornoDaLeitura = scanf("%[^\n]", texto);
 
 		//Verificar se houver erro de leitura
