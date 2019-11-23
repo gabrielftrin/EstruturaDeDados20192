@@ -76,7 +76,7 @@ bool consultarUmaDeterminadaPalavraNaArvore(string palavra) {
 		{
 			if (DEBUG) printf("A posicao %d do vetor e nula.\n", (*palavra - 'a'));
 
-			printf("\nA palavra '%s' nao esta na arvore. Apenas as primeiras %d letras estao na arvore.\n", (palavra - i), i);
+			printf("\nA palavra '%s' nao esta na arvore.\nApenas as primeiras '%d' letras desta palavra estao na arvore.\n", (palavra - i), i);
 
 			if (DEBUG) printf("\nDados: iteracao:'%d', palavra:'%s', chave:'%d'. Retornando true...\n", i, (palavra - i), itemAuxiliar->chave);
 
@@ -332,17 +332,27 @@ bool inverterDebug() {
 bool lerItemDaArvore(itemDaArvore* itemAuxiliar, string palavra, int letraAtual)
 {
 	if (DEBUG) printf("\nInicio a funcao 'lerItemDaArvore'...\n");
-
+	if (DEBUG) getchar();
+	if (DEBUG) pausa();
+		
 	string ultimaPalavra = NULL;
-
+	
 	for (int i = 0; i < TAMANHO_DO_ALFABETO; i++)
 	{
 		if (DEBUG) printf("\nInicio da iteracao '%d'...\n", i);
 
 		if (itemAuxiliar->proximaLetra[i] != NULL)
 		{
+			if (DEBUG) printf("A letra '%c' deste item nao esta vazia...\n", i + 'a');
+
 			//Concatenar letra encontrada
 			palavra[letraAtual] = i + 'a';
+			if (DEBUG) printf("Palavra concatenada no momento '%s' iniciando leitura do proximo item...\n", palavra);
+
+			if (DEBUG) getchar();
+			if (DEBUG) pausa();
+			if (DEBUG) limparTela();
+
 			lerItemDaArvore(itemAuxiliar->proximaLetra[i], palavra, (letraAtual + 1));
 		}
 
@@ -354,14 +364,39 @@ bool lerItemDaArvore(itemDaArvore* itemAuxiliar, string palavra, int letraAtual)
 			{
 				if (DEBUG) printf("A chave deste item e maior que '-1'. Sua chave e: '%d'\n", itemAuxiliar->chave);
 
-				if (palavra != ultimaPalavra) printf("Palavra: '%s'\n", palavra);
+				if (palavra != ultimaPalavra)
+				{
+					if (DEBUG) printf("Nova palavra encontrada. Imprimindo na tela...\n");
 
-				ultimaPalavra = palavra;
+					printf("Palavra: '%s'\n", palavra);
+
+					existePalavraNaArvore = true;
+					if (DEBUG) printf("Existe palavra na arvore '%d'", existePalavraNaArvore);
+					if (DEBUG) getchar();
+					if (DEBUG) pausa();
+
+					ultimaPalavra = palavra;
+				}
+			}
+
+			//Verificar se e ultima letra do alfabeto
+			if (i == (TAMANHO_DO_ALFABETO - 1))
+			{
+				if (DEBUG) printf("Esta e a ultima letra do alfabeto. '%d'\n", itemAuxiliar->chave);
+
+				if (DEBUG) printf("Colocando '\\0' na posicao '%d' (letraAtual - 1) da palavra '%s'\n", letraAtual, palavra);
+
+				palavra[letraAtual - 1] = '\0';
+
+				if (DEBUG) printf("Palavra atual: '%s'\n", palavra);
 			}
 		}
 	}
+	if (DEBUG) printf("Existe palavra na arvore '%d'", existePalavraNaArvore);
 
 	if (DEBUG) printf("\nFinal da funcao 'lerItemDaArvore'. Retornando true...\n");
+	if (DEBUG) getchar();
+	if (DEBUG) pausa();
 
-	return true;
+	return existePalavraNaArvore;
 }

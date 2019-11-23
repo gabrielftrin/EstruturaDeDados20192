@@ -127,7 +127,7 @@ bool listarPalavrasDaArvore() {
 	//Verifica se a raiz da arvore esta vazia
 	if (raiz == NULL)
 	{
-		printf("\nA arvore esta vazia.\n");
+		printf("\nA arvore ainda nao foi criada.\n");
 
 		return true;
 	}
@@ -143,12 +143,17 @@ bool listarPalavrasDaArvore() {
 	palavraLida = &palavraAuxiliar[0];
 
 	//Percorrer cada item da arvore
-	lerItemDaArvore(raiz, palavraLida, letraAtual);
+	bool retornoDaLeitura = lerItemDaArvore(raiz, palavraLida, letraAtual);
 
-	if (palavraAuxiliar[0] == '\0') printf("\nA arvore foi percorrida totalmente.\nNenhuma palavra foi encontrada.\n");
-	if (palavraAuxiliar[0] != '\0') printf("\nA arvore foi percorrida totalmente.\nTodas as palavras encontradas foram listadas.\n");
+	if (DEBUG) printf("Saiu da funcao 'lerItemDaArvore'.\n");
 
-	if (DEBUG) printf("Saiu do while que percorre a arvore.\n");
+	if (DEBUG) getchar();
+	if (DEBUG) pausa();
+
+	if (!retornoDaLeitura) printf("\nA arvore foi percorrida totalmente.\nNenhuma palavra foi encontrada.\n");
+	if (retornoDaLeitura) printf("\nA arvore foi percorrida totalmente.\nTodas as palavras encontradas foram listadas.\n");
+
+	if (DEBUG) printf("Saiu do while que percorre a arvore.\nRetorno da leitura '%d'", retornoDaLeitura);
 
 	if (listaDeCodigosDeErro[0] != 0)
 	{
@@ -159,6 +164,11 @@ bool listarPalavrasDaArvore() {
 
 	if (DEBUG) printf("Retornando true no final da funcao...\n");
 
+	if (DEBUG) getchar();
+	if (DEBUG) pausa();
+	if (DEBUG) getchar();
+
+	mensagemSucesso();
 	return true;
 }
 

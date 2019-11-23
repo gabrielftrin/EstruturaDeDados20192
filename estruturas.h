@@ -29,3 +29,6 @@ bool DEBUG = false;
 
 //Declarar quantidade de itens (nos) existentes na arvore
 int QUANTIDADE_PALAVRAS_CADASTRADAS = 0;
+
+//Booleano que identifica se alguma palavra foi encontrada na arvore
+bool existePalavraNaArvore = false;
