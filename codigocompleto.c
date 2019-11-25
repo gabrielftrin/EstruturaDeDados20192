@@ -772,9 +772,6 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 		int codigoEmInteiro = atoi(codigoEmTexto);
 		if (!validarNumeroNaturalPositivo(codigoEmInteiro)) return false;
 
-		//Criar variavel auxiliar
-		itemDaArvore* itemAuxiliar = raiz;
-
 		if (DEBUG) printf("Chave copiada com sucesso. Chave '%d'. Colocando palavra em minúsculo...\n", codigoEmInteiro);
 
 		//Colocar a palavra em minúsculo
