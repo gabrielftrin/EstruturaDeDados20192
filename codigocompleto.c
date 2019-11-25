@@ -1217,7 +1217,7 @@ bool inicializarPrograma() {
 }
 
 //Funcao principal
-void main()
+int main()
 {
 	//Iniciar a execucao do programa
 	if (!inicializarPrograma())
@@ -1227,4 +1227,6 @@ void main()
 		pausa();
 		main();
 	}
+	
+	return 0;
 }
