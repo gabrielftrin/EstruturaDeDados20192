@@ -904,7 +904,7 @@ bool criarArvore() {
 	raiz = alocarItemDaArvore();
 
 	//Validar alocacao de memoria
-	if (!validarArvoreCriada(raiz)) return false;
+	if (!validarArvoreCriada()) return false;
 
 	//Imprimir mensagem de sucesso na tela
 	printf("\nA arvore foi criada com sucesso.\n");
