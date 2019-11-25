@@ -45,7 +45,7 @@ void imprimirOpcoesDoMenu()
 	if (DEBUG) status = "ATIVADO";
 
 	printf(
-		"\n======================= Trabalho pratico II =======================\n"
+		"\n===================== Trabalho pratico II =====================\n"
 		" Alunos: Denise Alpim e Gabriel Trindade\n"
 		" O modo DEBUG esta '%s'\n"
 		" Escolha a opcao 99 para ativar/desativar o modo DEBUG\n"
@@ -77,10 +77,10 @@ bool menu() {
 		//Mostrar as opcoes do menu na tela
 		imprimirOpcoesDoMenu();
 
-		//Ler o conteúdo digitado
+		//Ler o conteÃºdo digitado
 		opcao = lerNumeroNaturalDoTeclado();
 
-		//Validar conteúdo digitado
+		//Validar conteÃºdo digitado
 		if (opcao == EOF) return false;
 
 		//Executar funcao do menu
