@@ -52,7 +52,7 @@ void imprimirOpcoesDoMenu()
 		" Quantidade de palavras cadastradas na arvore: '%d'\n"
 
 		"\n	1) Criar (zerar) a arvore"
-		"\n	2) Inserir valor (palavra) na arvore pelo 'arquivo.txt'"
+		"\n	2) Inserir valor (palavra) na arvore pelo 'palavras.txt'"
 		"\n	3) Consulta uma palavra na arvore"
 		"\n	4) Listar todas as palavras cadastradas na arvore"
 		"\n	5) Remover a arvore"

@@ -34,10 +34,10 @@ bool inserirPalavraNaArvore() {
 	}
 
 	//Declarar e abrir arquivo, validar abertura do arquivo
-	FILE* arquivo = fopen("arquivo.txt", "r");
+	FILE* arquivo = fopen("palavras.txt", "r");
 	if (!validarAlocacaoDeMemoria(arquivo))
 	{
-		printf("\nNao foi possivel abrir o arquivo 'arquivo.txt'.\n"
+		printf("\nNao foi possivel abrir o arquivo 'palavras.txt'.\n"
 			"Verifique se o arquivo esta salvo na mesma pasta do arquivo 'main.c'.");
 		limparErros();
 		return false;
@@ -54,13 +54,28 @@ bool inserirPalavraNaArvore() {
 	//Ler quantidade de entradas e validar alocacao de memoria
 	if (!validarAlocacaoDeMemoria(fgets(linha, TAMANHO_DA_LINHA, arquivo))) return false;
 
-	if (DEBUG) printf("Primeira linha lida com sucesso. Convertendo codigo para inteiro...\n");
+	if (DEBUG) printf("Primeira linha lida com sucesso. Linha lida: '%s'.\n", linha);
+
+	//Verificar é todos os caracteres da primeira linha sao numericos
+	char primeiraLinha[TAMANHO_DA_LINHA]; primeiraLinha[0] = *linha;
+	for (int i = 0; i < (int)strlen(primeiraLinha); i++)
+	{
+		if (primeiraLinha[i] == '\0') break;
+
+		if (DEBUG) printf("Verificando caractere da primeira linha. Iteracao: '%d'. Caractere '%c'\n", i, primeiraLinha[i]);
+
+		if (isdigit(primeiraLinha[i]) == 0)
+		{
+			printf("Nao foi possivel ler a quantidade de palavras a serem inseridas.\nVerifique se a primeira linha do arquivo contem APENAS a quantidade de palavras a serem inseridas.\n");
+			return true;
+		}
+	}
 
 	//Converter texto para inteiro e validar conversao
 	int entradas = atoi(linha);
 	if (!validarNumeroNaturalPositivo(entradas)) return false;
 
-	if (DEBUG) printf("Codigo convertido com sucesso. Iniciando a leitura das linhas do arquivo...\n");
+	if (DEBUG) printf("Codigo convertido (%d) com sucesso. Iniciando a leitura das linhas do arquivo...\n", entradas);
 
 	//Ler as linhas do arquivo
 	if (!lerLinhasDoArquivo(linha, arquivo, entradas)) return false;
@@ -100,7 +115,7 @@ bool consultarPalavraNaArvore() {
 	string palavra = NULL;
 
 	//Pedir ao  usuario que digite a palavra
-	printf("\nDigite a palavra que deseja buscar: (Ate %d caracteres)\n\n", TAMANHO_DA_LINHA);
+	printf("\nDigite APENAS a palavra que deseja buscar: (Ate %d caracteres)\n\n", TAMANHO_DA_LINHA);
 
 	//Ler palavra do teclado
 	palavra = lerTextoDoTeclado(TAMANHO_DA_LINHA);
@@ -179,6 +194,9 @@ bool removerArvore() {
 
 	//Anular a raiz
 	raiz = NULL;
+
+	//Zerar a quantidade de palavras cadastradas na arvore
+	QUANTIDADE_PALAVRAS_CADASTRADAS = 0;
 
 	//Imprimir mensagem de sucesso na tela
 	mensagemSucesso();

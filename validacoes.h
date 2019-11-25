@@ -1,11 +1,11 @@
 #include "excecao.h"
 
 //Alterar localizacao do programa para a localizacao do sistema para permitir uso de caracteres especiais
-bool configurarLocal() {
-
+bool configurarLocal()
+{
 	string retorno = setlocale(LC_ALL, "Portuguese");
 
-	if ((retorno == NULL) || (retorno == "") || (retorno == "\0") || (retorno == " "))
+	if ((retorno == NULL) || (strcmp(retorno, "") == 0) || (strcmp(retorno, "\0")) || (strcmp(retorno, " ")))
 	{
 		retorno = setlocale(LC_ALL, "");
 
