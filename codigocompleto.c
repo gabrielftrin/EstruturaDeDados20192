@@ -286,7 +286,7 @@ bool configurarLocal()
 	{
 		retorno = setlocale(LC_ALL, "");
 
-		if ((retorno == NULL) || (retorno == "") || (retorno == "\0") || (retorno == " "))
+		if ((retorno == NULL) || (strcmp(retorno, "") == 0) || (strcmp(retorno, "\0")) || (strcmp(retorno, " ")))
 		{
 			lancarErro(18);
 			perror(MENSAGEM_DE_ERRO);
