@@ -52,23 +52,29 @@ bool inserirPalavraNaArvore() {
 	if (DEBUG) printf("Memoria para linha alocada com sucesso. Lendo primeira linha do arquivo...\n");
 
 	//Ler quantidade de entradas e validar alocacao de memoria
-	if (!validarAlocacaoDeMemoria(fgets(linha, TAMANHO_DA_LINHA, arquivo))) return false;
+	if (!validarAlocacaoDeMemoria(fgets(linha, TAMANHO_DA_LINHA, arquivo)))
+	{
+		printf("O arquivo esta vazio. Nenhuma palavra foi inserida na arvore.\n");
+		limparErros();
+		return true;
+	}
 
-	if (DEBUG) printf("Primeira linha lida com sucesso. Linha lida: '%s'.\n", linha);
+	if (DEBUG) printf("Primeira linha lida com sucesso. Linha lida: '%s' Tamanho: '%d'.\n", linha, (int)strlen(linha));
 
 	//Verificar é todos os caracteres da primeira linha sao numericos
-	char primeiraLinha[TAMANHO_DA_LINHA]; primeiraLinha[0] = *linha;
-	for (int i = 0; i < (int)strlen(primeiraLinha); i++)
+	for (int i = 0; i < (int)strlen(linha); i++)
 	{
-		if (primeiraLinha[i] == '\0') break;
+		if (*linha == '\0') break;
 
-		if (DEBUG) printf("Verificando caractere da primeira linha. Iteracao: '%d'. Caractere '%c'\n", i, primeiraLinha[i]);
+		if (DEBUG) printf("Verificando caractere da primeira linha. Iteracao: '%d'. Caractere '%c'\n", i, *linha);
 
-		if (isdigit(primeiraLinha[i]) == 0)
+		if (isdigit((int)*linha) == 0)
 		{
 			printf("Nao foi possivel ler a quantidade de palavras a serem inseridas.\nVerifique se a primeira linha do arquivo contem APENAS a quantidade de palavras a serem inseridas.\n");
 			return true;
 		}
+
+		linha++;
 	}
 
 	//Converter texto para inteiro e validar conversao
