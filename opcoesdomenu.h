@@ -8,6 +8,9 @@ bool criarArvore() {
 	//Anular a raiz existente
 	raiz = NULL;
 
+	//Atulizar palavras da arvore
+	QUANTIDADE_PALAVRAS_CADASTRADAS = 0;
+
 	//Alocar memoria para raiz
 	raiz = alocarItemDaArvore();
 
@@ -54,7 +57,10 @@ bool inserirPalavraNaArvore() {
 	//Ler quantidade de entradas e validar alocacao de memoria
 	if (!validarAlocacaoDeMemoria(fgets(linha, TAMANHO_DA_LINHA, arquivo)))
 	{
-		printf("O arquivo esta vazio. Nenhuma palavra foi inserida na arvore.\n");
+		printf("O arquivo esta vazio. Nenhuma palavra foi inserida na arvore.\n"
+			"Para inserir palavras na arvore informe na primeira linha do arquivo a quantidade de palavras a serem inseridas.\n"
+			"Nas demais linhas informe a palavra e o seu codigo.\nVeja o exemplo abaixo (sem as aspas):\n"
+			"\"palavra, 19\"\n");
 		limparErros();
 		return true;
 	}
@@ -62,19 +68,18 @@ bool inserirPalavraNaArvore() {
 	if (DEBUG) printf("Primeira linha lida com sucesso. Linha lida: '%s' Tamanho: '%d'.\n", linha, (int)strlen(linha));
 
 	//Verificar é todos os caracteres da primeira linha sao numericos
-	for (int i = 0; i < (int)strlen(linha); i++)
+	int i = 0; char primeiraLinha[TAMANHO_DA_LINHA]; strcpy(primeiraLinha, linha);
+	while (strcmp(&primeiraLinha[i], "\n") != 0)//for (int i = 0; i < (int)strlen(linha); i++)
 	{
-		if (*linha == '\0') break;
+		if (DEBUG) printf("Verificando caractere da primeira linha. Iteracao: '%d'. Caractere '%c'\n", i, primeiraLinha[i]);
 
-		if (DEBUG) printf("Verificando caractere da primeira linha. Iteracao: '%d'. Caractere '%c'\n", i, *linha);
-
-		if (isdigit((int)*linha) == 0)
+		if (isdigit(primeiraLinha[i]) == 0)
 		{
 			printf("Nao foi possivel ler a quantidade de palavras a serem inseridas.\nVerifique se a primeira linha do arquivo contem APENAS a quantidade de palavras a serem inseridas.\n");
 			return true;
 		}
 
-		linha++;
+		i++;
 	}
 
 	//Converter texto para inteiro e validar conversao
