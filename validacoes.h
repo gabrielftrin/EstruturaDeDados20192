@@ -11,9 +11,14 @@ bool configurarLocal()
 
 		if ((retorno == NULL) || (strcmp(retorno, "") == 0) || (strcmp(retorno, "\0")) || (strcmp(retorno, " ")))
 		{
-			lancarErro(18);
-			perror(MENSAGEM_DE_ERRO);
-			return false;
+			retorno = setlocale(LC_ALL, "C");
+			
+			if ((retorno == NULL) || (strcmp(retorno, "") == 0) || (strcmp(retorno, "\0")) || (strcmp(retorno, " ")))
+			{
+				lancarErro(18);
+				perror(MENSAGEM_DE_ERRO);
+				return false;
+			}
 		}
 	}
 
