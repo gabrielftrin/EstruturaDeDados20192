@@ -45,7 +45,7 @@ void imprimirOpcoesDoMenu()
 	if (DEBUG) status = "ATIVADO";
 
 	printf(
-		"\n===================== Trabalho pratico II =====================\n"
+		"\n==================== Trabalho pratico II ====================\n"
 		" Alunos: Denise Alpim e Gabriel Trindade\n"
 		" O modo DEBUG esta '%s'\n"
 		" Escolha a opcao 99 para ativar/desativar o modo DEBUG\n"
