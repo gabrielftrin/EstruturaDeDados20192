@@ -41,7 +41,7 @@ bool inserirPalavraNaArvore() {
 	if (!validarAlocacaoDeMemoria(arquivo))
 	{
 		printf("\nNao foi possivel abrir o arquivo 'palavras.txt'.\n"
-			"Verifique se o arquivo esta salvo na mesma pasta do arquivo 'main.c'.");
+			"Verifique se o arquivo esta salvo na mesma pasta deste programa.");
 		limparErros();
 		return false;
 	}
