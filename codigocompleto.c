@@ -282,15 +282,17 @@ bool configurarLocal()
 {
 	string retorno = setlocale(LC_ALL, "Portuguese");
 
-	if ((retorno == NULL) || (strcmp(retorno, "") == 0) || (strcmp(retorno, "\0")) || (strcmp(retorno, " ")))
+	if (retorno == NULL)
 	{
+    
 		retorno = setlocale(LC_ALL, "");
 
-		if ((retorno == NULL) || (strcmp(retorno, "") == 0) || (strcmp(retorno, "\0")) || (strcmp(retorno, " ")))
+		if (retorno == NULL)
 		{
+      
 			retorno = setlocale(LC_ALL, "C");
 			
-			if ((retorno == NULL) || (strcmp(retorno, "") == 0) || (strcmp(retorno, "\0")) || (strcmp(retorno, " ")))
+			if (retorno == NULL)
 			{
 				lancarErro(18);
 				perror(MENSAGEM_DE_ERRO);
