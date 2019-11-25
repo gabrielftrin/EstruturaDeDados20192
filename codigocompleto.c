@@ -473,7 +473,7 @@ string lerTextoDoTeclado(int quantidade) {
 	} while (retornoDaLeitura == 0);
 
 	//Validar tamanho da string lida
-	if (strlen(texto) > quantidade) {
+	if ((int)strlen(texto) > quantidade) {
 
 		lancarErro(17);
 		perror(MENSAGEM_DE_ERRO);
@@ -1148,9 +1148,9 @@ bool executarFuncaoDoMenu(int opcao)
 //Imprimir opcoes do menu
 void imprimirOpcoesDoMenu()
 {
-	string status = "DESATIVADO";
+	string status = (string) "DESATIVADO";
 
-	if (DEBUG) status = "ATIVADO";
+	if (DEBUG) status = (string) "ATIVADO";
 
 	printf(
 		"\n==================== Trabalho pratico II ====================\n"

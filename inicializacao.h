@@ -40,9 +40,9 @@ bool executarFuncaoDoMenu(int opcao)
 //Imprimir opcoes do menu
 void imprimirOpcoesDoMenu()
 {
-	string status = "DESATIVADO";
+	string status = (string) "DESATIVADO";
 
-	if (DEBUG) status = "ATIVADO";
+	if (DEBUG) status = (string) "ATIVADO";
 
 	printf(
 		"\n==================== Trabalho pratico II ====================\n"
