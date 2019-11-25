@@ -38,7 +38,7 @@ Em apenas 1: No arquivo opcoesdomenu.h PRINCIPAL arquivo onde CADA funcao do men
 * Criar (zerar) a arvore (feito)
 * Inserir valor (palavra) na arvore pelo arquivo .txt (feito)
 * Consulta uma palavra na arvore (feito)
-* Listar todas as palavras cadastradas na arvore (Em testes)
+* Listar todas as palavras cadastradas na arvore (feito)
 * Remover a arvore (feito)
 * Encerrar o programa (feito)
 
