@@ -50,7 +50,7 @@ void limparTela()
 
 	//Caso o sistema seja linux
 #ifdef linux //|| LINUX || Linux || UNIX
-	system("tput reset");
+	system("tput reset";);
 	return;
 #endif
 }
