@@ -9,7 +9,7 @@ bool configurarLocal()
 	{
 		retorno = setlocale(LC_ALL, "");
 
-		if ((retorno == NULL) || (retorno == "") || (retorno == "\0") || (retorno == " "))
+		if ((retorno == NULL) || (strcmp(retorno, "") == 0) || (strcmp(retorno, "\0")) || (strcmp(retorno, " ")))
 		{
 			lancarErro(18);
 			perror(MENSAGEM_DE_ERRO);
@@ -39,7 +39,7 @@ bool validarAlocacaoDeMemoria(void* ponteiro) {
 	return true;
 }
 
-// Retorna verdadeiro se for um número natural
+// Retorna verdadeiro se for um nÃºmero natural
 bool validarNumeroNatural(int numero) {
 
 	if (numero < 0) {
@@ -51,7 +51,7 @@ bool validarNumeroNatural(int numero) {
 	return true;
 }
 
-// Retorna verdadeiro se for um número natural maior que zero
+// Retorna verdadeiro se for um nÃºmero natural maior que zero
 bool validarNumeroNaturalPositivo(int numero) {
 
 	if (!validarNumeroNatural(numero)) {
@@ -68,7 +68,7 @@ bool validarNumeroNaturalPositivo(int numero) {
 	return true;
 }
 
-//Retorna o ponteiro do número lido ou NULL em caso de erro (caso leia um número maior que int o ponteiro retornara o VALOR -1)
+//Retorna o ponteiro do nÃºmero lido ou NULL em caso de erro (caso leia um nÃºmero maior que int o ponteiro retornara o VALOR -1)
 int* lerNumeroInteiroDoTeclado() {
 
 	//Limpar o buffer do teclado
@@ -114,23 +114,23 @@ int* lerNumeroInteiroDoTeclado() {
 	return numero;
 }
 
-//Retorna o número NATURAL lido ou EOF (-1) em caso de erro
+//Retorna o nÃºmero NATURAL lido ou EOF (-1) em caso de erro
 int lerNumeroNaturalDoTeclado() {
 
-	//Declarar e ler o número
+	//Declarar e ler o nÃºmero
 	int* numero = lerNumeroInteiroDoTeclado();
 
-	//Validar leitura do número
+	//Validar leitura do nÃºmero
 	if (numero == NULL) {
 
 		lancarErro(19);
 		return EOF;
 	}
 
-	//Declarar número natural
+	//Declarar nÃºmero natural
 	int numeroNatural = *numero;
 
-	//Validar número natural
+	//Validar nÃºmero natural
 	if (!validarNumeroNatural(numeroNatural)) {
 
 		lancarErro(9);
