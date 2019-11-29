@@ -25,12 +25,16 @@ int main(int argc, char const* argv[])
 
 	for (int i = 0; i < max; i++)
 	{
+		if (i == 0) cout << "\n\nEntrou no primeiro 'for'\n\n";
+
 		vet[i] = rand() % 2;  //gera dados aleatórios ate o valor determinado anterior tava std::srand() % 120	;
 		//Só uma pequena correção, std::cout não é uma função mas sim um objeto global
 	}
 
 	for (int i = 0; i < max; i++)
 	{
+		if (i == 0) cout << "\n\nEntrou no segundo 'for'\n\n";
+
 		// mostra a posição do elemento que acabei de criar
 		cout << "o valor desta posicao é: ", vet[i], " ";
 		cout << " SUCESS " << endl;
