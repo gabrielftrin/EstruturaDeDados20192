@@ -67,9 +67,9 @@ bool inserirPalavraNaArvore() {
 
 	if (DEBUG) printf("Primeira linha lida com sucesso. Linha lida: '%s' Tamanho: '%d'.\n", linha, (int)strlen(linha));
 
-	//Verificar é todos os caracteres da primeira linha sao numericos
+	//Verificar se todos os caracteres da primeira linha sao numericos
 	int i = 0; char primeiraLinha[TAMANHO_DA_LINHA]; strcpy(primeiraLinha, linha);
-	while (strcmp(&primeiraLinha[i], "\n") != 0)//for (int i = 0; i < (int)strlen(linha); i++)
+	while (strcmp(&primeiraLinha[i], "\n") != 0)
 	{
 		if (DEBUG) printf("Verificando caractere da primeira linha. Iteracao: '%d'. Caractere '%c'\n", i, primeiraLinha[i]);
 
