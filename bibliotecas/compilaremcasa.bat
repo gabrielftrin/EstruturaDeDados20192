@@ -1,0 +1,1 @@
+gcc.lnk -o objeto.exe O:\OneDrive\GitHub\EstruturaDeDados20192\main.c && obj.lnk
