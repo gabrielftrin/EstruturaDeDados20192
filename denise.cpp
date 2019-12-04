@@ -1,86 +1,126 @@
 #include <iostream>
-#include <string.h>
-#include <stdlib.h>
-#include <ctime>
-#define max 10
+#include <time.h>
+
+#define TAMANHO_MAXIMO_VETOR 1000
 
 using namespace std;
 
-//Chamada ao programa principal
+//Declarar tamanho do vetor
+int tamanhoDoVetor;
 
-int main(int argc, char const* argv[])
-{
-	string nome;
-	char opcao;
-	int numero, N;
-	int vet[max];
+//Criar vetor de elementos
+int vetorDeElementos[TAMANHO_MAXIMO_VETOR];
 
-	cout << "Informe a quantidade a ser cadastrada" << endl;
-	cin >> N;
+void buscaSequencial() {
 
-	system("cls");								// LIMPA TELA
+	int valorBusca;
+	cout << "\nBusca sequencial. Informe o valor: ";
+	cin >> valorBusca;
 
-	//std::srand(120);      					//especifica q quantidade aleatória a ser gerada
-	srand(time(NULL));
+	clock_t tempoInicial, tempoFinal;
+	int valorEncontrado = 0;
 
-	for (int i = 0; i < max; i++)
+	tempoInicial = clock();
+
+	for (int i = 0; i < tamanhoDoVetor; i++)
 	{
-		if (i == 0) cout << "\n\nEntrou no primeiro 'for'\n\n";
-
-		vet[i] = rand() % 2;  //gera dados aleatórios ate o valor determinado anterior tava std::srand() % 120	;
-		//Só uma pequena correção, std::cout não é uma função mas sim um objeto global
-	}
-
-	for (int i = 0; i < max; i++)
-	{
-		if (i == 0) cout << "\n\nEntrou no segundo 'for'\n\n";
-
-		// mostra a posição do elemento que acabei de criar
-		cout << "o valor desta posicao é: ", vet[i], " ";
-		cout << " SUCESS " << endl;
-
-	}
-
-	cout << "informe o nome e o numero correspondente " << endl;
-	cout << "o nome e o numero sao: ", nome, numero, "\n";
-
-	//Parte do código que estava com o segundo main
-
-	do
-	{
-		cout << " 1: Arvore criada" << endl;
-		cout << " 2: Insercao do nome e numero na Arvore" << endl;
-		cout << " 3: consulta de dados inseridos na Arvore" << endl;
-		cout << " 4: Insercao do nome e numero na Arvore" << endl;
-		cout << " 5: Incinerar Arvore" << endl;
-		cout << " 6: Sair do Programa" << endl;
-
-		opcao = 6;
-
-		switch (opcao) {
-
-		case 1: cout << " Criar arvore \n";
+		if (vetorDeElementos[i] == valorBusca)
+		{
+			cout << "O valor encontrado na posicao: " << (i + 1) << endl;
+			valorEncontrado = 1;
 			break;
-
-		case 2: cout << " Inserir palavra na arvore \n";
-			break;
-
-		case 3: cout << " Consultar a palavra na arvore \n";
-			break;
-
-		case 4: cout << " Listar todas as palavras da arvore ";
-			break;
-
-		case 5: cout << " Incinerar a arvore ";
-			break;
-
-		case 6: cout << " Encerrar o Programa...Chega de estresse por hoje ";
-			return 0;
-		default: cout << "Opcao invalida\n";
-			break;
-
 		}
-	} while (opcao != 0);
+	}
+
+	tempoFinal = clock();
+	double intervaloDeTempo = (double)(tempoFinal - tempoInicial) / CLOCKS_PER_SEC;
+
+	printf("\nTempo de execucao da busca sequencial: %lf\n", intervaloDeTempo);
+	if (valorEncontrado == 0) printf("\nValor nao encontrado.\n");
+}
+
+void buscaBinaria() {
+
+	clock_t tempoInicial, tempoFinal;
+	
+	tempoInicial = clock();
+
+	//Ordenando vetor
+	int menor = 0, aux = 0;
+	for (int i = 0; i < tamanhoDoVetor; i++)
+	{
+		menor = i;
+		for (int j = i + 1; j < tamanhoDoVetor; j++)
+		{
+			if (vetorDeElementos[j] < vetorDeElementos[menor])
+			{
+				menor = j;
+			}
+		}
+
+		aux = vetorDeElementos[i];
+		vetorDeElementos[i] = vetorDeElementos[menor];
+		vetorDeElementos[menor] = aux;
+	}
+
+	int valorBusca, meio, inicio = 0, fim = tamanhoDoVetor - 1;
+	int valorEncontrado = 0;
+
+	cout << "\nBusca binaria. Informe o valor: ";
+	cin >> valorBusca;
+
+	inicio = 0; fim = tamanhoDoVetor - 1;
+	
+	while (inicio <= fim)
+	{
+		meio = (inicio + fim) / 2;
+
+		if (valorBusca < vetorDeElementos[meio])
+		{
+			fim = meio - 1;
+		}
+		else if (valorBusca > vetorDeElementos[meio])
+		{
+			inicio = meio + 1;
+		}
+		else {
+			cout << "Valor encontrado na posicao: " << meio + 1 << endl;
+			valorEncontrado = 1;
+			break;
+		}
+	}
+
+	tempoFinal = clock();
+	double intervaloDeTempo = (tempoFinal - tempoInicial) * 100000.0 / CLOCKS_PER_SEC;
+
+	printf("\nTempo de execucao da busca binaria: %lf\n", intervaloDeTempo);
+	if (valorEncontrado == 0) printf("\nValor nao encontrado.\n");
+}
+
+int main()
+{
+
+#ifdef WIN32 //|| Win32 || win32 || Windows || WINDOWS || windows
+	system("cls");
+#endif
+
+#ifdef linux //|| LINUX || Linux || UNIX
+	system("tput reset");
+#endif
+
+	cout << "\nTamanho do vetor: ";
+	cin >> tamanhoDoVetor;
+
+	srand(tamanhoDoVetor);
+	for (int i = 0; i < tamanhoDoVetor; i++)
+	{
+		vetorDeElementos[i] = rand() % 100;
+		//cout << vetorDeElementos[i] << endl;
+	}
+
+	//Realizar as operaÃ§Ãµes e imprimir resultado na tela
+	buscaSequencial(); cout << endl;
+	buscaBinaria();
 
 	return 0;
 }
