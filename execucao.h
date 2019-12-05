@@ -276,10 +276,10 @@ bool lerLinhasDoArquivo(string linha, FILE* arquivo, int entradas) {
 		char palavra[tamanhoDaPalavra];
 		memcpy(palavra, linha, tamanhoDaPalavra);
 
-		if (DEBUG) printf("Palavra copiada com sucesso. Palavra: '%s', Linha: '%s', Tamanho: '%d'.Copiando, Calculando e convertendo chave...\n", palavra, linha, tamanhoDaPalavra);
+		if (DEBUG) printf("Palavra copiada com sucesso. Palavra: '%s', Linha: '%s', Tamanho: '%d'.Copiando, Coletando codigo da palavra...\n", palavra, linha, tamanhoDaPalavra);
 
 		//Tamanho do codigo
-		int tamanhoDoCodigo = strlen(ponteiroDaVirgula) - 2;
+		int tamanhoDoCodigo = (int) strlen(ponteiroDaVirgula) - 2;
 
 		//Codigo
 		char codigoEmTexto[tamanhoDoCodigo];
