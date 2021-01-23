@@ -1,7 +1,7 @@
 # Trabalho Pratico II
 
 Alunos: Denise Alpim e Gabriel Trindade <br />
-Disciplina: MATD04 - Estrutura de Dados <br /> aasdasdadada
+Disciplina: MATD04 - Estrutura de Dados <br />
 
 ## Tutorial de instalacao do compilador GCC
 	
