@@ -1,0 +1,1 @@
+gcc.lnk -o executavel.exe C:\Users\mrgab\OneDrive\GitHub\EstruturaDeDados20192\main.c
