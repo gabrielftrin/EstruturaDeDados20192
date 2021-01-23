@@ -93,7 +93,7 @@ bool inserirPalavraNaArvore() {
 
 	if (DEBUG) printf("As linhas do arquivo foram lidas com sucesso. Fechando o arquivo...\n");
 
-	//Fehar o arquivo
+	//Fechar o arquivo
 	if (fclose(arquivo) == EOF)
 	{
 		lancarErro(30);
