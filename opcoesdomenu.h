@@ -72,7 +72,12 @@ bool inserirPalavraNaArvore() {
 	while (strcmp(&primeiraLinha[i], "\n") != 0)
 	{
 		if (DEBUG) printf("Verificando caractere da primeira linha. Iteracao: '%d'. Caractere '%c'\n", i, primeiraLinha[i]);
-
+		
+		if ((primeiraLinha[0] == 0) && (primeiraLinha[1] = "" || primeiraLinha[0] == "\n"))
+		{
+		
+		}
+		
 		if (isdigit(primeiraLinha[i]) == 0)
 		{
 			printf("Nao foi possivel ler a quantidade de palavras a serem inseridas.\nVerifique se a primeira linha do arquivo contem APENAS a quantidade de palavras a serem inseridas.\n");
@@ -93,7 +98,7 @@ bool inserirPalavraNaArvore() {
 
 	if (DEBUG) printf("As linhas do arquivo foram lidas com sucesso. Fechando o arquivo...\n");
 
-	//Fechar o arquivo
+	//Fehar o arquivo
 	if (fclose(arquivo) == EOF)
 	{
 		lancarErro(30);
